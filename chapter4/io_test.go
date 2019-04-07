@@ -4,4 +4,5 @@ import "testing"
 
 func TestIo(tests *testing.T) {
 	IoUsage()
+	ReadFile()
 }
