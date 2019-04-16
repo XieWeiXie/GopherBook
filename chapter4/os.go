@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path"
 	"path/filepath"
 )
@@ -42,4 +43,10 @@ func OSPathWindows() {
 	windowsPathFormat := filepath.ToSlash(windowsPath)
 	fmt.Println(filepath.Base(windowsPathFormat))
 	fmt.Println(filepath.Dir(windowsPathFormat))
+}
+
+func OSExecUsage() {
+	result := exec.Command("docker", "ps")
+	result.Run()
+	fmt.Println(result)
 }
