@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
+	"path/filepath"
 )
 
 func OsUsage() {
@@ -22,4 +24,22 @@ func OSUsageWith() {
 	file.WriteString("Hello")
 	file.WriteString("HelloWorld")
 	ioutil.ReadFile("os.log")
+}
+
+func OSPathUsage() {
+	dir, _ := os.Getwd()
+	fmt.Println(dir, path.Base(dir))
+	fmt.Println(dir, path.Dir(dir))
+	parentDir := path.Dir(dir)
+	fmt.Println(dir, path.Join(parentDir, "Chapter3"))
+}
+
+func OSPathWindows() {
+	windowsPath := `C:\Windows\System\Chapter4`
+	fmt.Println(path.Base(windowsPath))
+	fmt.Println(path.Dir(windowsPath))
+
+	windowsPathFormat := filepath.ToSlash(windowsPath)
+	fmt.Println(filepath.Base(windowsPathFormat))
+	fmt.Println(filepath.Dir(windowsPathFormat))
 }

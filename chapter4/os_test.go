@@ -4,5 +4,7 @@ import "testing"
 
 func TestOS(test *testing.T) {
 	OsUsage()
-	OSUsageWith()
+	//OSUsageWith()
+	OSPathUsage()
+	OSPathWindows()
 }
