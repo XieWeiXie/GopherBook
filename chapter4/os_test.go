@@ -7,4 +7,6 @@ func TestOS(test *testing.T) {
 	//OSUsageWith()
 	OSPathUsage()
 	OSPathWindows()
+	OSDirUsage()
+	OSExecUsage()
 }

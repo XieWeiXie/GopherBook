@@ -1,6 +1,7 @@
 package chapter4
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -40,13 +41,75 @@ func OSPathWindows() {
 	fmt.Println(path.Base(windowsPath))
 	fmt.Println(path.Dir(windowsPath))
 
-	windowsPathFormat := filepath.ToSlash(windowsPath)
+	windowsPathFormat := filepath.FromSlash(windowsPath)
 	fmt.Println(filepath.Base(windowsPathFormat))
 	fmt.Println(filepath.Dir(windowsPathFormat))
 }
 
+func OSDirUsage() {
+	path, _ := os.Getwd()
+	filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
+		if info.IsDir() {
+			return nil
+		}
+		//fmt.Println("file:", info.Name(), "in directory:", path)
+
+		return nil
+	})
+
+}
+
 func OSExecUsage() {
-	result := exec.Command("docker", "ps")
-	result.Run()
-	fmt.Println(result)
+	dockerPath, err := exec.LookPath("docker")
+	if err != nil {
+		return
+	}
+	fmt.Println(dockerPath)
+
+	pwdPath, err := exec.LookPath("pwd")
+	if err != nil {
+		return
+	}
+	fmt.Println(pwdPath)
+
+	// 1
+	cmd := exec.Command("docker", "ps")
+	stdout, _ := cmd.StdoutPipe()
+	cmd.Start()
+	opBytes, err := ioutil.ReadAll(stdout)
+	fmt.Println(cmd.Dir, cmd.Path, string(opBytes))
+
+	// 2
+	pwd, _ := os.Getwd()
+	cmd2 := exec.Command("ls", pwd)
+	var buf bytes.Buffer
+	cmd2.Stdout = &buf
+	cmd2.Run()
+	fmt.Println(buf.String())
+
+	// 3
+	cmd3 := exec.Command("cat", "log.log")
+	out, _ := cmd3.Output()
+	//out2, _ := cmd3.CombinedOutput()
+	fmt.Println(string(out))
+
+	// 4
+	cmd4 := exec.Command("sh", "os.sh")
+	out4, _ := cmd4.CombinedOutput()
+	fmt.Println(string(out4))
+
+	// 5
+	cmd5 := exec.Command("ls", pwd)
+	stdout5, _ := cmd5.StdoutPipe()
+	if err := cmd5.Start(); err != nil {
+		fmt.Println(err)
+	}
+
+	bytes, err := ioutil.ReadAll(stdout5)
+
+	err = ioutil.WriteFile("file.log", bytes, 0644)
+	if err != nil {
+		panic(err)
+	}
+
 }
