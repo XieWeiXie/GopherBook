@@ -17,7 +17,7 @@ func ClientUsage() {
 	fmt.Println(string(content))
 
 	// post
-	request, _ := http.NewRequest(http.MethodPost)
+	//request, _ := http.NewRequest(http.MethodPost)
 }
 
 func ServerUsage() {}
