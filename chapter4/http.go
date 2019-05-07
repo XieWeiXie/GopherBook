@@ -115,10 +115,10 @@ func ServerUsage() {
 	})
 
 	var selfServer http.Server
-	var selfHandler SelfServer
+	var selfHandler Self
 	var selfMux *http.ServeMux
 	selfMux = &http.ServeMux{}
-	selfHandler = SelfServer{}
+	selfHandler = Self{}
 	selfMux.Handle("/say", selfHandler)
 	selfServer = http.Server{
 		Handler: selfHandler,
@@ -137,13 +137,13 @@ func ServerUsage() {
 	select {}
 }
 
-type SelfServer struct {
+type Self struct {
 }
 
-func (SelfServer) ServeHTTP(writer http.ResponseWriter, req *http.Request) {
+func (Self) ServeHTTP(writer http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(writer, "Hello Self Sever 1")
 }
 
-func (SelfServer) Say(writer http.ResponseWriter, req *http.Request) {
+func (Self) Say(writer http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(writer, "Hello Self Sever 1")
 }
