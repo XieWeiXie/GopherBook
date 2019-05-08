@@ -120,11 +120,18 @@ func patchHandler(writer http.ResponseWriter, req *http.Request) {
 
 }
 
+func createdAtHandle(createdAt time.Time) string {
+	return createdAt.Format(time.ANSIC)
+}
 func getProfile(writer http.ResponseWriter, req *http.Request) {
 	currentPath, _ := os.Getwd()
 	log.Println(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"))
-	tmp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"))
-	tmp.Execute(writer, NewPersonRecords())
+	a := make(template.FuncMap)
+	a["createdAt"] = createdAtHandle
+	tmp := template.New("index.html")
+	tmp.Funcs(a)
+	tmp, _ = tmp.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"))
+	tmp.Funcs(a).Execute(writer, NewPersonRecords())
 }
 
 func main() {
