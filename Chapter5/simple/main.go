@@ -3,7 +3,14 @@ package main
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
+	"html/template"
+	"log"
+	"net/http"
+	"os"
+	"path"
+	"strconv"
 	"time"
 )
 
@@ -14,11 +21,11 @@ type Person struct {
 	CreatedAt      time.Time `json:"created_at"`
 	Telephone      string    `json:"telephone"`
 	Gender         int       `json:"gender"` // 男1 女0
-	WhatIsUp       string    `json:"what's_up"`
+	WhatIsUp       string    `json:"what_is_up"`
 }
 
 func uuid() string {
-	b := []byte(fmt.Sprintf("%v", time.Now().Unix()))
+	b := []byte(fmt.Sprintf("%v", time.Now().UnixNano()))
 	h := md5.New()
 	h.Write(b)
 	return hex.EncodeToString(h.Sum(nil))
@@ -37,7 +44,7 @@ func NewPersonRecords() []Person {
 			WhatIsUp:       "Hello Golang",
 		},
 		{
-			Avatar:         "http://images.org/123",
+			Avatar:         "http://images.org/456",
 			OriginWeChatID: uuid(),
 			ID:             2,
 			CreatedAt:      time.Now(),
@@ -47,4 +54,83 @@ func NewPersonRecords() []Person {
 		},
 	}
 	return persons
+}
+
+func postHandler(writer http.ResponseWriter, req *http.Request) {
+	header := writer.Header()
+	header.Add("Content-Type", "application/json")
+	var person Person
+	if req.Method == http.MethodPost {
+		if err := req.ParseForm(); err != nil {
+			writer.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		values := req.PostForm
+
+		for k, v := range values {
+			if k == "id" {
+				id, _ := strconv.Atoi(v[0])
+				person.ID = uint(id)
+			}
+			if k == "telephone" {
+				person.Telephone = v[0]
+			}
+		}
+
+	}
+	defer json.NewEncoder(writer).Encode(person)
+
+	writer.WriteHeader(http.StatusOK)
+
+}
+
+func getHandler(writer http.ResponseWriter, req *http.Request) {
+	header := writer.Header()
+	header.Add("Content-Type", "application/json")
+
+	expire := time.Now().AddDate(0, 0, 1)
+	cookie := &http.Cookie{Name: "expires", Value: "Get", Expires: expire}
+	http.SetCookie(writer, cookie)
+	writer.WriteHeader(http.StatusOK)
+	log.Println(writer.Header().Get("Set-Cookie"))
+	defer json.NewEncoder(writer).Encode(NewPersonRecords())
+
+}
+
+func patchHandler(writer http.ResponseWriter, req *http.Request) {
+	var person Person
+	if req.Method == http.MethodPatch {
+		req.ParseForm()
+		id := req.FormValue("id")
+		intID, _ := strconv.Atoi(id)
+
+		telephone := req.PostFormValue("telephone")
+		log.Println(id, telephone)
+		for _, i := range NewPersonRecords() {
+			if i.ID == uint(intID) {
+				person = i
+				person.Telephone = telephone
+				break
+			}
+		}
+	}
+	log.Println(person)
+	writer.WriteHeader(http.StatusOK)
+	defer json.NewEncoder(writer).Encode(person)
+
+}
+
+func getProfile(writer http.ResponseWriter, req *http.Request) {
+	currentPath, _ := os.Getwd()
+	log.Println(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"))
+	tmp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"))
+	tmp.Execute(writer, NewPersonRecords())
+}
+
+func main() {
+	http.HandleFunc("/persons", getHandler)
+	http.HandleFunc("/person/post", postHandler)
+	http.HandleFunc("/person/patch", patchHandler)
+	http.HandleFunc("/person/get", getProfile)
+	log.Fatal(http.ListenAndServe(":9999", nil))
 }
