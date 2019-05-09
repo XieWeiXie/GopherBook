@@ -133,10 +133,24 @@ func getProfile(writer http.ResponseWriter, req *http.Request) {
 	tmp.Funcs(a).Execute(writer, NewPersonRecords())
 }
 
+func login(writer http.ResponseWriter, req *http.Request) {
+	if err := req.ParseForm(); err != nil {
+		return
+	}
+	UserName := req.PostFormValue("username")
+	Password := req.PostFormValue("password")
+	writer.WriteHeader(http.StatusOK)
+	mapLogin := make(map[string]string)
+	mapLogin["username"] = UserName
+	mapLogin["password"] = Password
+	defer json.NewEncoder(writer).Encode(mapLogin)
+}
+
 func main() {
 	http.HandleFunc("/persons", getHandler)
 	http.HandleFunc("/person/post", postHandler)
 	http.HandleFunc("/person/patch", patchHandler)
 	http.HandleFunc("/person/get", getProfile)
+	http.HandleFunc("/login", login)
 	log.Fatal(http.ListenAndServe(":9999", nil))
 }
