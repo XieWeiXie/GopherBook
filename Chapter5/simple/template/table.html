@@ -1,0 +1,30 @@
+{{define "table"}}
+    <div class="container">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Person Record</div>
+        <div class="panel-body">
+        </div>
+        <table class="table">
+            <tr>
+                <th> ID </th>
+                <th> Avatar </th>
+                <th> CreatedAt </th>
+                <th> Telephone </th>
+                <th> Gender </th>
+                <th> WhatIsUp </th>
+            </tr>
+            {{ range . }}
+                <tr>
+                    <td>{{ .ID }}</td>
+                    <td>{{ .Avatar }}</td>
+                    <td>{{ .CreatedAt|createdAt }}</td>
+                    <td>{{ .Telephone }}</td>
+                    <td>{{ .Gender }}</td>
+                    <td>{{ .WhatIsUp }}</td>
+                </tr>
+            {{ end }}
+        </table>
+    </div>
+    </div>
+{{end}}
