@@ -143,10 +143,13 @@ func login(writer http.ResponseWriter, req *http.Request) {
 	mapLogin := make(map[string]string)
 	mapLogin["username"] = UserName
 	mapLogin["password"] = Password
-	defer json.NewEncoder(writer).Encode(mapLogin)
+	currentPath, _ := os.Getwd()
+	tmp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/login.html"))
+	tmp.Execute(writer, mapLogin)
 }
 
 func main() {
+	http.HandleFunc("/", getProfile)
 	http.HandleFunc("/persons", getHandler)
 	http.HandleFunc("/person/post", postHandler)
 	http.HandleFunc("/person/patch", patchHandler)
