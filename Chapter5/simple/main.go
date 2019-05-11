@@ -11,7 +11,9 @@ import (
 	"os"
 	"path"
 	"strconv"
+	"strings"
 	"time"
+	"unicode"
 )
 
 type Person struct {
@@ -125,6 +127,7 @@ func createdAtHandle(createdAt time.Time) string {
 }
 func getProfile(writer http.ResponseWriter, req *http.Request) {
 	currentPath, _ := os.Getwd()
+	req.Header.Set("Authorization", "Bearer profile")
 	a := make(template.FuncMap)
 	a["createdAt"] = createdAtHandle
 	tmp := template.New("index.html")
@@ -139,21 +142,69 @@ func login(writer http.ResponseWriter, req *http.Request) {
 	}
 	UserName := req.PostFormValue("username")
 	Password := req.PostFormValue("password")
-	writer.WriteHeader(http.StatusOK)
 	mapLogin := make(map[string]string)
 	mapLogin["username"] = UserName
 	mapLogin["password"] = Password
+
+	errFunc := func(values map[string]string) error {
+		for _, v := range values {
+			if len(v) < 8 || len(v) == 0 {
+				return fmt.Errorf("the length should be larger 8")
+			}
+			if unicode.IsNumber(rune(v[0])) {
+				return fmt.Errorf("should not start number")
+			}
+		}
+		return nil
+	}
 	currentPath, _ := os.Getwd()
-	tmp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/login.html"))
-	tmp.Execute(writer, mapLogin)
+	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/login.html"))
+	temp.Execute(writer, mapLogin)
+	if errFunc(mapLogin) == nil {
+		http.Redirect(writer, req, "/", http.StatusSeeOther)
+		return
+	}
+	//http.FileServer()
+	req.Header.Set("Authorization", "Bearer xxx")
+}
+
+func logout(writer http.ResponseWriter, req *http.Request) {
+	req.Header.Del("Authorization")
+	http.Redirect(writer, req, "/login", http.StatusSeeOther)
+}
+
+func auth(next http.HandlerFunc) http.HandlerFunc {
+	return func(writer http.ResponseWriter, request *http.Request) {
+		authorization := request.Header.Get("Authorization")
+		if authorization == "" {
+			http.Redirect(writer, request, "/login", http.StatusSeeOther)
+			return
+		}
+		stringList := strings.Split(authorization, " ")
+		if len(stringList) != 2 {
+			writer.Write([]byte("Authorization Format: Authorization: Bearer xxx"))
+			return
+		}
+		next.ServeHTTP(writer, request)
+	}
+}
+
+func logger(next http.HandlerFunc) http.HandlerFunc {
+	now := time.Now()
+	return func(writer http.ResponseWriter, request *http.Request) {
+		log.Printf("[Web-Server]: %s | %s", request.RequestURI, now.Format("2006/01/02 -15:04:05"))
+		next.ServeHTTP(writer, request)
+	}
+
 }
 
 func main() {
-	http.HandleFunc("/", getProfile)
-	http.HandleFunc("/persons", getHandler)
-	http.HandleFunc("/person/post", postHandler)
-	http.HandleFunc("/person/patch", patchHandler)
-	http.HandleFunc("/person/get", getProfile)
-	http.HandleFunc("/login", login)
+	http.HandleFunc("/", logger(getProfile))
+	http.HandleFunc("/persons", logger(getHandler))
+	http.HandleFunc("/person/post", logger(postHandler))
+	http.HandleFunc("/person/patch", logger(patchHandler))
+	http.HandleFunc("/person/get", logger(getProfile))
+	http.HandleFunc("/login", logger(login))
+	http.HandleFunc("/logout", logger(logout))
 	log.Fatal(http.ListenAndServe(":9999", nil))
 }
