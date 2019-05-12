@@ -19,6 +19,7 @@ func getHandle(rawString string) {
 	if err != nil {
 		return
 	}
+
 	defer response.Body.Close()
 	content, _ := ioutil.ReadAll(response.Body)
 	fmt.Println(string(content))
