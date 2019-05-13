@@ -136,36 +136,54 @@ func getProfile(writer http.ResponseWriter, req *http.Request) {
 	tmp.Funcs(a).Execute(writer, NewPersonRecords())
 }
 
+type loginInfo struct {
+	UserName string  `json:"user_name"`
+	Password string  `json:"password"`
+	Error    []error `json:"error"`
+}
+
 func login(writer http.ResponseWriter, req *http.Request) {
+	currentPath, _ := os.Getwd()
+	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/login.html"))
+	var lgInfo loginInfo
+	if req.Method == http.MethodGet {
+		temp.Execute(writer, lgInfo)
+		return
+	}
+
 	if err := req.ParseForm(); err != nil {
 		return
 	}
 	UserName := req.PostFormValue("username")
 	Password := req.PostFormValue("password")
-	mapLogin := make(map[string]string)
-	mapLogin["username"] = UserName
-	mapLogin["password"] = Password
 
-	errFunc := func(values map[string]string) error {
-		for _, v := range values {
-			if len(v) < 8 || len(v) == 0 {
-				return fmt.Errorf("the length should be larger 8")
-			}
-			if unicode.IsNumber(rune(v[0])) {
-				return fmt.Errorf("should not start number")
-			}
+	lgInfo.UserName = UserName
+	lgInfo.Password = Password
+
+	errFunc := func(values string) error {
+		v := values
+		if len(v) < 8 || len(v) == 0 {
+			return fmt.Errorf("the length should be larger 8")
+		}
+		if unicode.IsNumber(rune(v[0])) {
+			return fmt.Errorf("should not start number")
 		}
 		return nil
 	}
-	currentPath, _ := os.Getwd()
-	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/login.html"))
-	temp.Execute(writer, mapLogin)
-	if errFunc(mapLogin) == nil {
+
+	if errFunc(lgInfo.UserName) == nil && errFunc(lgInfo.Password) == nil {
 		http.Redirect(writer, req, "/", http.StatusSeeOther)
 		return
+	} else {
+		if errFunc(lgInfo.UserName) != nil {
+			lgInfo.Error = append(lgInfo.Error, fmt.Errorf("username is not suitable"))
+		}
+		if errFunc(lgInfo.Password) != nil {
+			lgInfo.Error = append(lgInfo.Error, fmt.Errorf("password is not suitable"))
+		}
+		log.Println(lgInfo)
+		temp.Execute(writer, lgInfo)
 	}
-	//http.FileServer()
-	req.Header.Set("Authorization", "Bearer xxx")
 }
 
 func logout(writer http.ResponseWriter, req *http.Request) {

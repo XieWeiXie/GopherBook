@@ -1,12 +1,12 @@
 {{define "content"}}
     <div class="container">
-    <div class="panel panel-default">
+    <div class="panel panel-success">
         <!-- Default panel contents -->
         <div class="panel-heading">Person Record</div>
         <div class="panel-body">
         </div>
-        <table class="table">
-            <tr>
+        <table class="table table-hover">
+            <tr class="success">
                 <th> ID </th>
                 <th> Avatar </th>
                 <th> CreatedAt </th>
@@ -15,7 +15,7 @@
                 <th> WhatIsUp </th>
             </tr>
             {{ range . }}
-                <tr>
+                <tr class="info">
                     <td>{{ .ID }}</td>
                     <td>{{ .Avatar }}</td>
                     <td>{{ .CreatedAt|createdAt }}</td>

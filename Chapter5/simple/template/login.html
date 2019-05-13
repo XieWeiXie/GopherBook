@@ -2,7 +2,7 @@
 <div class="container container-small">
     <h1>登录</h1>
 <form action="/login" method="post" name="login">
-    <div class="alert alert-success">登录成功～，正在跳转</div>
+    <div class="alert alert-success">登录界面访问成功～</div>
     <div class="form-group">
             <label>用户名</label>
             <input class="form-control" type="text" placeholder="Email" name="username">
@@ -15,5 +15,13 @@
             <input type="submit" class="btn btn-primary">
         </div>
 </form>
+    <div class="container">
+        {{if .Error}}
+                {{range .Error}}
+                    <ul class="danger">{{.}}</ul>
+                {{end}}
+            {{else}}
+        {{end}}
+    </div>
 </div>
 {{end}}
