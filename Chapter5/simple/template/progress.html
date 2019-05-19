@@ -1,0 +1,12 @@
+{{define "content"}}
+<div class="row">
+    <div class="container">
+        <h1 class="text-warning" >{{.Year}} 年已经过去 {{ .Now }}%! <small class="text-muted">计划都实现了吗？</small> </h1>
+        <br>
+    </div>
+
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: {{.Now}}%;" aria-valuenow={{.Now}}% aria-valuemin="0" aria-valuemax="100">{{.Now}}%</div>
+</div>
+{{end}}

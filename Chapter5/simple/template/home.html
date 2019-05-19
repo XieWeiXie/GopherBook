@@ -1,0 +1,54 @@
+{{define "content"}}
+<div class="jumbotron">
+    <h2 class="text-left"> 欢迎，这是个简易的 Web 教程示例 <span class="badge badge-secondary">New</span> </h2>
+    <p>
+        <a class="btn btn-primary btn-lg" href="https://www.zhihu.com/people/wu-xiao-shen-16/activities" >访问主页</a>
+    </p>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        {{range .}}
+            <div class="col-md-3">
+
+                <h4 class="mb-3"><span class="text-muted"> {{.Title}}</span></h4>
+                <p>
+                    {{.Text  | text}}
+                </p>
+
+
+            </div>
+        {{end}}
+        <div class="col-md-3">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">标签</span>
+                <span class="badge badge-secondary badge-pill">4</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between 1h-condensed">
+                    <div >
+                        <h6 class="my-0">net/http</h6>
+                        <small class="text-muted">热门库</small>
+                    </div>
+                    <span class="text-muted">Web</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between 1h-condensed">
+                    <div >
+                        <h6 class="my-0">template</h6>
+                        <small class="text-muted">热门库</small>
+                    </div>
+                    <span class="text-muted">Web</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between 1h-condensed">
+                    <div >
+                        <h6 class="my-0">server</h6>
+                        <small class="text-muted">热门库</small>
+                    </div>
+                    <span class="text-muted">Web</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{end}}

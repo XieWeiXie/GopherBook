@@ -43,7 +43,7 @@ func NewPersonRecords() []Person {
 			CreatedAt:      time.Now(),
 			Telephone:      "1234567890",
 			Gender:         1,
-			WhatIsUp:       "Hello Golang",
+			WhatIsUp:       "Python",
 		},
 		{
 			Avatar:         "http://images.org/456",
@@ -52,7 +52,7 @@ func NewPersonRecords() []Person {
 			CreatedAt:      time.Now(),
 			Telephone:      "987654321",
 			Gender:         0,
-			WhatIsUp:       "Hello Python",
+			WhatIsUp:       "Golang",
 		},
 	}
 	return persons
@@ -216,13 +216,138 @@ func logger(next http.HandlerFunc) http.HandlerFunc {
 
 }
 
+type router struct {
+	Name   string `json:"name"`
+	Path   string `json:"path"`
+	Method string `json:"method"`
+}
+
+type routers []router
+
+func apis(writer http.ResponseWriter, req *http.Request) {
+	var rs routers
+	rs = []router{
+		{
+			"/",
+			"/",
+			http.MethodGet,
+		},
+		{
+			"persons",
+			"/persons",
+			http.MethodGet,
+		}, {
+			"person get",
+			"/person/get",
+			http.MethodGet,
+		}, {
+			"logout",
+			"/logout",
+			http.MethodGet,
+		},
+		{
+			"person post",
+			"/person/post",
+			http.MethodPost,
+		}, {
+			"login",
+			"/login",
+			http.MethodPost,
+		},
+		{
+			"person patch",
+			"/person/patch",
+			http.MethodPatch,
+		},
+	}
+	currentPath, _ := os.Getwd()
+	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/apis.html"))
+	temp.Execute(writer, rs)
+}
+
+type progressStatus struct {
+	Now  float64 `json:"now"`
+	Year int     `json:"year"`
+}
+
+func progress(writer http.ResponseWriter, req *http.Request) {
+	var proStatus progressStatus
+	monthDays := []int{0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334}
+	now := time.Now()
+	y, m, d := now.Date()
+	ok := 0
+	sum := monthDays[time.Month(m)-1] + d
+	if (y%400 == 0) || ((y%4 == 0) && (y%100 != 0)) {
+		ok = 1
+	}
+	if (ok == 1) && (time.Month(m) > 2) {
+		sum += 1
+	}
+	proStatus.Now, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", float64(sum)/float64(365)*100), 64)
+	proStatus.Year = y
+	currentPath, _ := os.Getwd()
+	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/progress.html"))
+	temp.Execute(writer, proStatus)
+}
+
+type content struct {
+	Title string   `json:"title"`
+	Text  []string `json:"text"`
+}
+
+type contents []content
+
+func textHandler(values []string) string {
+	return strings.Join(values, " ")
+}
+func home(writer http.ResponseWriter, req *http.Request) {
+	var c contents
+	c = []content{
+		{
+			Title: "net/http 内置库的使用",
+			Text: []string{
+				"http.HandleFunc",
+				"http.Handle",
+				"http.ServeMux",
+				"http.Server",
+			},
+		},
+		{
+			Title: "template 的使用",
+			Text: []string{
+				"渲染文件",
+				"模版语法",
+				"if、else、range",
+				"函数调用",
+				"模版继承",
+			},
+		},
+		{
+			Title: "bootstrap",
+			Text: []string{
+				"栅格系统",
+				"导航栏",
+				"表格",
+				"进度条",
+			},
+		},
+	}
+	currentPath, _ := os.Getwd()
+	temp := template.New("index.html")
+	temp.Funcs(template.FuncMap{"text": textHandler})
+	t, _ := temp.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/home.html"))
+	t.Funcs(template.FuncMap{"text": textHandler}).Execute(writer, c)
+}
+
 func main() {
-	http.HandleFunc("/", logger(getProfile))
+	http.HandleFunc("/", logger(home))
 	http.HandleFunc("/persons", logger(getHandler))
 	http.HandleFunc("/person/post", logger(postHandler))
 	http.HandleFunc("/person/patch", logger(patchHandler))
 	http.HandleFunc("/person/get", logger(getProfile))
 	http.HandleFunc("/login", logger(login))
 	http.HandleFunc("/logout", logger(logout))
+	http.HandleFunc("/apis", logger(apis))
+	http.HandleFunc("/progress", logger(progress))
 	log.Fatal(http.ListenAndServe(":9999", nil))
 }
