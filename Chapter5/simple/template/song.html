@@ -1,0 +1,78 @@
+{{define "content"}}
+    <div class="container">
+        <div class="container">
+            <h4 class="text-muted">歌曲排行</h4>
+            <div class="row">
+                <div class="container">
+                    <table class="table table-striped">
+                        <tbody >
+                        {{range .Songs}}
+                            <tr>
+                                <th >{{.ID}}</th>
+                                <td class="text-muted">{{.Name}}</td>
+                                <td class="text-muted">{{.Author}}</td>
+                                <td class="text-muted">{{.Time}}</td>
+                                <td class="text-muted">{{.Album}}</td>
+                            </tr>
+                        {{end}}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+
+        <div class="container">
+            <h4 class="text-muted">接口详情</h4>
+            {{range .APis}}
+            <div class="card">
+                <div class="card-header" style="background: #6c757d; color: whitesmoke">
+                    {{.Title}}
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title text-muted">
+                        {{.Content}}
+                    </h6>
+                    <button type="button" class="btn btn-default card-text text-muted" style="border-color: #e1e1e1">
+                        {{.Method}}
+                    </button>
+                    <button type="button" class="btn btn-default card-text text-muted" style="border-color: #e1e1e1">
+                        {{.Path}}
+                    </button>
+                </div>
+                <div class="card-footer text-muted">
+                    {{.Comment}}
+                </div>
+            </div>
+            <br>
+            {{end}}
+            <div class="card">
+                <div class="card-header"  style="background: #6c757d; color: whitesmoke">
+                    意见反馈
+                </div>
+                <div class="card-body">
+                    xiexie@shu.edu.cn
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+{{end}}

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.css" >
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js" ></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.14.7/esm/popper.min.js" ></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <style>
         .btn.btn-primary{
             background-color: #00bb00;
@@ -18,13 +18,14 @@
         body{
             max-width: 1200px;
             margin: 25px auto;
+            background: #eee;
         }
     </style>
     <title>Hello Golang</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Web 教程</a>
+    <a class="navbar-brand" href="/">Web 教程</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,7 +42,7 @@
                 <a class="nav-link" href="/logout">Logout</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/apis">API</a>
+                <a class="nav-link" href="/songs">API</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/progress">Progress</a>
@@ -61,7 +62,7 @@
 <br>
 <br>
 <footer class="text-muted text-center text-small">
-    <p class="text-muted">©️ 2018 ~ 2019 上海情非得已有限公司</p>
+    <p class="text-muted">Copyright©️ 2018 ~ 2019 上海情非得已有限公司. All rights reserved.</p>
     <p class="text-muted">Build By: <a href="https://www.zhihu.com/people/wu-xiao-shen-16/activities" target="_blank">@谢伟</a></p>
 </footer>
 </body>

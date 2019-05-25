@@ -1,19 +1,27 @@
 {{define "content"}}
 <div class="container container-small">
-    <h1>登录</h1>
-<form action="/login" method="post" name="login">
+<h1>登录</h1>
+<form action="/login" method="post" name="login" class="form-signin">
     <div class="alert alert-success">登录界面访问成功～</div>
     <div class="form-group">
             <label>用户名</label>
-            <input class="form-control" type="text" placeholder="Email" name="username">
+            <input class="form-control" type="text" placeholder="Email Or Username" name="username">
     </div>
     <div class="form-group">
             <label>密码</label>
             <input class="form-control" type="password" placeholder="Password" name="password">
     </div>
     <div class="form-group">
-            <input type="submit" class="btn btn-primary">
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me">
+                Remember me
+            </label>
         </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+    </div>
 </form>
     <div class="container">
         {{if .Error}}

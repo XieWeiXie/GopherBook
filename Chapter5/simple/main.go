@@ -125,6 +125,7 @@ func patchHandler(writer http.ResponseWriter, req *http.Request) {
 func createdAtHandle(createdAt time.Time) string {
 	return createdAt.Format(time.ANSIC)
 }
+
 func getProfile(writer http.ResponseWriter, req *http.Request) {
 	currentPath, _ := os.Getwd()
 	req.Header.Set("Authorization", "Bearer profile")
@@ -216,53 +217,107 @@ func logger(next http.HandlerFunc) http.HandlerFunc {
 
 }
 
-type router struct {
+type singleSong struct {
+	ID     int    `json:"id"`
 	Name   string `json:"name"`
-	Path   string `json:"path"`
-	Method string `json:"method"`
+	Author string `json:"author"`
+	Time   string `json:"time"`
+	Album  string `json:"album"`
 }
 
-type routers []router
+type songs []singleSong
 
-func apis(writer http.ResponseWriter, req *http.Request) {
-	var rs routers
-	rs = []router{
+type api struct {
+	Title   string `json`
+	Content string `json:"content"`
+	Method  string `json:"method"`
+	Path    string `json:"path"`
+	Comment string `json:"comment"`
+}
+
+type apis []api
+
+func song(writer http.ResponseWriter, req *http.Request) {
+	var ss songs
+	ss = []singleSong{
 		{
-			"/",
-			"/",
-			http.MethodGet,
+			ID:     1,
+			Name:   "全部都是你",
+			Author: "DP龙猪",
+			Time:   "03:23",
+			Album:  "全部都是你",
 		},
 		{
-			"persons",
-			"/persons",
-			http.MethodGet,
-		}, {
-			"person get",
-			"/person/get",
-			http.MethodGet,
-		}, {
-			"logout",
-			"/logout",
-			http.MethodGet,
+			ID:     2,
+			Name:   "对你的感觉",
+			Author: "DP龙猪",
+			Time:   "04:23",
+			Album:  "对你的感觉",
 		},
 		{
-			"person post",
-			"/person/post",
-			http.MethodPost,
-		}, {
-			"login",
-			"/login",
-			http.MethodPost,
+			ID:     3,
+			Name:   "我可不可以",
+			Author: "DP龙猪",
+			Time:   "05:23",
+			Album:  "我可不可以",
 		},
 		{
-			"person patch",
-			"/person/patch",
-			http.MethodPatch,
+			ID:     4,
+			Name:   "围绕",
+			Author: "DP龙猪",
+			Time:   "03:23",
+			Album:  "围绕",
 		},
 	}
+	var aps apis
+	aps = []api{
+		{
+			Title:   "获取人员信息",
+			Content: "通过ID获取人员信息",
+			Method:  http.MethodGet,
+			Path:    fmt.Sprintf("/person/get?id=ID"),
+			Comment: fmt.Sprintf("ID 选择 1 或者 2"),
+		},
+		{
+			Title:   "获取所有人员信息",
+			Content: "获取内置所有人员的信息",
+			Method:  http.MethodGet,
+			Path:    fmt.Sprintf("/persons"),
+			Comment: fmt.Sprintf("无须传入请求参数"),
+		},
+		{
+			Title:   "创建人员信息",
+			Content: "传入参数 id 和 telephone 创建新人",
+			Method:  http.MethodPost,
+			Path:    fmt.Sprintf("/person/post"),
+			Comment: fmt.Sprintf("传入参数 id 或者 telephone"),
+		},
+		{
+			Title:   "更新人员信息",
+			Content: "传入参数 id 更新人员 telephone 信息",
+			Method:  http.MethodPatch,
+			Path:    fmt.Sprintf("/person/patch?id=ID"),
+			Comment: fmt.Sprintf("传入路径参数 id 和请求参数 telephone"),
+		},
+	}
+	var all = struct {
+		Songs songs
+		APis  apis
+	}{
+		Songs: ss,
+		APis:  aps,
+	}
 	currentPath, _ := os.Getwd()
-	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/apis.html"))
-	temp.Execute(writer, rs)
+	temp, err := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/song.html"))
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	err2 := temp.Execute(writer, all)
+	if err2 != nil {
+		log.Println(err2)
+		return
+	}
 }
 
 type progressStatus struct {
@@ -291,52 +346,112 @@ func progress(writer http.ResponseWriter, req *http.Request) {
 }
 
 type content struct {
-	Title string   `json:"title"`
-	Text  []string `json:"text"`
+	Tag     string    `json:"tag"`
+	Title   string    `json:"title"`
+	Time    time.Time `json:"time"`
+	Content string    `json:"content"`
 }
 
 type contents []content
 
-func textHandler(values []string) string {
-	return strings.Join(values, " ")
+func timeHandle(date time.Time) string {
+	return date.Format("2006/01/02")
 }
+
 func home(writer http.ResponseWriter, req *http.Request) {
 	var c contents
 	c = []content{
 		{
-			Title: "net/http 内置库的使用",
-			Text: []string{
-				"http.HandleFunc",
-				"http.Handle",
-				"http.ServeMux",
-				"http.Server",
-			},
+			Tag:     "Go",
+			Title:   "How to learn Golang",
+			Time:    time.Now(),
+			Content: "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
 		},
 		{
-			Title: "template 的使用",
-			Text: []string{
-				"渲染文件",
-				"模版语法",
-				"if、else、range",
-				"函数调用",
-				"模版继承",
-			},
+			Tag:     "Python",
+			Title:   "How to learn Python",
+			Time:    time.Now().Add(-24 * time.Hour),
+			Content: "Python is a programming language that lets you work quickly and integrate systems more effectively.",
 		},
 		{
-			Title: "bootstrap",
-			Text: []string{
-				"栅格系统",
-				"导航栏",
-				"表格",
-				"进度条",
+			Tag:     "Java",
+			Title:   "How to learn Java",
+			Time:    time.Now().Add(-24 * 2 * time.Hour),
+			Content: "Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible.",
+		},
+		{
+			Tag:     "JavaScript",
+			Title:   "How to learn JavaScript",
+			Time:    time.Now().Add(-24 * 2 * 2 * time.Hour),
+			Content: "JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification. JavaScript has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions.",
+		},
+	}
+	currentPath, _ := os.Getwd()
+	temp := template.New("index.html")
+	t := temp.Funcs(template.FuncMap{"timeHandle": timeHandle})
+	t, err := t.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/home.html"))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	err = t.Execute(writer, c)
+	if err != nil {
+		panic(err)
+	}
+}
+
+type passageContent struct {
+	Title     string    `json:"title"`
+	CreatedAt time.Time `json:"created_at"`
+	Author    string    `json:"author"`
+	Detail    string    `json:"detail"`
+}
+
+type side struct {
+	Tag   string   `json:"tag"`
+	Items []string `json:"items"`
+}
+
+func timeFormat(date time.Time) string {
+	return fmt.Sprintf(date.Format(time.Stamp) + " By ")
+}
+
+func passage(writer http.ResponseWriter, request *http.Request) {
+
+	var content = struct {
+		passageContent
+		side
+	}{
+		passageContent: passageContent{
+			Title:     "How to learn golang",
+			CreatedAt: time.Now(),
+			Author:    "Go Team",
+			Detail: `The Go programming language is an open source project to make programmers more productive.
+
+Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its novel type system enables flexible and modular program construction. Go compiles quickly to machine code yet has the convenience of garbage collection and the power of run-time reflection. It's a fast, statically typed, compiled language that feels like a dynamically typed, interpreted language.`,
+		},
+		side: side{
+			Tag: "状态",
+			Items: []string{
+				"用户数: 62",
+				"分享数: 27",
+				"评论数: 19",
+				"收藏数: 12",
 			},
 		},
 	}
 	currentPath, _ := os.Getwd()
 	temp := template.New("index.html")
-	temp.Funcs(template.FuncMap{"text": textHandler})
-	t, _ := temp.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/home.html"))
-	t.Funcs(template.FuncMap{"text": textHandler}).Execute(writer, c)
+	t := temp.Funcs(template.FuncMap{"time": timeFormat})
+	t, err := t.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/passage.html"))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	err = t.Execute(writer, content)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func main() {
@@ -347,7 +462,8 @@ func main() {
 	http.HandleFunc("/person/get", logger(getProfile))
 	http.HandleFunc("/login", logger(login))
 	http.HandleFunc("/logout", logger(logout))
-	http.HandleFunc("/apis", logger(apis))
+	http.HandleFunc("/songs", logger(song))
 	http.HandleFunc("/progress", logger(progress))
+	http.HandleFunc("/passage", logger(passage))
 	log.Fatal(http.ListenAndServe(":9999", nil))
 }

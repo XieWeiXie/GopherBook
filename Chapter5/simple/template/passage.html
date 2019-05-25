@@ -1,0 +1,21 @@
+{{define "content"}}
+<div class="row">
+    <div class="col-md-9">
+        <h1 class="pb-3 mb-4 font-italic border-bottom">{{ .Title }}</h1>
+        <p>{{.CreatedAt | time }}<a href="#">{{.Author}}</a></p>
+        <p>{{.Detail}}</p>
+    </div>
+    <aside class="col-md-3">
+        <div class="p-3">
+            <h4 class="font-italic">{{.Tag}}</h4>
+            <ol class="list-unstyled mb-0">
+                {{range .Items }}
+                <li >
+                    <p class="text-muted">{{ . }}</p>
+                </li>
+                {{end}}
+            </ol>
+        </div>
+    </aside>
+</div>
+{{end}}

@@ -1,54 +1,47 @@
 {{define "content"}}
-<div class="jumbotron">
-    <h2 class="text-left"> 欢迎，这是个简易的 Web 教程示例 <span class="badge badge-secondary">New</span> </h2>
-    <p>
-        <a class="btn btn-primary btn-lg" href="https://www.zhihu.com/people/wu-xiao-shen-16/activities" >访问主页</a>
-    </p>
-</div>
-<br>
-<br>
-<div class="container">
-    <div class="row">
-        {{range .}}
-            <div class="col-md-3">
-
-                <h4 class="mb-3"><span class="text-muted"> {{.Title}}</span></h4>
-                <p>
-                    {{.Text  | text}}
-                </p>
-
-
-            </div>
-        {{end}}
-        <div class="col-md-3">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">标签</span>
-                <span class="badge badge-secondary badge-pill">4</span>
-            </h4>
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between 1h-condensed">
-                    <div >
-                        <h6 class="my-0">net/http</h6>
-                        <small class="text-muted">热门库</small>
-                    </div>
-                    <span class="text-muted">Web</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between 1h-condensed">
-                    <div >
-                        <h6 class="my-0">template</h6>
-                        <small class="text-muted">热门库</small>
-                    </div>
-                    <span class="text-muted">Web</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between 1h-condensed">
-                    <div >
-                        <h6 class="my-0">server</h6>
-                        <small class="text-muted">热门库</small>
-                    </div>
-                    <span class="text-muted">Web</span>
-                </li>
-            </ul>
-        </div>
+    <div class="jumbotron mt-3" style="background: #e1e1e1  ">
+        <h2 class="text-left"> 欢迎，这是个简易的 Web 教程示例 <span class="badge badge-secondary">New</span></h2>
+        <p>
+            <a class="btn btn-primary btn-lg" href="https://www.zhihu.com/people/wu-xiao-shen-16/activities">访问主页</a>
+        </p>
     </div>
-</div>
+    <br>
+    <br>
+    <div class="row mb-1">
+        {{range .}}
+        <div class="col-md-12">
+            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">{{.Tag}}</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="#">{{.Title}}</a>
+                    </h3>
+                    <div class="mb-1 text-muted">{{.Time | timeHandle}}</div>
+                    <p class="card-text mb-0 text-muted" >{{ .Content }}</p>
+                    <span class="d-inline-block" tabindex="0">
+                        <button class="btn btn-primary btn-sm " type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">评论: 1</button>
+                        <button class="btn btn-primary btn-sm" type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">收藏: 12</button>
+                        <button class="btn btn-primary btn-sm" type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">点击: 100</button>
+                    </span>
+                    <br>
+                    <a type="button" href="/passage" class="btn btn-primary btn-sm" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef" data-container="body" data-toggle="popover" title="Reading More" data-content="It is just Mock">Reading More</a>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center pagination-sm">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1"><<</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="-1">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="-1"> >> </a>
+            </li>
+
+        </ul>
+    </nav>
 {{end}}
