@@ -454,6 +454,10 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
 	}
 }
 
+func Hello(writer http.ResponseWriter, request *http.Request) {
+	writer.Write([]byte("Hello World"))
+}
+
 func main() {
 	http.HandleFunc("/", logger(home))
 	http.HandleFunc("/persons", logger(getHandler))
