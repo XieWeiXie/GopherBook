@@ -127,6 +127,7 @@ func createdAtHandle(createdAt time.Time) string {
 }
 
 func getProfile(writer http.ResponseWriter, req *http.Request) {
+
 	currentPath, _ := os.Getwd()
 	req.Header.Set("Authorization", "Bearer profile")
 	a := make(template.FuncMap)
@@ -215,6 +216,14 @@ func logger(next http.HandlerFunc) http.HandlerFunc {
 		next.ServeHTTP(writer, request)
 	}
 
+}
+
+func middlewareLogger(next http.Handler) http.Handler {
+	now := time.Now()
+	return http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		log.Printf("[Web-Server]: %s | %s", request.RequestURI, now.Format("2006/01/02 -15:04:05"))
+		next.ServeHTTP(writer, request)
+	})
 }
 
 type singleSong struct {
@@ -346,10 +355,13 @@ func progress(writer http.ResponseWriter, req *http.Request) {
 }
 
 type content struct {
-	Tag     string    `json:"tag"`
-	Title   string    `json:"title"`
-	Time    time.Time `json:"time"`
-	Content string    `json:"content"`
+	Tag           string    `json:"tag"`
+	Title         string    `json:"title"`
+	Time          time.Time `json:"time"`
+	Content       string    `json:"content"`
+	CommentInt    int       `json:"comment_int"`
+	CollectionInt int       `json:"collection_int"`
+	ClickInt      int       `json:"click_int"`
 }
 
 type contents []content
@@ -362,28 +374,40 @@ func home(writer http.ResponseWriter, req *http.Request) {
 	var c contents
 	c = []content{
 		{
-			Tag:     "Go",
-			Title:   "How to learn Golang",
-			Time:    time.Now(),
-			Content: "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+			Tag:           "Go",
+			Title:         "How to learn Golang",
+			Time:          time.Now(),
+			Content:       "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+			CommentInt:    1,
+			CollectionInt: 12,
+			ClickInt:      100,
 		},
 		{
-			Tag:     "Python",
-			Title:   "How to learn Python",
-			Time:    time.Now().Add(-24 * time.Hour),
-			Content: "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+			Tag:           "Python",
+			Title:         "How to learn Python",
+			Time:          time.Now().Add(-24 * time.Hour),
+			Content:       "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+			CommentInt:    2,
+			CollectionInt: 34,
+			ClickInt:      1000,
 		},
 		{
-			Tag:     "Java",
-			Title:   "How to learn Java",
-			Time:    time.Now().Add(-24 * 2 * time.Hour),
-			Content: "Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible.",
+			Tag:           "Java",
+			Title:         "How to learn Java",
+			Time:          time.Now().Add(-24 * 2 * time.Hour),
+			Content:       "Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible.",
+			CommentInt:    3,
+			CollectionInt: 124,
+			ClickInt:      900,
 		},
 		{
-			Tag:     "JavaScript",
-			Title:   "How to learn JavaScript",
-			Time:    time.Now().Add(-24 * 2 * 2 * time.Hour),
-			Content: "JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification. JavaScript has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions.",
+			Tag:           "JavaScript",
+			Title:         "How to learn JavaScript",
+			Time:          time.Now().Add(-24 * 2 * 2 * time.Hour),
+			Content:       "JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification. JavaScript has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions.",
+			CommentInt:    212,
+			CollectionInt: 1224,
+			ClickInt:      9030,
 		},
 	}
 	currentPath, _ := os.Getwd()
@@ -458,8 +482,55 @@ func Hello(writer http.ResponseWriter, request *http.Request) {
 	writer.Write([]byte("Hello World"))
 }
 
+func textHandle(value string) string {
+	return fmt.Sprintf(value + " Yes")
+}
+
+func HelloTemplate(writer http.ResponseWriter, request *http.Request) {
+
+	content := `
+{{define "content"}}
+			{{if .Content}}
+				{{range .Content}}
+				<p>{{ . | handle}}</p>
+				{{end}}
+			{{ else}}
+			<button>No Result</button>
+			{{end}}
+{{end}}
+`
+	html := `
+	<html>
+		<head>
+			<title>{{.Title}}</title>
+		</head>
+		<body>
+			{{template "content" .}}
+		</body>
+	</html>
+`
+	temp := template.New("Hello")
+	t2 := template.Must(template.Must(temp.Funcs(template.FuncMap{"handle": textHandle}).Parse(content)).Clone())
+	t3, err := t2.Parse(html)
+	if err != nil {
+		panic(fmt.Sprintf("template fail : %s", err.Error()))
+	}
+	text := struct {
+		Title   string
+		Content []string
+	}{
+		Title:   "Hello Golang",
+		Content: []string{"Go", "Python", "Java", "JavaScript"},
+	}
+	err = t3.Execute(writer, text)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
 	http.HandleFunc("/", logger(home))
+	http.Handle("/2", middlewareLogger(http.HandlerFunc(home)))
 	http.HandleFunc("/persons", logger(getHandler))
 	http.HandleFunc("/person/post", logger(postHandler))
 	http.HandleFunc("/person/patch", logger(patchHandler))
@@ -469,5 +540,6 @@ func main() {
 	http.HandleFunc("/songs", logger(song))
 	http.HandleFunc("/progress", logger(progress))
 	http.HandleFunc("/passage", logger(passage))
+	http.HandleFunc("/template", logger(HelloTemplate))
 	log.Fatal(http.ListenAndServe(":9999", nil))
 }

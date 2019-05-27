@@ -19,9 +19,9 @@
                     <div class="mb-1 text-muted">{{.Time | timeHandle}}</div>
                     <p class="card-text mb-0 text-muted" >{{ .Content }}</p>
                     <span class="d-inline-block" tabindex="0">
-                        <button class="btn btn-primary btn-sm " type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">评论: 1</button>
-                        <button class="btn btn-primary btn-sm" type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">收藏: 12</button>
-                        <button class="btn btn-primary btn-sm" type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">点击: 100</button>
+                        <button class="btn btn-primary btn-sm " type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">评论: {{.CommentInt}}</button>
+                        <button class="btn btn-primary btn-sm" type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">收藏: {{.CollectionInt}}</button>
+                        <button class="btn btn-primary btn-sm" type="button" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef">点击: {{.ClickInt}}</button>
                     </span>
                     <br>
                     <a type="button" href="/passage" class="btn btn-primary btn-sm" style="color:#6a757e;background-color: #e8ecef;border-color: #e8ecef" data-container="body" data-toggle="popover" title="Reading More" data-content="It is just Mock">Reading More</a>
