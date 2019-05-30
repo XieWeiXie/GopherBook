@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
@@ -479,7 +480,17 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
 }
 
 func Hello(writer http.ResponseWriter, request *http.Request) {
-	writer.Write([]byte("Hello World"))
+	//writer.Write([]byte("Hello World"))
+	//io.WriteString(writer, "Hello World")
+	//fmt.Fprintf(writer, "Hello World")
+	//json.NewEncoder(writer).Encode("Hello World")
+	var buf bytes.Buffer
+	buf.WriteString("Hello World")
+	//writer.Write(buf.Bytes())
+
+	var str strings.Builder
+	str.WriteString("Hello World")
+	writer.Write([]byte(string(str.String())))
 }
 
 func textHandle(value string) string {
@@ -531,13 +542,14 @@ func HelloTemplate(writer http.ResponseWriter, request *http.Request) {
 func main() {
 	http.HandleFunc("/", logger(home))
 	http.Handle("/2", middlewareLogger(http.HandlerFunc(home)))
+	http.HandleFunc("/3", logger(Hello))
 	http.HandleFunc("/persons", logger(getHandler))
 	http.HandleFunc("/person/post", logger(postHandler))
 	http.HandleFunc("/person/patch", logger(patchHandler))
 	http.HandleFunc("/person/get", logger(getProfile))
 	http.HandleFunc("/login", logger(login))
 	http.HandleFunc("/logout", logger(logout))
-	http.HandleFunc("/songs", logger(song))
+	http.HandleFunc("/apis", logger(song))
 	http.HandleFunc("/progress", logger(progress))
 	http.HandleFunc("/passage", logger(passage))
 	http.HandleFunc("/template", logger(HelloTemplate))
