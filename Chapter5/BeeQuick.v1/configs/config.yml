@@ -1,15 +1,27 @@
-- production:
-    - mysql:
-        - db: beequick_production
-        - user: root
-        - password: admin123
-- dev:
-    - mysql:
-        - db: beequick_dev
-        - user: root
-        - password: admin123
-- test:
-    - mysql:
-        - db: beequick_test
-        - user: root
-        - password: admin123
+production:
+   mysql:
+     db: beequick_production
+     user: root
+     password: admin123
+   postgres:
+     db: beequick_production
+     user: root
+     password: admin123
+dev:
+   mysql:
+     db: beequick_dev
+     user: root
+     password: admin123
+   postgres:
+     db: beequick_production
+     user: root
+     password: admin123
+test:
+   mysql:
+     db: beequick_test
+     user: root
+     password: admin123
+   postgres:
+     db: beequick_production
+     user: root
+     password: admin123
