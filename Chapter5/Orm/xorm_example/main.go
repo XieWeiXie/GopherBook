@@ -14,7 +14,7 @@ var engine *xorm.Engine
 
 func init() {
 	var err error
-	engine, err = xorm.NewEngine("mysql", "root:admin123@/person2?charset=utf8")
+	engine, err = xorm.NewEngine("mysql", "root:admin123@/xorm_example?charset=utf8")
 	if err != nil {
 		log.Println(err)
 		panic("mysql connect fail")
@@ -27,12 +27,10 @@ func init() {
 
 }
 func dropTable() {
-	engine.DropTables(&model.Receipt{}, &model.Address{}, &model.Receipt{})
+	engine.DropTables(&model.Receipt{})
 }
 func syncTable() {
 	engine.Sync2(new(model.Person))
-	engine.Sync2(&model.Address{})
-	engine.Sync2(&model.Receipt{})
 }
 
 func main() {

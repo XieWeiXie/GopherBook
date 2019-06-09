@@ -40,7 +40,7 @@ func init() {
 	//insert()
 }
 
-func deleteAllTable() {
+func deleteTable() {
 	stmt, _ := db.Prepare("DELETE  from  wechat_persons")
 	stmt.Exec()
 
@@ -108,11 +108,6 @@ func apiGet(writer http.ResponseWriter, request *http.Request) {
 	values["data"] = result
 	//writer.Write(Json(values))
 	json.NewEncoder(writer).Encode(values)
-}
-
-type patchParams struct {
-	NickName string `json:"nick_name"`
-	Location string `json:"location"`
 }
 
 func apiPatch(writer http.ResponseWriter, request *http.Request) {

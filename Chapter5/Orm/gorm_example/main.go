@@ -12,7 +12,7 @@ var engine *gorm.DB
 
 func init() {
 	var err error
-	engine, err = gorm.Open("mysql", "root:admin123@/person?charset=utf8&parseTime=True&loc=Local")
+	engine, err = gorm.Open("mysql", "root:admin123@/gorm_example?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		log.Print(err)
 		panic("gorm connect to mysql failed")
@@ -26,13 +26,9 @@ func init() {
 func syncTables() {
 	engine.DropTableIfExists(
 		&model.Person{},
-		&model.Address{},
-		&model.Receipt{},
 	)
 	engine.AutoMigrate(
 		&model.Person{},
-		&model.Address{},
-		&model.Receipt{},
 	)
 }
 
