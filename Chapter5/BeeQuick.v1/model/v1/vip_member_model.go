@@ -61,13 +61,14 @@ func (VipMember) TableName() string {
 }
 
 type VipMemberSerializer struct {
-	ID        uint   `json:"id"`
-	LevelName string `json:"level_name"`
-	Start     int    `json:"start"`
-	End       int    `json:"end"`
-	Comment   string `json:"comment"`
-	Period    int    `json:"period"`
-	ToValue   int    `json:"to_value"`
+	ID        uint    `json:"id"`
+	LevelName string  `json:"level_name"`
+	Start     int     `json:"start"`
+	End       int     `json:"end"`
+	Comment   string  `json:"comment"`
+	Period    int     `json:"period"`
+	ToValue   int     `json:"to_value"`
+	Points    float64 `json:"points"`
 }
 
 func (vip VipMember) Serializer() VipMemberSerializer {
@@ -79,6 +80,7 @@ func (vip VipMember) Serializer() VipMemberSerializer {
 		Comment:   vip.Comment,
 		Period:    vip.Period,
 		ToValue:   vip.ToValue,
+		Points:    vip.Points,
 	}
 }
 

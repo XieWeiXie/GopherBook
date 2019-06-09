@@ -1,7 +1,6 @@
 package account
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 	"time"
@@ -77,10 +76,10 @@ func registerHandle(ctx iris.Context) {
 
 }
 
-func signProcessor(param RegisterParam) (model_v1.Account, error) {
+func signProcessor(param RegisterParam) (model_v1.AccountGroupVip, error) {
 
 	var (
-		account model_v1.Account
+		account model_v1.AccountGroupVip
 		err     error
 	)
 
@@ -92,8 +91,7 @@ func signProcessor(param RegisterParam) (model_v1.Account, error) {
 		}
 		return account, err
 	}
-
-	if _, err := database_v1.BeeQuickDatabase.Where("phone = ?", param.Phone).Limit(1).Get(&account); err != nil {
+	if _, err := database_v1.BeeQuickDatabase.Join("INNER", "beeQuick_vip_member", "beeQuick_vip_member.id = beeQuick_account.vip_member_id").Get(&account); err != nil {
 		err = error_v1.ErrorV1{
 			Code:    http.StatusBadRequest,
 			Detail:  "账号未注册",
@@ -126,7 +124,7 @@ func signHandle(ctx iris.Context) {
 		return
 	}
 
-	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.Serializer(), false)))
+	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.SerializerForGroup(), false)))
 
 }
 
@@ -135,12 +133,12 @@ func logoutHandle(ctx iris.Context) {
 	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.(model_v1.Account).Serializer(), false)))
 }
 
-func getAccountProcessor(id uint) (model_v1.Account, error) {
+func getAccountProcessor(id uint) (model_v1.AccountGroupVip, error) {
 	var (
-		account model_v1.Account
+		account model_v1.AccountGroupVip
 		err     error
 	)
-	if _, dbError := database_v1.BeeQuickDatabase.ID(id).Get(&account); dbError != nil {
+	if _, dbError := database_v1.BeeQuickDatabase.Join("INNER", "beeQuick_vip_member", "beeQuick_vip_member.id = beeQuick_account.vip_member_id").Get(&account); dbError != nil {
 		err = error_v1.ErrorV1{
 			Code:    http.StatusBadRequest,
 			Detail:  "记录未存在",
@@ -159,9 +157,6 @@ func getAccountHandle(ctx iris.Context) {
 		ctx.JSON(iris.Map(makeResponse(http.StatusBadRequest, err, true)))
 		return
 	}
-	fmt.Println(account)
-	ctx.JSON(iris.Map{
-		"data": account,
-	})
-	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.Serializer(), false)))
+
+	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.SerializerForGroup(), false)))
 }
