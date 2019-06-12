@@ -133,19 +133,28 @@ func logoutHandle(ctx iris.Context) {
 	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.(model_v1.Account).Serializer(), false)))
 }
 
-func getAccountProcessor(id uint) (model_v1.AccountGroupVip, error) {
+func getAccountProcessor(id uint) (model_v1.Account, error) {
 	var (
-		account model_v1.AccountGroupVip
+		account model_v1.Account
 		err     error
 	)
-	if _, dbError := database_v1.BeeQuickDatabase.Join("INNER", "beeQuick_vip_member", "beeQuick_vip_member.id = beeQuick_account.vip_member_id").Get(&account); dbError != nil {
+	has, dbError := database_v1.BeeQuickDatabase.Where("id = ?", id).Exist(&account)
+	if dbError != nil || !has {
 		err = error_v1.ErrorV1{
 			Code:    http.StatusBadRequest,
 			Detail:  "记录未存在",
-			Message: dbError.Error(),
+			Message: "Record not found",
 		}
 		return account, err
+	} else {
+		database_v1.BeeQuickDatabase.Where("id = ?", id).Get(&account)
 	}
+	var vipMember model_v1.VipMember
+	if account.VipMemberID != 0 {
+		database_v1.BeeQuickDatabase.Where("id = ?", account.VipMemberID).Get(&vipMember)
+		account.VipMember = vipMember
+	}
+
 	return account, nil
 }
 
@@ -158,5 +167,5 @@ func getAccountHandle(ctx iris.Context) {
 		return
 	}
 
-	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.SerializerForGroup(), false)))
+	ctx.JSON(iris.Map(makeResponse(http.StatusOK, account.Serializer(), false)))
 }

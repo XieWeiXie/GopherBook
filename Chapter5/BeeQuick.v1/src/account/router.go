@@ -2,6 +2,8 @@ package account
 
 import "github.com/kataras/iris"
 
+var Default = ControllerForAccount{}
+
 type ControllerForAccount struct {
 }
 

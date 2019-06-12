@@ -13,19 +13,11 @@ type Account struct {
 
 	Points      int       `json:"points"`
 	VipMemberID uint      `xorm:"index"`
+	VipMember   VipMember `xorm:"-"`
 	VipTime     time.Time `json:"vip_time"`
 }
 
 func (Account) TableName() string {
-	return "beeQuick_account"
-}
-
-type AccountGroupVip struct {
-	Account   `xorm:"extends"`
-	VipMember `xorm:"extends"`
-}
-
-func (AccountGroupVip) TableName() string {
 	return "beeQuick_account"
 }
 
@@ -80,9 +72,18 @@ func (a Account) Serializer() AccountSerializer {
 		Age:       age(),
 		Gender:    gender(),
 		VipTime:   a.VipTime.Truncate(time.Minute),
+		VipMember: a.VipMember.Serializer(),
 	}
 }
 
+type AccountGroupVip struct {
+	Account   `xorm:"extends"`
+	VipMember `xorm:"extends"`
+}
+
+func (AccountGroupVip) TableName() string {
+	return "beeQuick_account"
+}
 func (a AccountGroupVip) SerializerForGroup() AccountSerializer {
 	result := a.Account.Serializer()
 	result.VipMember = a.VipMember.Serializer()

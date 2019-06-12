@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"time"
 
+	"GopherBook/Chapter5/BeeQuick.v1/src/exchange_coupons"
+
 	"GopherBook/Chapter5/BeeQuick.v1/src/vip_member"
 
 	"GopherBook/Chapter5/BeeQuick.v1/pkg/middleware"
@@ -46,17 +48,17 @@ func ApplyRouter() *iris.Application {
 	})
 
 	app.UseGlobal(middleware.LoggerForProject)
-	var acc account.ControllerForAccount
 	{
 
-		acc.RegisterWithOut(app, "/v1")
+		account.Default.RegisterWithOut(app, "/v1")
 	}
 
 	app.Use(middleware.TokenForProject)
-	var vip vip_member.ControllerVipMember
+
 	{
-		acc.RegisterWith(app, "/v1")
-		vip.Register(app, "/v1")
+		account.Default.RegisterWith(app, "/v1")
+		vip_member.Default.Register(app, "/v1")
+		exchange_coupons.Default.Register(app, "/v1")
 	}
 
 	app.Logger().SetLevel("debug")

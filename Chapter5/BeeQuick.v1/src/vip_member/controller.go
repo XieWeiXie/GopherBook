@@ -41,6 +41,16 @@ func getVipMemberHandle(ctx iris.Context) {
 	ctx.JSON(makeResponse(http.StatusOK, resultSerializer, false))
 }
 
+func getVipMemberOneHandler(ctx iris.Context) {
+	id, _ := ctx.Params().GetUint("id")
+	var vip model_v1.VipMember
+	if _, dbError := database_v1.BeeQuickDatabase.Where("id = ?", id).Get(&vip); dbError != nil {
+		ctx.JSON(makeResponse(http.StatusBadRequest, dbError, true))
+		return
+	}
+	ctx.JSON(makeResponse(http.StatusOK, vip.Serializer(), false))
+}
+
 func patchVipMemberProcessor(id uint, param PatchVipMemberParam) (model_v1.VipMember, error) {
 	var (
 		result model_v1.VipMember
