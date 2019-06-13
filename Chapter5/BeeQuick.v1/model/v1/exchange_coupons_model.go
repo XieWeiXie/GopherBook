@@ -84,9 +84,13 @@ func (exchange ExchangeCoupon) Serializer(status string) ExchangeCouponSerialize
 
 type RuleForExchangeOrCoupon struct {
 	base     `xorm:"extends"`
-	Question string
+	Question string `xorm:"unique"`
 	Answer   string
 	Type     int
+}
+
+func (RuleForExchangeOrCoupon) TableName() string {
+	return "beeQuick_rule_coupon"
 }
 
 type RuleForExchangeOrCouponSerializer struct {

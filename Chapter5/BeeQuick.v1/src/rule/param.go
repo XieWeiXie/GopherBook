@@ -21,3 +21,12 @@ func (p PostRuleParam) Valid() error {
 	valid := validator.New()
 	return valid.Struct(p)
 }
+
+type GetRuleParam struct {
+	Return string `json:"return" validate:"eq=all_list|eq=all_count"`
+}
+
+func (g GetRuleParam) Valid() error {
+	valid := validator.New()
+	return valid.Struct(g)
+}
