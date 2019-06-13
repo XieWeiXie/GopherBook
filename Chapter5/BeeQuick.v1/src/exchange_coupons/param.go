@@ -30,7 +30,7 @@ type PostCouponParam struct {
 	Start string  `json:"start" validate:"required"`
 	End   string  `json:"end" validate:"required"`
 	Token string  `json:"token"`
-	Type  int     `json:"type" validate:"required,eq=0|eq=1"` // 0,1 : 兑换券，优惠券
+	Type  int     `json:"type" validate:"eq=0|eq=1"` // 0,1 : 兑换券，优惠券
 }
 
 func (pcp PostCouponParam) Valid() *validator.Validate {
@@ -45,12 +45,22 @@ func (pcp PostCouponParam) validation(sl validator.StructLevel) {
 	if exchangeCoupons.End.Before(exchangeCoupons.Start) {
 		sl.ReportError(exchangeCoupons.Start, "Start", "start", "start", "start")
 		sl.ReportError(exchangeCoupons.End, "End", "end", "end", "end")
-		return
 	}
 
 	if exchangeCoupons.Type == 1 && exchangeCoupons.Token == "" {
 		sl.ReportError(exchangeCoupons.Token, "Token", "token", "token", "token")
 		sl.ReportError(exchangeCoupons.Type, "Type", "type", "type", "type")
-		return
 	}
+}
+
+type PatchCouponParam struct {
+	Name  string  `json:"name"`
+	Start string  `json:"start"`
+	End   string  `json:"end"`
+	Price float64 `json:"price"`
+	Total float64 `json:"total"`
+}
+
+type PostCouponToAccount struct {
+	ExchangeCouponId int `json:"exchange_coupon_id"`
 }

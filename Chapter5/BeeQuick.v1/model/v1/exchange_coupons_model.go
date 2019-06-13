@@ -8,9 +8,11 @@ const (
 	COUPON
 )
 
+var CouponType = make(map[int]string)
+
 type ExchangeCoupon struct {
 	base  `xorm:"extends"`
-	Name  string    `xorm:"varchar(32)" json:"name"`
+	Name  string    `xorm:"varchar(32) unique" json:"name"`
 	Price float64   `json:"price"`
 	Total float64   `json:"total"`
 	Start time.Time `json:"start"`
@@ -46,6 +48,9 @@ func init() {
 	StatusMap[NEW] = "未使用"
 	StatusMap[USED] = "已使用"
 	StatusMap[EXPIRE] = "已过期"
+
+	CouponType[EXCHANGE] = "兑换券"
+	CouponType[COUPON] = "优惠券"
 }
 
 type ExchangeCouponSerializer struct {
@@ -54,24 +59,14 @@ type ExchangeCouponSerializer struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	Name      string    `json:"name"`
 	Price     float64   `json:"price"`
+	Total     float64   `json:"total"`
 	Start     string    `json:"start"` //  格式：2006/01/02
 	End       string    `json:"end"`   // 格式：2006/01/02
 	Status    string    `json:"status"`
+	Type      string    `json:"type"`
 }
 
 func (exchange ExchangeCoupon) Serializer(status string) ExchangeCouponSerializer {
-
-	//status := func(now time.Time) string {
-	//	start, _ := time.Parse("2006/01/02", exchange.Start)
-	//	end, _ := time.Parse("2006/01/02", exchange.End)
-	//	if now.After(start) && now.Before(end) {
-	//		return StatusMap[NEW]
-	//	}
-	//	if now.After(end) {
-	//		return StatusMap[EXPIRE]
-	//	}
-	//	return StatusMap[USED]
-	//}
 
 	return ExchangeCouponSerializer{
 		ID:        exchange.ID,
@@ -79,8 +74,10 @@ func (exchange ExchangeCoupon) Serializer(status string) ExchangeCouponSerialize
 		UpdatedAt: exchange.UpdatedAt.Truncate(time.Second),
 		Name:      exchange.Name,
 		Price:     exchange.Price,
+		Total:     exchange.Total,
 		Start:     exchange.Start.Format("2006-01-02 15:04:05"),
 		End:       exchange.End.Format("2006-01-02 15:04:05"),
 		Status:    status,
+		Type:      CouponType[exchange.Type],
 	}
 }

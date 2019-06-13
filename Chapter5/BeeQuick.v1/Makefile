@@ -21,3 +21,8 @@ dev:
 
 test:
 	go build -o ${BINARY} -v ${TEST_LDFLAGS} -tags=jsoniter
+
+run:
+	go run -v ${DEV_LDFLAGS} -tags=jsoniter main.go
+
+.PHONY: default production dev test run

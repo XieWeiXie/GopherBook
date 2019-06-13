@@ -3,8 +3,6 @@ package database_v1
 import (
 	"fmt"
 
-	"qiniupkg.com/x/log.v7"
-
 	"github.com/go-xorm/core"
 
 	"github.com/go-sql-driver/mysql"
@@ -53,8 +51,5 @@ func DataBaseInit() {
 	BeeQuickDatabase.Charset("utf8")
 	BeeQuickDatabase.SetMapper(core.GonicMapper{})
 	BeeQuickDatabase.SetTableMapper(core.SameMapper{})
-	dbMetas, _ := BeeQuickDatabase.DBMetas()
-	for _, i := range dbMetas {
-		log.Println(fmt.Sprintf("Name: %s, Chartet: %s", i.Name, i.Charset))
-	}
+
 }

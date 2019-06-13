@@ -2,6 +2,12 @@ package model_v1
 
 import "time"
 
+const (
+	MEMBER      = "会员"
+	ADMIN       = "管理员"
+	SUPEARADMIN = "超级管理员"
+)
+
 type Account struct {
 	base     `xorm:"extends"`
 	Phone    string    `xorm:"varchar(11) notnull unique 'phone'" json:"phone"`
