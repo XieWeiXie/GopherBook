@@ -40,6 +40,7 @@ func tables() []interface{} {
 		new(model_v1.VipMember),
 		new(model_v1.ExchangeCoupon),
 		new(model_v1.Account2ExchangeCoupon),
+		new(model_v1.RuleForExchangeOrCoupon),
 	}
 }
 

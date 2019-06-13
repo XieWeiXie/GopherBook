@@ -81,3 +81,30 @@ func (exchange ExchangeCoupon) Serializer(status string) ExchangeCouponSerialize
 		Type:      CouponType[exchange.Type],
 	}
 }
+
+type RuleForExchangeOrCoupon struct {
+	base     `xorm:"extends"`
+	Question string
+	Answer   string
+	Type     int
+}
+
+type RuleForExchangeOrCouponSerializer struct {
+	Id        uint      `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	Question  string    `json:"question"`
+	Answer    string    `json:"answer"`
+	Type      string    `json:"type"`
+}
+
+func (r RuleForExchangeOrCoupon) Serializer() RuleForExchangeOrCouponSerializer {
+	return RuleForExchangeOrCouponSerializer{
+		Id:        r.ID,
+		CreatedAt: r.CreatedAt.Truncate(time.Second),
+		UpdatedAt: r.UpdatedAt.Truncate(time.Second),
+		Question:  r.Question,
+		Answer:    r.Answer,
+		Type:      CouponType[r.Type],
+	}
+}

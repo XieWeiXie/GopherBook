@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"time"
 
+	"GopherBook/Chapter5/BeeQuick.v1/src/rule"
+
 	"GopherBook/Chapter5/BeeQuick.v1/src/exchange_coupons"
 
 	"GopherBook/Chapter5/BeeQuick.v1/src/vip_member"
@@ -51,6 +53,7 @@ func ApplyRouter() *iris.Application {
 	{
 
 		account.Default.RegisterWithOut(app, "/v1")
+		rule.Default.RegisterWithout(app, "/v1")
 	}
 
 	app.Use(middleware.TokenForProject)
