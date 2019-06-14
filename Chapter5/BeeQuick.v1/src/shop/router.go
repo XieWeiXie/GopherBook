@@ -14,8 +14,8 @@ func (controller ControllerShop) RegisterWithout(application *iris.Application, 
 		ctx.Next()
 	}
 	shop := application.Party(path, middleware)
-	shop.Get("/shops")
-	shop.Get("/shop/{shop_id:int}")
-	shop.Post("/shop")
-	shop.Patch("/shop")
+	shop.Get("/shops/{province_id:int}", getAllShopHandler)
+	shop.Get("/shop/{shop_id:int}", getOneShopHandler)
+	shop.Post("/shop", createOneShopHandler)
+	shop.Patch("/shop/{shop_id:int}", patchOneShopHandler)
 }

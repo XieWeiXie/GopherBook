@@ -6,7 +6,7 @@ type Shop struct {
 	base       `xorm:"extends"`
 	Location   string   `xorm:"varchar(255)" json:"location"`
 	ProvinceId int64    `xorm:"index"`
-	Province   Province `xorm:"-"`
+	Province   Province `xorm:"-" json:"—"`
 	Name       string   `xorm:"varchar(64)"`
 }
 
