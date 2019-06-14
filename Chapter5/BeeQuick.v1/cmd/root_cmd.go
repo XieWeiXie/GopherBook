@@ -35,6 +35,7 @@ func runRootCMD(cmd *cobra.Command, args []string) {
 
 func Execute() {
 	rootCMD.AddCommand(syncCMD)
+	rootCMD.AddCommand(provinceCMD)
 	if err := rootCMD.Execute(); err != nil {
 		log.Println(err.Error())
 		os.Exit(1)

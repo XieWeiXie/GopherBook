@@ -41,6 +41,8 @@ func tables() []interface{} {
 		new(model_v1.ExchangeCoupon),
 		new(model_v1.Account2ExchangeCoupon),
 		new(model_v1.RuleForExchangeOrCoupon),
+		new(model_v1.Shop),
+		new(model_v1.Province),
 	}
 }
 

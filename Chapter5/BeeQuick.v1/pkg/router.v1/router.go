@@ -4,6 +4,10 @@ import (
 	"net/http"
 	"time"
 
+	"GopherBook/Chapter5/BeeQuick.v1/src/shop"
+
+	"GopherBook/Chapter5/BeeQuick.v1/src/province"
+
 	"GopherBook/Chapter5/BeeQuick.v1/src/rule"
 
 	"GopherBook/Chapter5/BeeQuick.v1/src/exchange_coupons"
@@ -54,6 +58,8 @@ func ApplyRouter() *iris.Application {
 
 		account.Default.RegisterWithOut(app, "/v1")
 		rule.Default.RegisterWithout(app, "/v1")
+		province.Default.RegisterWithOut(app, "/v1")
+		shop.Default.RegisterWithout(app, "/v1")
 	}
 
 	app.Use(middleware.TokenForProject)
@@ -72,7 +78,8 @@ func notFound(app *iris.Application) {
 	app.OnErrorCode(http.StatusNotFound, func(context iris.Context) {
 		context.JSON(iris.Map{
 			"code":   http.StatusNotFound,
-			"detail": "error found",
+			"detail": context.Request().URL.Path,
+			"error":  "error found",
 		})
 	})
 	return
