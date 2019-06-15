@@ -17,11 +17,12 @@ func (controller ControllerActivity) Register(application *iris.Application, pat
 
 	if withToken {
 		activity.Post("/activity", createOneActivityHandle)
-		//activity.Patch("/activity")
+		activity.Patch("/activity/{activity_id:int}", patchOneActivityHandle)
 		//activity.Post("/activity/products")
 	} else {
-		//activity.Get("/activities")
-		//activity.Get("/activity/{activity_id:int}")
+		activity.Get("/activities", getAllActivityHandle)
+		activity.Get("/activities/{shop_id:int}", getAllByShopIdActivityHandle)
+		activity.Get("/activity/{activity_id:int}", getOneActivityHandle)
 	}
 
 }

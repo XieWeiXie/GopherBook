@@ -41,7 +41,7 @@ func (a Activity) Serializer() ActivitySerializer {
 		End:       a.End,
 		Avatar:    a.Avatar,
 		ShopIds:   a.ShopIds,
-		Status:    activityStatus[a.Status],
+		Status:    ActivityStatus[a.Status],
 	}
 }
 
@@ -53,14 +53,22 @@ const (
 	ADVANCE
 )
 
-var activityStatus = make(map[int]string)
+var ActivityStatus = make(map[int]string)
+var ActivityStatusEn = make(map[int]string)
 
 func init() {
-	activityStatus[DOING] = "未开始"
-	activityStatus[PROGRESSING] = "进行中"
-	activityStatus[CANCEL] = "取消"
-	activityStatus[FINISH] = "结束"
-	activityStatus[ADVANCE] = "提前"
+	ActivityStatus[DOING] = "未开始"
+	ActivityStatus[PROGRESSING] = "进行中"
+	ActivityStatus[CANCEL] = "取消"
+	ActivityStatus[FINISH] = "结束"
+	ActivityStatus[ADVANCE] = "提前"
+
+	ActivityStatusEn[DOING] = "DOING"
+	ActivityStatusEn[PROGRESSING] = "PROGRESSING"
+	ActivityStatusEn[CANCEL] = "CANCEL"
+	ActivityStatusEn[FINISH] = "FINISH"
+	ActivityStatusEn[ADVANCE] = "ADVANCE"
+
 }
 
 type Activity2Product struct {
