@@ -3,15 +3,14 @@ package model_v1
 import "time"
 
 type Activity struct {
-	base   `xorm:"extends"`
-	Name   string    `xorm:"varchar(32)" json:"name"`
-	Title  string    `xorm:"varchar(32)" json:"title"`
-	Start  time.Time `json:"start"`
-	End    time.Time `json:"end"`
-	Avatar string    `xorm:"varchar(255)" json:"avatar"`
-	ShopId int64     `xorm:"index"`
-	Shop   Shop      `xorm:"-"`
-	Status int       `xorm:"varchar(10)"`
+	base    `xorm:"extends"`
+	Name    string    `xorm:"varchar(32)" json:"name"`
+	Title   string    `xorm:"varchar(32)" json:"title"`
+	Start   time.Time `json:"start"`
+	End     time.Time `json:"end"`
+	Avatar  string    `xorm:"varchar(255)" json:"avatar"`
+	ShopIds []int     `xorm:"blob" json:"shop_ids"`
+	Status  int       `xorm:"varchar(10)"`
 }
 
 func (a Activity) TableName() string {
@@ -27,7 +26,7 @@ type ActivitySerializer struct {
 	Start     time.Time `json:"start"`
 	End       time.Time `json:"end"`
 	Avatar    string    `json:"avatar"`
-	ShopId    int64     `json:"shop_id"`
+	ShopIds   []int     `json:"shop_ids"`
 	Status    string    `json:"status"`
 }
 
@@ -41,7 +40,7 @@ func (a Activity) Serializer() ActivitySerializer {
 		Start:     a.Start,
 		End:       a.End,
 		Avatar:    a.Avatar,
-		ShopId:    a.ShopId,
+		ShopIds:   a.ShopIds,
 		Status:    activityStatus[a.Status],
 	}
 }
@@ -64,7 +63,11 @@ func init() {
 	activityStatus[ADVANCE] = "提前"
 }
 
-type Shop2Activity struct {
+type Activity2Product struct {
 	ProductId  int64 `xorm:"index"`
 	ActivityId int64 `xorm:"index"`
+}
+
+func (s Activity2Product) TableName() string {
+	return "beeQuick_activity2Product"
 }

@@ -9,14 +9,19 @@ type ControllerActivity struct {
 
 var Default = ControllerActivity{}
 
-func (controller ControllerActivity) Register(application *iris.Application, path string) {
+func (controller ControllerActivity) Register(application *iris.Application, path string, withToken bool) {
 
 	activity := application.Party(path, func(context iris.Context) {
 		context.Next()
 	})
-	activity.Get("/activities")
-	activity.Get("/activity/{activity_id:int}")
-	activity.Post("/activity")
-	activity.Patch("/activity")
-	activity.Post("/activity/products")
+
+	if withToken {
+		activity.Post("/activity", createOneActivityHandle)
+		activity.Patch("/activity")
+		activity.Post("/activity/products")
+	} else {
+		activity.Get("/activities")
+		activity.Get("/activity/{activity_id:int}")
+	}
+
 }
