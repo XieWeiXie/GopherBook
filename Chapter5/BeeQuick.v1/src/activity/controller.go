@@ -41,6 +41,7 @@ func createOneActivityHandle(ctx iris.Context) {
 	}
 	tx := database_v1.BeeQuickDatabase.NewSession()
 	defer tx.Close()
+	tx.Begin()
 	var shops []model_v1.Shop
 	if dbError := tx.In("id", param.ShopIds).Find(&shops); dbError != nil {
 		ctx.JSON(make_response.MakeResponse(
@@ -67,6 +68,19 @@ func createOneActivityHandle(ctx iris.Context) {
 			http.StatusBadRequest, dbError.Error(), true,
 		))
 		return
+	}
+
+	for _, i := range shops {
+		var shop2Activity model_v1.Shop2Activity
+		shop2Activity = model_v1.Shop2Activity{
+			ShopId:     int64(i.ID),
+			ActivityId: int64(activity.ID),
+		}
+		if _, dbError := tx.InsertOne(&shop2Activity); dbError != nil {
+			tx.Rollback()
+			ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
+			return
+		}
 	}
 
 	tx.Commit()

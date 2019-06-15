@@ -45,6 +45,7 @@ func tables() []interface{} {
 		new(model_v1.Province),
 		new(model_v1.Activity),
 		new(model_v1.Activity2Product),
+		new(model_v1.Shop2Activity),
 	}
 }
 

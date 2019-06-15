@@ -71,3 +71,12 @@ type Activity2Product struct {
 func (s Activity2Product) TableName() string {
 	return "beeQuick_activity2Product"
 }
+
+type Shop2Activity struct {
+	ShopId     int64 `xorm:"index"`
+	ActivityId int64 `xorm:"index"`
+}
+
+func (s Shop2Activity) TableName() string {
+	return "beeQuick_shop2Activity"
+}
