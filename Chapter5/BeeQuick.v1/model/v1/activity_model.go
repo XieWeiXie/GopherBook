@@ -4,14 +4,14 @@ import "time"
 
 type Activity struct {
 	base   `xorm:"extends"`
-	Name   string `xorm:"varchar(32)" json:"name"`
-	Title  string `xorm:"varchar(32)" json:"title"`
-	Start  time.Time
-	End    time.Time
-	Avatar string `xorm:"varchar(255)" json:"avatar"`
-	ShopId int64  `xorm:"index"`
-	Shop   Shop   `xorm:"-"`
-	Status int    `xorm:"varchar(10)"`
+	Name   string    `xorm:"varchar(32)" json:"name"`
+	Title  string    `xorm:"varchar(32)" json:"title"`
+	Start  time.Time `json:"start"`
+	End    time.Time `json:"end"`
+	Avatar string    `xorm:"varchar(255)" json:"avatar"`
+	ShopId int64     `xorm:"index"`
+	Shop   Shop      `xorm:"-"`
+	Status int       `xorm:"varchar(10)"`
 }
 
 func (a Activity) TableName() string {
