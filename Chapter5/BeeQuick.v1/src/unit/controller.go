@@ -31,6 +31,7 @@ func createUintHandle(ctx iris.Context) {
 	tx.Begin()
 
 	var results []model_v1.UnitsSerializer
+	var resultUnits []model_v1.Units
 	for _, i := range param.Data {
 		var u model_v1.Units
 		u = model_v1.Units{
@@ -42,17 +43,21 @@ func createUintHandle(ctx iris.Context) {
 			tx.Rollback()
 			ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
 			return
-		} else {
-			results = append(results, u.Serializer())
 		}
+		resultUnits = append(resultUnits, u)
 	}
 	tx.Commit()
+	for _, i := range resultUnits {
+		var temp model_v1.Units
+		tx.ID(i.ID).Get(&temp)
+		results = append(results, temp.Serializer())
+	}
 	ctx.JSON(make_response.MakeResponse(http.StatusOK, results, false))
 
 }
 
 func patchUintHandle(ctx iris.Context) {
-	id, _ := ctx.Params().GetInt("uint_id")
+	id, _ := ctx.Params().GetInt("unit_id")
 
 	var param PatchUintParam
 	if err := ctx.ReadJSON(&param); err != nil {
@@ -74,14 +79,33 @@ func patchUintHandle(ctx iris.Context) {
 		return
 	}
 
-	u.Name = param.Name
-	u.EnName = param.EnName
-	u.ShortCode = param.Code
-
-	if _, dbError := tx.Update(&u); dbError != nil {
-		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
-		return
+	if param.Name != "" {
+		u.Name = param.Name
+		if _, dbError := tx.ID(u.ID).Cols("name").Update(&u); dbError != nil {
+			tx.Rollback()
+			ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
+			return
+		}
 	}
+	if param.Code != "" {
+		u.ShortCode = param.Code
+		if _, dbError := tx.ID(u.ID).Cols("short_code").Update(&u); dbError != nil {
+			tx.Rollback()
+			ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
+			return
+		}
+	}
+	if param.EnName != "" {
+		u.EnName = param.EnName
+		if _, dbError := tx.ID(u.ID).Cols("en_name").Update(&u); dbError != nil {
+			tx.Rollback()
+			ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
+			return
+		}
+
+	}
+
+	tx.Commit()
 	ctx.JSON(make_response.MakeResponse(http.StatusOK, u.Serializer(), false))
 }
 
@@ -101,7 +125,7 @@ func getUintHandle(ctx iris.Context) {
 		dbError error
 	)
 
-	if count, dbError = database_v1.BeeQuickDatabase.FindAndCount(&us); dbError != nil {
+	if count, dbError = database_v1.BeeQuickDatabase.Desc("id").FindAndCount(&us); dbError != nil {
 		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
 		return
 	}

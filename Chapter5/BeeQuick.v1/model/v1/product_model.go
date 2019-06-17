@@ -46,7 +46,7 @@ func (u Units) Serializer() UnitsSerializer {
 		CreatedAt: u.CreatedAt.Truncate(time.Second),
 		UpdatedAt: u.UpdatedAt.Truncate(time.Second),
 		Name:      u.Name,
-		EnName:    u.Name,
+		EnName:    u.EnName,
 		ShortCode: u.ShortCode,
 	}
 }
@@ -59,6 +59,24 @@ type Brands struct {
 
 func (b Brands) TableName() string {
 	return "beeQuick_brands"
+}
+
+type BrandsSerializer struct {
+	Id        int64     `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	ChName    string    `json:"ch_name"`
+	EnName    string    `json:"en_name"`
+}
+
+func (b Brands) Serializer() BrandsSerializer {
+	return BrandsSerializer{
+		Id:        int64(b.ID),
+		CreatedAt: b.CreatedAt,
+		UpdatedAt: b.UpdatedAt,
+		ChName:    b.ChName,
+		EnName:    b.EnName,
+	}
 }
 
 type Tags struct {

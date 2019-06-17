@@ -24,7 +24,13 @@ func (o OneUint) Valid() error {
 }
 
 type PatchUintParam struct {
-	OneUint
+	Name   string `json:"name"`
+	EnName string `json:"en_name"`
+	Code   string `json:"code"`
+}
+
+func (p PatchUintParam) Valid() error {
+	return validator.New().Struct(p)
 }
 
 type GetUintParam struct {
