@@ -14,7 +14,7 @@ import (
 
 func createUintHandle(ctx iris.Context) {
 	var (
-		param         CreateUintParam
+		param         CreateUnitParam
 		readJsonError error
 		validError    error
 	)
@@ -30,10 +30,10 @@ func createUintHandle(ctx iris.Context) {
 	defer tx.Close()
 	tx.Begin()
 
-	var results []model_v1.UintsSerializer
+	var results []model_v1.UnitsSerializer
 	for _, i := range param.Data {
-		var u model_v1.Uints
-		u = model_v1.Uints{
+		var u model_v1.Units
+		u = model_v1.Units{
 			Name:      i.Name,
 			EnName:    i.EnName,
 			ShortCode: i.Code,
@@ -42,9 +42,11 @@ func createUintHandle(ctx iris.Context) {
 			tx.Rollback()
 			ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
 			return
+		} else {
+			results = append(results, u.Serializer())
 		}
-		results = append(results, u.Serializer())
 	}
+	tx.Commit()
 	ctx.JSON(make_response.MakeResponse(http.StatusOK, results, false))
 
 }
@@ -66,7 +68,7 @@ func patchUintHandle(ctx iris.Context) {
 	tx := database_v1.BeeQuickDatabase.NewSession()
 	defer tx.Close()
 	tx.Begin()
-	var u model_v1.Uints
+	var u model_v1.Units
 	if ok, _ := tx.ID(id).Get(&u); !ok {
 		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, error_v1.ErrorRecordNotFound, true))
 		return
@@ -94,7 +96,7 @@ func getUintHandle(ctx iris.Context) {
 		return
 	}
 	var (
-		us      []model_v1.Uints
+		us      []model_v1.Units
 		count   int64
 		dbError error
 	)
@@ -105,7 +107,7 @@ func getUintHandle(ctx iris.Context) {
 	}
 
 	if returnAll == "all_list" {
-		var results []model_v1.UintsSerializer
+		var results []model_v1.UnitsSerializer
 		for _, i := range us {
 			results = append(results, i.Serializer())
 		}

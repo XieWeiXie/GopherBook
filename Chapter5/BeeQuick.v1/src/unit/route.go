@@ -2,16 +2,16 @@ package unit
 
 import "github.com/kataras/iris"
 
-type ControllerUint struct {
+type ControllerUnit struct {
 }
 
-var Default = ControllerUint{}
+var Default = ControllerUnit{}
 
-func (controller ControllerUint) Register(application *iris.Application, path string) {
-	uint := application.Party(path, func(context iris.Context) {
+func (controller ControllerUnit) Register(application *iris.Application, path string) {
+	unit := application.Party(path, func(context iris.Context) {
 		context.Next()
 	})
-	uint.Get("/units", getUintHandle)
-	uint.Post("/uint", createUintHandle)
-	uint.Patch("/uint/{uint_id:int}", patchUintHandle)
+	unit.Get("/units", getUintHandle)
+	unit.Post("/unit", createUintHandle)
+	unit.Patch("/unit/{unit_id:int}", patchUintHandle)
 }

@@ -13,25 +13,25 @@ type Product struct {
 	BrandId       int64   `xorm:"index"`
 	TagsId        int64   `xorm:"index"`
 	Period        string  `xorm:"varchar(64)" json:"period"`
-	UintsId       int64   `xorm:"index"`
+	UnitsId       int64   `xorm:"index"`
 }
 
 func (p Product) TableName() string {
 	return "beeQuick_products"
 }
 
-type Uints struct {
+type Units struct {
 	base      `xorm:"extends"`
-	Name      string `json:"name"`
-	EnName    string `json:"en_name"`
-	ShortCode string `json:"short_code"`
+	Name      string `xorm:"unique" json:"name"`
+	EnName    string `xorm:"unique" json:"en_name"`
+	ShortCode string `xorm:"unique" json:"short_code"`
 }
 
-func (u Uints) TableName() string {
-	return "beeQuick_uints"
+func (u Units) TableName() string {
+	return "beeQuick_units"
 }
 
-type UintsSerializer struct {
+type UnitsSerializer struct {
 	Id        int64     `json:"id"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
@@ -40,8 +40,8 @@ type UintsSerializer struct {
 	ShortCode string    `json:"short_code"`
 }
 
-func (u Uints) Serializer() UintsSerializer {
-	return UintsSerializer{
+func (u Units) Serializer() UnitsSerializer {
+	return UnitsSerializer{
 		Id:        int64(u.ID),
 		CreatedAt: u.CreatedAt.Truncate(time.Second),
 		UpdatedAt: u.UpdatedAt.Truncate(time.Second),

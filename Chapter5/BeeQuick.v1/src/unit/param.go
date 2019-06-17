@@ -5,7 +5,7 @@ import (
 	"gopkg.in/go-playground/validator.v9"
 )
 
-type CreateUintParam struct {
+type CreateUnitParam struct {
 	Data []OneUint `json:"data" validate:"required,dive,required"`
 }
 
@@ -15,7 +15,7 @@ type OneUint struct {
 	Code   string `json:"code" validate:"required_with_all"`
 }
 
-func (c CreateUintParam) Valid() error {
+func (c CreateUnitParam) Valid() error {
 	return validator.New().Struct(c)
 }
 

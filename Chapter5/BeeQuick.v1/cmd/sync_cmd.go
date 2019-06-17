@@ -51,7 +51,7 @@ func tables() []interface{} {
 		new(model_v1.Tags),
 		new(model_v1.Shop2Tags),
 		new(model_v1.Brands),
-		new(model_v1.Uints),
+		new(model_v1.Units),
 	}
 }
 
