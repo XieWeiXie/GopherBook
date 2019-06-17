@@ -1,5 +1,7 @@
 package model_v1
 
+import "time"
+
 type Product struct {
 	base          `xorm:"extends"`
 	ShopId        int64   `xorm:"index"`
@@ -19,12 +21,34 @@ func (p Product) TableName() string {
 }
 
 type Uints struct {
-	base `xorm:"extends"`
-	Name string `json:"name"`
+	base      `xorm:"extends"`
+	Name      string `json:"name"`
+	EnName    string `json:"en_name"`
+	ShortCode string `json:"short_code"`
 }
 
 func (u Uints) TableName() string {
 	return "beeQuick_uints"
+}
+
+type UintsSerializer struct {
+	Id        int64     `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	Name      string    `json:"name"`
+	EnName    string    `json:"en_name"`
+	ShortCode string    `json:"short_code"`
+}
+
+func (u Uints) Serializer() UintsSerializer {
+	return UintsSerializer{
+		Id:        int64(u.ID),
+		CreatedAt: u.CreatedAt.Truncate(time.Second),
+		UpdatedAt: u.UpdatedAt.Truncate(time.Second),
+		Name:      u.Name,
+		EnName:    u.Name,
+		ShortCode: u.ShortCode,
+	}
 }
 
 type Brands struct {

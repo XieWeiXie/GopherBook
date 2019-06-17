@@ -11,7 +11,7 @@ func (controller ControllerUint) Register(application *iris.Application, path st
 	uint := application.Party(path, func(context iris.Context) {
 		context.Next()
 	})
-	uint.Get("/units")
+	uint.Get("/units", getUintHandle)
 	uint.Post("/uint", createUintHandle)
-	uint.Patch("/uint/{uint_id:int}")
+	uint.Patch("/uint/{uint_id:int}", patchUintHandle)
 }
