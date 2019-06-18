@@ -16,5 +16,6 @@ func (controller ControllerBrand) Register(application *iris.Application, path s
 	brand.Get("/brand/{brand_id:int}", getBrandHandle)
 	brand.Post("/brand", createBrandHandle)
 	brand.Patch("/brand/{brand_id:int}", patchBrandHandle)
+	brand.Post("/brands_multiply", createBrandsHandle)
 
 }

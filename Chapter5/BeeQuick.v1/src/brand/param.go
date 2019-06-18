@@ -22,3 +22,11 @@ type PatchBrandParam struct {
 type GetBrandParam struct {
 	make_param.ReturnAll
 }
+
+type CreateBrandsParam struct {
+	Data []CreateBrandParam `json:"data" validate:"required,dive,required"`
+}
+
+func (c CreateBrandsParam) Valid() error {
+	return validator.New().Struct(c)
+}

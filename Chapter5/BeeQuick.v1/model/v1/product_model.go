@@ -53,8 +53,8 @@ func (u Units) Serializer() UnitsSerializer {
 
 type Brands struct {
 	base   `xorm:"extends"`
-	ChName string `json:"ch_name"`
-	EnName string `json:"en_name"`
+	ChName string `xorm:"unique" json:"ch_name"`
+	EnName string `xorm:"unique" json:"en_name"`
 }
 
 func (b Brands) TableName() string {

@@ -115,3 +115,47 @@ func getBrandsHandle(ctx iris.Context) {
 	ctx.JSON(make_response.MakeResponse(http.StatusOK, results, false))
 
 }
+
+func createBrandsHandle(ctx iris.Context) {
+	var param CreateBrandsParam
+	if err := ctx.ReadJSON(&param); err != nil {
+		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, err.Error(), true))
+		return
+	}
+
+	if err := param.Valid(); err != nil {
+		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, err.Error(), true))
+		return
+	}
+
+	tx := database_v1.BeeQuickDatabase.NewSession()
+	defer tx.Close()
+	tx.Begin()
+	var brandIds []uint
+	for _, i := range param.Data {
+		var temp model_v1.Brands
+		temp = model_v1.Brands{
+			ChName: i.Name,
+			EnName: i.EnName,
+		}
+		if _, dbError := tx.InsertOne(&temp); dbError != nil {
+			tx.Rollback()
+			ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
+			return
+		}
+		brandIds = append(brandIds, temp.ID)
+	}
+
+	var brands []model_v1.Brands
+	if dbError := tx.In("id", brandIds).Find(&brands); dbError != nil {
+		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
+		return
+	}
+	tx.Commit()
+	var results []model_v1.BrandsSerializer
+	for _, i := range brands {
+		results = append(results, i.Serializer())
+	}
+	ctx.JSON(make_response.MakeResponse(http.StatusOK, results, false))
+
+}
