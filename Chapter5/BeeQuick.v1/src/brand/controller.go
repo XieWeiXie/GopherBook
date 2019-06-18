@@ -81,7 +81,7 @@ func getBrandHandle(ctx iris.Context) {
 	id, _ := ctx.Params().GetInt("brand_id")
 	var brand model_v1.Brands
 
-	if _, dbError := database_v1.BeeQuickDatabase.ID(id).Get(&brand); dbError != nil {
+	if ok, dbError := database_v1.BeeQuickDatabase.ID(id).Get(&brand); dbError != nil || !ok {
 		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, error_v1.ErrorRecordNotFound, true))
 		return
 	}

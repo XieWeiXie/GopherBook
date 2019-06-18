@@ -16,5 +16,6 @@ func (controller ControllerTags) Register(application *iris.Application, path st
 	tags.Get("/tags", getTagsHandle)
 	tags.Get("/tag/{tag_id:int}", getTagHandle)
 	tags.Post("/tag", postTagHandle)
+	tags.Post("/tag_multiply", postTagMultiplyHandle)
 	tags.Patch("/tag/{tag_id:int}", patchTagHandle)
 }

@@ -20,6 +20,40 @@ func (p Product) TableName() string {
 	return "beeQuick_products"
 }
 
+type ProductSerializer struct {
+	Id            uint      `json:"id"`
+	CreatedAt     time.Time `json:"created_at"`
+	UpdatedAt     time.Time `json:"updated_at"`
+	ShopId        int64     `json:"shop_id"`
+	Name          string    `json:"name"`
+	Avatar        string    `json:"avatar"`
+	Price         float64   `json:"price"`
+	DiscountPrice float64   `json:"discount_price"`
+	Specification string    `json:"specification"`
+	Period        string    `json:"period"`
+	BrandId       int64     `json:"brand_id"`
+	TagsId        int64     `json:"tags_id"`
+	UnitsId       int64     `json:"units_id"`
+}
+
+func (p Product) Serializer() ProductSerializer {
+	return ProductSerializer{
+		Id:            p.ID,
+		CreatedAt:     p.CreatedAt.Truncate(time.Second),
+		UpdatedAt:     p.UpdatedAt.Truncate(time.Second),
+		ShopId:        p.ShopId,
+		Name:          p.Name,
+		Avatar:        p.Avatar,
+		Price:         p.Price,
+		DiscountPrice: p.Price * p.Discount,
+		Specification: p.Specification,
+		Period:        p.Period,
+		BrandId:       p.BrandId,
+		TagsId:        p.TagsId,
+		UnitsId:       p.UnitsId,
+	}
+}
+
 type Units struct {
 	base      `xorm:"extends"`
 	Name      string `xorm:"unique" json:"name"`
@@ -81,11 +115,27 @@ func (b Brands) Serializer() BrandsSerializer {
 
 type Tags struct {
 	base `xorm:"extends"`
-	Name string `json:"name"`
+	Name string `xorm:"unique" json:"name"`
 }
 
 func (t Tags) TableName() string {
 	return "beeQuick_tags"
+}
+
+type TagSerializer struct {
+	Id        int64     `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	Name      string    `json:"name"`
+}
+
+func (t Tags) Serializer() TagSerializer {
+	return TagSerializer{
+		Id:        int64(t.ID),
+		CreatedAt: t.CreatedAt,
+		UpdatedAt: t.UpdatedAt,
+		Name:      t.Name,
+	}
 }
 
 type Shop2Tags struct {

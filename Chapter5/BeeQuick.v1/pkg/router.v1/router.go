@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"time"
 
+	"GopherBook/Chapter5/BeeQuick.v1/src/tags"
+
 	"GopherBook/Chapter5/BeeQuick.v1/src/brand"
 
 	"GopherBook/Chapter5/BeeQuick.v1/src/unit"
@@ -69,6 +71,7 @@ func ApplyRouter() *iris.Application {
 		activity.Default.Register(app, "/v1", false)
 		unit.Default.Register(app, "/v1")
 		brand.Default.Register(app, "/v1")
+		tags.Default.Register(app, "/v1")
 	}
 
 	app.Use(middleware.TokenForProject)
