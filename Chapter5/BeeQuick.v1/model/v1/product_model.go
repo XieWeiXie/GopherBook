@@ -1,6 +1,9 @@
 package model_v1
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Product struct {
 	base          `xorm:"extends"`
@@ -14,6 +17,7 @@ type Product struct {
 	TagsId        int64   `xorm:"index"`
 	Period        string  `xorm:"varchar(64)" json:"period"`
 	UnitsId       int64   `xorm:"index"`
+	Units         Units   `xorm:"-"`
 }
 
 func (p Product) TableName() string {
@@ -29,7 +33,6 @@ type ProductSerializer struct {
 	Avatar        string    `json:"avatar"`
 	Price         float64   `json:"price"`
 	DiscountPrice float64   `json:"discount_price"`
-	Specification string    `json:"specification"`
 	Period        string    `json:"period"`
 	BrandId       int64     `json:"brand_id"`
 	TagsId        int64     `json:"tags_id"`
@@ -42,11 +45,10 @@ func (p Product) Serializer() ProductSerializer {
 		CreatedAt:     p.CreatedAt.Truncate(time.Second),
 		UpdatedAt:     p.UpdatedAt.Truncate(time.Second),
 		ShopId:        p.ShopId,
-		Name:          p.Name,
+		Name:          fmt.Sprintf("%s%s%s", p.Name, p.Specification, p.Units.Name),
 		Avatar:        p.Avatar,
 		Price:         p.Price,
 		DiscountPrice: p.Price * p.Discount,
-		Specification: p.Specification,
 		Period:        p.Period,
 		BrandId:       p.BrandId,
 		TagsId:        p.TagsId,
