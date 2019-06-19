@@ -18,6 +18,9 @@ type Product struct {
 	Period        string  `xorm:"varchar(64)" json:"period"`
 	UnitsId       int64   `xorm:"index"`
 	Units         Units   `xorm:"-"`
+	Brands        Brands  `xorm:"-"`
+	Shop          Shop    `xorm:"-"`
+	Tags          Tags    `xorm:"-"`
 }
 
 func (p Product) TableName() string {
@@ -37,6 +40,9 @@ type ProductSerializer struct {
 	BrandId       int64     `json:"brand_id"`
 	TagsId        int64     `json:"tags_id"`
 	UnitsId       int64     `json:"units_id"`
+	ShopName      string    `json:"shop_name"`
+	UnitsName     string    `json:"units_name"`
+	BrandsName    string    `json:"brands_name"`
 }
 
 func (p Product) Serializer() ProductSerializer {
@@ -45,7 +51,7 @@ func (p Product) Serializer() ProductSerializer {
 		CreatedAt:     p.CreatedAt.Truncate(time.Second),
 		UpdatedAt:     p.UpdatedAt.Truncate(time.Second),
 		ShopId:        p.ShopId,
-		Name:          fmt.Sprintf("%s%s%s", p.Name, p.Specification, p.Units.Name),
+		Name:          fmt.Sprintf("%s%s/%s", p.Name, p.Specification, p.Units.Name),
 		Avatar:        p.Avatar,
 		Price:         p.Price,
 		DiscountPrice: p.Price * p.Discount,
@@ -53,6 +59,9 @@ func (p Product) Serializer() ProductSerializer {
 		BrandId:       p.BrandId,
 		TagsId:        p.TagsId,
 		UnitsId:       p.UnitsId,
+		ShopName:      p.Shop.Name,
+		UnitsName:     p.Units.Name,
+		BrandsName:    p.Brands.ChName,
 	}
 }
 
