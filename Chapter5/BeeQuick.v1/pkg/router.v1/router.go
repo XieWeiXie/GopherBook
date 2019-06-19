@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"time"
 
+	"GopherBook/Chapter5/BeeQuick.v1/src/order"
+
 	"GopherBook/Chapter5/BeeQuick.v1/src/product"
 
 	"GopherBook/Chapter5/BeeQuick.v1/src/tags"
@@ -84,6 +86,7 @@ func ApplyRouter() *iris.Application {
 		vip_member.Default.Register(app, "/v1")
 		exchange_coupons.Default.Register(app, "/v1")
 		activity.Default.Register(app, "/v1", true)
+		order.Default.Register(app, "/v1")
 	}
 
 	app.Logger().SetLevel("debug")

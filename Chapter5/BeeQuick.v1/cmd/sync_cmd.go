@@ -32,6 +32,10 @@ func sync2(cmd *cobra.Command, args []string) {
 	if args[0] == "vip" {
 		vipMember()
 	}
+
+	if args[0] == "drop" {
+		database_v1.BeeQuickDatabase.DropTables(new(model_v1.Order))
+	}
 }
 
 func tables() []interface{} {
@@ -52,6 +56,7 @@ func tables() []interface{} {
 		new(model_v1.Shop2Tags),
 		new(model_v1.Brands),
 		new(model_v1.Units),
+		new(model_v1.Order),
 	}
 }
 
