@@ -5,7 +5,7 @@ import "time"
 const (
 	// 准备状态、未付款状态、已付款状态
 	READINESS = iota
-	BLANCE
+	BALANCE
 	PAID
 )
 
@@ -15,7 +15,7 @@ var (
 
 func init() {
 	STATUS_MAP[READINESS] = "准备状态"
-	STATUS_MAP[BLANCE] = "未付款状态"
+	STATUS_MAP[BALANCE] = "未付款状态"
 	STATUS_MAP[PAID] = "已付款状态"
 }
 
