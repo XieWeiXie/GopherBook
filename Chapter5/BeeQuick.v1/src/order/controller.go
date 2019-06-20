@@ -90,11 +90,12 @@ func patchOrderHandle(ctx iris.Context) {
 	}
 	order.Status = value(param.Status)
 	order.Account = account
-	if _, dbError := tx.ID(order.ID).Cols("status").Update(&order); dbError != nil {
+	if _, dbError := tx.ID(id).Cols("status").Update(&order); dbError != nil {
 		tx.Rollback()
 		ctx.JSON(make_response.MakeResponse(http.StatusBadRequest, dbError.Error(), true))
 		return
 	}
+	tx.Commit()
 	ctx.JSON(make_response.MakeResponse(http.StatusOK, order.Serializer(), false))
 
 }
