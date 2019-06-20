@@ -1,9 +1,10 @@
 package main
 
 import (
+	"log"
+
 	"GopherBook/Chapter5/BeeQuick.v1/cmd"
 	"GopherBook/Chapter5/BeeQuick.v1/configs"
-	"qiniupkg.com/x/log.v7"
 )
 
 var ENV string
