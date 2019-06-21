@@ -1,4 +1,4 @@
-module GopherBook/chapter5/BeeQuick.v1
+module GopherBook/Chapter5/BeeQuick.v1
 
 require (
 	github.com/Joker/jade v1.0.0 // indirect
@@ -23,7 +23,7 @@ require (
 	github.com/jinzhu/gorm v1.9.9
 	github.com/json-iterator/go v1.1.6 // indirect
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
-	github.com/kataras/golog v0.0.0-20180321173939-03be10146386 // indirect
+	github.com/kataras/golog v0.0.0-20190620222301-4851375e24d4 // indirect
 	github.com/kataras/iris v11.1.1+incompatible
 	github.com/kataras/pio v0.0.0-20190103105442-ea782b38602d // indirect
 	github.com/klauspost/compress v1.7.1 // indirect
