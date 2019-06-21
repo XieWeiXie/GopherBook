@@ -1,0 +1,27 @@
+language: go
+go:
+  - "1.11"
+  - "1.11.x"
+env:
+  - GO111MODULE=on
+notifications:
+  email:
+    recipients:
+      - wuxiaoshen@shu.edu.cn
+    on_success: change # default: change
+    on_failure: always # default: always
+before_install:
+  - go vet $(go list ./... | grep -v /vendor/)
+
+
+before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+
+script:
+  - echo "Hello World"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t b51e7150-c16a-4651-8885-06d44bee1ac8
+  - docker build -t wuxiaoshen/beeQuick:latest .
+  - docker push wuxiaoshen/beeQuick:latest
