@@ -10,8 +10,6 @@ notifications:
       - wuxiaoshen@shu.edu.cn
     on_success: change # default: change
     on_failure: always # default: always
-before_install:
-  - go vet $(go list ./... | grep -v /vendor/)
 
 
 before_script:
@@ -22,6 +20,5 @@ script:
   - echo "Hello World"
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t b51e7150-c16a-4651-8885-06d44bee1ac8
-  - docker build -t wuxiaoshen/beeQuick:latest .
+  - docker build . -t wuxiaoshen/beeQuick:latest -F Chapter5/BeeQuick.v1/deployments/Dockerfile
   - docker push wuxiaoshen/beeQuick:latest
