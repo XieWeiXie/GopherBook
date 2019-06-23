@@ -2,10 +2,10 @@ package account
 
 import "github.com/kataras/iris"
 
-var Default = ControllerForAccount{}
-
 type ControllerForAccount struct {
 }
+
+var Default = ControllerForAccount{}
 
 func (controller ControllerForAccount) RegisterWithOut(app *iris.Application, path string) {
 	middleware := func(context iris.Context) {
