@@ -24,6 +24,7 @@ func (c ControllerVote) GetOneVote(writer http.ResponseWriter, request *http.Req
 	voteId := make_request.Query(request, "vote_id")
 	log.Println("vote id: ", voteId)
 }
+
 func (c ControllerVote) PostOneVote(writer http.ResponseWriter, request *http.Request) {
 	var param CreateVoteParam
 	if err := make_request.BindJson(request, &param); err != nil {
