@@ -13,3 +13,7 @@ require (
 	golang.org/x/tools v0.0.0-20190719005602-e377ae9d6386 // indirect
 	google.golang.org/appengine v1.6.1 // indirect
 )
+replace (
+    github.com/go-xorm/core => xorm.io/core
+    github.com/go-xorm/builder => xorm.io/builder
+)
