@@ -17,7 +17,7 @@ before_script:
 
 
 script:
-  - cd chapter11 && make install
+  - cd chapter11 && echo "Hello"
 
 after_success:
   - docker build . -t wuxiaoshen/beeQuick:latest -F chapter5/BeeQuick.v1/deployments/Dockerfile
