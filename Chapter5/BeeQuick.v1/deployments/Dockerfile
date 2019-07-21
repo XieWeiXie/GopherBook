@@ -12,7 +12,7 @@ RUN apk --no-cache --update add vim git curl make gcc libc-dev bash
 
 COPY go.mod .
 COPY go.sum .
-COPY Makefile .
+COPY . .
 
 RUN go mod download
 

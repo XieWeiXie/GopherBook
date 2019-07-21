@@ -21,6 +21,6 @@ script:
 
 after_success:
   - docker build . -t wuxiaoshen/beequick:latest -f Chapter5/BeeQuick.v1/deployments/Dockerfile
-  - docker build . -t wuxiaoshen/votes:lates -f chapter11/deployments/Dockerfile
+  - docker build . -t wuxiaoshen/votes:latest -f chapter11/deployments/Dockerfile
   - docker push wuxiaoshen/beequick:latest
   - docker push wuxiaoshen/votes:latest
