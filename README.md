@@ -1,5 +1,8 @@
 # 写书计划
 
+
+[![Build Status](https://travis-ci.com/wuxiaoxiaoshen/GopherBook.svg?token=NJwtDqGPUSoHiysBfFqE&branch=master)](https://travis-ci.com/wuxiaoxiaoshen/GopherBook)
+
 :fire:  :fire:  :fire:  :fire:  :fire:  :fire:
 
 > 闹着玩儿～
