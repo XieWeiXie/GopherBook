@@ -238,7 +238,7 @@ type singleSong struct {
 type songs []singleSong
 
 type api struct {
-	Title   string `json`
+	Title   string `json:"title"`
 	Content string `json:"content"`
 	Method  string `json:"method"`
 	Path    string `json:"path"`

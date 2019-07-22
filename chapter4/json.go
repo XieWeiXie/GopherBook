@@ -6,7 +6,7 @@ import (
 )
 
 type JsonExample struct {
-	Name   string `json:"name, omitempty"`
+	Name   string `json:"name,omitempty"`
 	Age    int    `json:"age"`
 	School string `json:"university"`
 }

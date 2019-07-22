@@ -14,7 +14,10 @@ func IoUsage() {
 	url := "http://httpbin.org/anything?name=xix"
 	request, _ := http.NewRequest(http.MethodPost, url, strings.NewReader(`{"name":"XieXie"}`))
 	client := http.DefaultClient
-	response, _ := client.Do(request)
+	response, err := client.Do(request)
+	if err != nil {
+		return
+	}
 	defer response.Body.Close()
 	by, _ := ioutil.ReadAll(response.Body)
 	fmt.Println(string(by))

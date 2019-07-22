@@ -83,7 +83,10 @@ func UserClientUsage() {
 	client := &http.Client{
 		CheckRedirect: redirectPolicyFunc,
 	}
-	response, _ := client.Do(request)
+	response, err := client.Do(request)
+	if err != nil {
+		return
+	}
 	defer response.Body.Close()
 	content, _ := ioutil.ReadAll(response.Body)
 	fmt.Println(string(content))
