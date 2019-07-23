@@ -22,7 +22,7 @@ script:
   - go vet $(go list ./... | grep -v vendor)
   - make fmt
   - make vet
-  - make 
+  - make
 
 after_success:
   - docker build . -t wuxiaoshen/beequick:latest -f Chapter5/BeeQuick.v1/deployments/Dockerfile

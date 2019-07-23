@@ -15,4 +15,4 @@ run:
 install:
 	@go mod vendor -v
 
-.PHONY default vet fmt run install
+PHONY: default vet fmt run install
