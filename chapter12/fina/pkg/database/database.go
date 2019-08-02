@@ -2,6 +2,8 @@ package database
 
 import (
 	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
 	"github.com/xormplus/core"
 )
@@ -15,16 +17,15 @@ var (
 )
 
 func MySQLInit() *xorm.Engine {
-	engine, err := xorm.NewEngine("mysql", fmt.Sprintf("%s:%s@/%s?charset=utf8",dbUser, dbPassword, dbMySQL)
-	if err!=nil{
-		panic(fmt.Sprintf("CONNECT ENGINE BY XORM FAIL %s",err.Error()))
+	engine, err := xorm.NewEngine("mysql", fmt.Sprintf("%s:%s@/%s?charset=utf8", dbUser, dbPassword, dbMySQL))
+	if err != nil {
+		panic(fmt.Sprintf("CONNECT ENGINE BY XORM FAIL %s", err.Error()))
 	}
 	engine.SetTableMapper(core.SameMapper{})
 	engine.SetMapper(core.GonicMapper{})
 	MySQL = engine
 	MySQL.ShowSQL(true)
 	return MySQL
-
 
 }
 
