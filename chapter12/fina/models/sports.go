@@ -1,5 +1,10 @@
 package models
 
+import (
+	"GopherBook/chapter12/fina/pkg/database"
+	"time"
+)
+
 const (
 	SWIMMING = iota
 	DIVING
@@ -24,25 +29,53 @@ func init() {
 
 type Sports struct {
 	Base           `xorm:"extends"`
+	Total          int     `xorm:"integer(3) 'total'" json:"total"`
 	SportClass     int     `xorm:"'sport_class'"`
 	SportName      string  `xorm:"'sport_name'" json:"sport_name"`
 	Description    string  `json:"description"`
 	CompetitionIds []int64 `xorm:"'competition_ids'" json:"competition_ids"`
 	Rule           string  `xorm:"'rule'" json:"rule"`
-	BriefHistory   string  `xorm:"'brief_history'" json:"brief_history"`
-	Top3Ids        []int64 `xorm:"'top3_ids'" json:"top3"`
 }
 
 func (S Sports) TableName() string { return "sports" }
 
-type Top3 struct {
-	Base    `xorm:"extends"`
-	Rank    int    `xorm:"integer(11)" json:"rank"`
-	Number  int    `xorm:"integer(11)" json:"number"`
-	Country string `xorm:"integer(11)" json:"country"`
+type SportSerializer struct {
+	Id               int64                   `json:"id"`
+	CreatedAt        time.Time               `json:"created_at"`
+	UpdatedAt        time.Time               `json:"updated_at"`
+	Total            int                     `json:"total"`
+	SportClass       int                     `json:"sport_class"`
+	SportClassString string                  `json:"sport_class_string"`
+	SportName        string                  `json:"sport_name"`
+	Description      string                  `json:"description"`
+	Competitions     []CompetitionSerializer `json:"competitions"`
+	Rule             string                  `json:"rule"`
 }
 
-func (T Top3) TableName() string { return "top3" }
+func (S Sports) Serializer() SportSerializer {
+
+	competitions := func(ids []int64) []CompetitionSerializer {
+		var coms []Competitions
+		database.MySQL.In("id", ids).Find(&coms)
+		var results []CompetitionSerializer
+		for _, i := range coms {
+			results = append(results, i.Serializer())
+		}
+		return results
+	}
+	return SportSerializer{
+		Id:               S.Id,
+		CreatedAt:        S.CreatedAt.Truncate(time.Second),
+		UpdatedAt:        S.UpdatedAt.Truncate(time.Second),
+		Total:            S.Total,
+		SportClass:       S.SportClass,
+		SportClassString: SportClass[S.SportClass],
+		SportName:        S.SportName,
+		Description:      S.Description,
+		Rule:             S.Rule,
+		Competitions:     competitions(S.CompetitionIds),
+	}
+}
 
 const (
 	MAN = iota
@@ -69,3 +102,23 @@ type Competitions struct {
 }
 
 func (C Competitions) TableName() string { return "competitions" }
+
+type CompetitionSerializer struct {
+	Id                     int64     `json:"id"`
+	CreatedAt              time.Time `json:"created_at"`
+	UpdatedAt              time.Time `json:"updated_at"`
+	CompetitionClass       int       `json:"competition_class"`
+	CompetitionClassString string    `json:"competition_class_string"`
+	Detail                 string    `json:"detail"`
+}
+
+func (C Competitions) Serializer() CompetitionSerializer {
+	return CompetitionSerializer{
+		Id:                     C.Id,
+		CreatedAt:              C.CreatedAt.Truncate(time.Second),
+		UpdatedAt:              C.UpdatedAt.Truncate(time.Second),
+		CompetitionClass:       C.CompetitionClass,
+		CompetitionClassString: CompetitionClass[C.CompetitionClass],
+		Detail:                 C.Detail,
+	}
+}

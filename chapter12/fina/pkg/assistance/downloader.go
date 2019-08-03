@@ -2,6 +2,7 @@ package assistance
 
 import (
 	"bufio"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -15,12 +16,17 @@ import (
 
 var rateTime = time.Tick(200 * time.Millisecond)
 
-func Downloader(url string) ([]byte, error) {
-	<-rateTime
+func requestSet(url string) *http.Request {
 	request, _ := http.NewRequest(http.MethodGet, url, nil)
 	request.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36")
 	request.Header.Add("Origin", "https://www.fina-gwangju2019.com")
 	request.Header.Add("Host", "www.fina-gwangju2019.com")
+	return request
+}
+
+func Downloader(url string) ([]byte, error) {
+	<-rateTime
+	request := requestSet(url)
 	client := http.DefaultClient
 	response, err := client.Do(request)
 	if err != nil {
@@ -40,4 +46,31 @@ func DetermineEncoding(r *bufio.Reader) encoding.Encoding {
 	}
 	e, _, _ := charset.DetermineEncoding(bytes, "")
 	return e
+}
+
+func DownloaderReturnIOReader(url string) (io.Reader, error) {
+	<-rateTime
+	request := requestSet(url)
+	client := http.DefaultClient
+	response, err := client.Do(request)
+	if err != nil {
+		return nil, err
+	}
+	return charset.NewReader(response.Body, response.Header.Get("Content-type"))
+}
+
+func PostReturnIOReader(router string, body io.Reader) (io.Reader, error) {
+	<-rateTime
+	request, err := http.NewRequest(http.MethodPost, router, body)
+	if err != nil {
+		return nil, err
+	}
+	client := http.DefaultClient
+	response, err := client.Do(request)
+	if err != nil {
+		return nil, err
+	}
+	defer response.Body.Close()
+	return charset.NewReader(response.Body, response.Header.Get("Content-type"))
+
 }

@@ -1,6 +1,12 @@
 # README.md
 
 
+## 解析工具
+
+- jquery: goquery 规则
+- 正则表达式: regexp
+- xpath: 规则
+
 
 ## 文本抓取（获取数据的重要手段）
 

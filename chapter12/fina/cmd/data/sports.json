@@ -1,0 +1,432 @@
+{
+  "dataArr": {
+    "MEDAL_TOTAL": "13",
+    "PICTOGRAM_CTGRY": "Diving",
+    "TRAINING_JP": "南部大 市立国際水泳場^/jpn/contentsView.do?pageId\u003djpn61\u0026sn\u003d1",
+    "INTRO_CHN": "游泳项目以自由泳、仰泳、蛙泳、蝶泳等指定游法，50米到1,500米的方式进行，顺序为预赛、半决赛和决赛。在50米、100米和200米的比赛中，首先从预选赛中选出16名得分最高的选手，16名选手将分成两组进行半决赛，最终有8名选手进入决赛。在长距离和接力泳项目中，8名通过预赛的选手直接进行800米和1,500米的决赛。",
+    "EVENT_MAN_KOR": "스프링보드 : 1m, 3m|싱크로나이즈드 스프링보드 : 3m|플랫폼 : 10m|싱크로나이즈드 플랫폼: 10m",
+    "MEDAL_ENG": "1^83^China|2^13^Russia|3^13^United States",
+    "TRAINING_ENG": "Nambu University Municipal Aquatics Center^/contentsView.do?pageId\u003deng61\u0026sn\u003d1",
+    "COED_TEAM_ENG": "Synchronised springboard: 3m |\r\nSynchronised platform: 10m",
+    "MEDAL_KOR": "1^83^중국|2^13^러시아|3^13^미국",
+    "METHOD_JP": "․ 飛板1m : 予選と決勝が行われ予選から上位12名の選手が決勝に進出します。\u003cbr\u003e\r\n․ 飛板3mと高飛込10m : 予選、準決勝、決勝を行い、予選上位18人が準決勝に進出、そのうち上位12人が決勝に進出します。\u003cbr\u003e\r\n․ シンクロ飛板3mと高飛込10m : 予選と決勝が行われ、予選から上位12チームが決勝に進出します。\u003cbr\u003e\r\n․ チーム飛込(飛板3mと高飛込10mの結合) : 決勝戦のみ行われます。\u003cbr\u003e\r\n․ 混合(シンクロ飛板3mと高飛込10m : 決勝戦のみ行われます。",
+    "ORDERBY": "5",
+    "COED_TEAM_FRN": "synchronisé au tremplin  : 3m|\r\nsynchronisé à la plate-forme : 10m",
+    "EVENT_MAN_ENG": "Springboard: 1m, 3m |\r\nSynchronised springboard: 3m |\r\nPlatform: 10m |\r\nSynchronised platform: 10m",
+    "MEDAL_JP": "1^83^中国|2^13^ロシア|3^13^米国",
+    "METHOD_CHN": "․ 1米跳板 : 分为预赛和决赛，预赛成绩前12名选手将晋级决赛。 \u003cbr\u003e\r\n․ 3米跳板与10米跳台 : 分为预赛、半决赛、决赛，预赛成绩前18名选手晋级半决赛，半决赛成绩前12名选手晋级决赛。 \u003cbr\u003e\r\n․ 双人同步3米跳板与10米跳台 : 分为预赛和决赛，预赛成绩前12名选手将晋级决赛。 \u003cbr\u003e\r\n․ 团体跳水(3米跳板与10米跳台) : 仅进行决赛。 \u003cbr\u003e\r\n․ 男女混合(双人同步3米跳板与10米跳台) : 仅进行决赛。",
+    "COED_TEAM_JP": "シンクロ飛板 : 3m|\r\nシンクロ高飛込 : 10m",
+    "STADIUM_JP": "南部大 市立国際水泳場^/jpn/contentsView.do?pageId\u003djpn15\u0026sn\u003d1",
+    "INTRO_ENG": "Diving is the sport where competitors perform acrobatics while jumping from a platform into the water. Diving as a sport comprises springboard diving (1m, 3m), platform diving (10m), synchronised springboard (3m), and synchronised platform (10m). \u003cbr\u003e\r\nWhile diving into the water, divers perform a set of established requirements including somersaults and twists. In individual diving and synchronised diving competitions, men perform six dives while women perform five dives. The team diving competition involves one female and one male diver from the same federation. The team diving competition comprises six different dives from six different groups - two dives with an assigned degree of difficulty and four dives with an unlimited degree of difficulty. The female competitor and the male competitor should execute three dives each. Three dives should be executed from the 3m springboard and the other three dives from the 10m platform.",
+    "TEAM_JP": "飛板3mと高飛込10m",
+    "STADIUM_CHN": "南部大学市立国际游泳馆^/chn/contentsView.do?pageId\u003dchn8\u0026sn\u003d1",
+    "EVENT_CTGRY": "Diving",
+    "EVENT_GIRL_CHN": "跳板 : 1米、3米|\r\n双人同步跳板: 3米|\r\n跳台 : 10米|\r\n双人同步跳台: 10米|",
+    "MEDAL_FRN": "1^83^Chine|2^13^Russie|3^13^Étas-Unis",
+    "INTRO_FRN": "La plongée est le sport dans lequel les concurrents effectuent des acrobaties en sautant d\u0027une plateforme à l\u0027eau, le plongeon est composé du templin (1 à 3 mètres), de plate-forme (10m), du plongeon synchronisé au tremplin (3m) et du plongeon synchronisé à la plate-forme (10m). En plongeant dans l\u0027eau, le nageur présente un ensemble d\u0027exigences établies, notamment des sauts périlleux et des virages.  \u003cbr\u003e\r\nDans les compétitions de plongeon individuel et synchronisé, les hommes effectuent six plongées tandis que les femmes effectuent cinq plongées. La compétition de plongée en équipe implique une femme et un homme de la même fédération. La compétition par équipe comprend six plongées différentes appartenant à six groupes différents, deux plongées avec un degré de difficulté attribué et quatre plongées avec un degré de difficulté illimité. La compétitrice et le compétiteur doivent effectuer trois plongées chacun. Trois plongées doivent être effectuées à partir du tremplin de 3 m et les trois autres à partir de la plate-forme de 10 m.",
+    "HISTORY_CHN": "跳水运动的首次登场是在德国和瑞典的体操选手在海边训练时发生的。体操选手从高处跳下练习器械体操表演时，为了保证安全选择在水上进行。在这之后自然而然地发展成为了跳水运动项目，后来于1886年在德国举办了首届锦标赛，并逐渐普及到了美英等国，成为了人气运动项目。在1904年的奥运会上被列入了正式项目。\r\n世界游泳锦标赛自1973年在南斯拉夫贝尔格莱德首次举办以来，每四年举办一次。从2001年福冈世界游泳锦标赛开始更改为每两年举办一次。跳水项目在76项比赛当中共占有13枚金牌。",
+    "TEAM_CHN": "3米跳板与10米跳台",
+    "EVENT_MAN_JP": "飛板 : 1m, 3m|\r\nシンクロ飛板: 3m|\r\n高飛込 : 10m|\r\nシンクロ高飛込: 10m",
+    "COED_TEAM_CHN": "双人同步跳板 : 3米|\r\n双人同步跳台 : 10米",
+    "TRAINING_KOR": "남부대학교 시립국제수영장^/masters/contentsView.do?pageId\u003dmasters16\u0026sn\u003d1",
+    "TRAINING_CHN": "南部大学市立国际游泳馆^/chn/contentsView.do?pageId\u003dchn63\u0026sn\u003d1",
+    "STADIUM_FRN": "Piscine municipale internationale de l’université de Nambu^/frn/contentsView.do?pageId\u003dfrn19\u0026sn\u003d1",
+    "INTRO_JP": "飛込は選手が飛板からジャンプし水中に飛び込みながら演技を見せる競技で、飛板(1m、3m)、高飛込(10m)、シンクロナイズド飛板(3m)、シンクロナイズド高飛込(10m)に分かれています。ダイビングをする際、選手たちは水の中に飛び込みながら空中技術、回転、捻りなどの連続技術を見せます。\u003cbr\u003e\r\n個人飛び込みとシンクロナイズド飛込は男子6演技、女子5演技で構成されます。チーム飛込競技は同じ連盟所属の女子１人と男子１人がチームとなり、難易度が指定された2演技と難易度の制限のない４演技を合わせて6演技（異なる６群より選択された演技）をみせますが、同じ演技を繰り返してはなりません。男女選手がそれぞれ3演技ずつ行い、そのうち3演技は３m飛板で、残りの3演技は10m高飛込で構成されます。",
+    "INTRO_KOR": "다이빙은 선수가 다이빙대에서 도약하여 물속에 뛰어드는 운동이며, 스프링보드(1m, 3m), 플랫폼(10m), 싱크로나이즈드 스프링보드(3m), 싱크로나이즈드 플랫폼(10m)로 구분됩니다. 다이빙을 할 때, 선수들은 물속으로 뛰어들면서 공중기술, 회전, 몸 비틀기 등의 연속 기술을 선보이게 됩니다. \u003cbr\u003e\r\n남녀의 개인 다이빙과 싱크로나이즈드 다이빙 경기에서는 남자는 6번, 여자는 5번 다이빙을 합니다. 팀 다이빙 경기는 같은 연맹 소속의 여자 1명과 남자 1명으로 구성합니다. 경기는 난이도가 지정된 2번의 다이빙과 난이도 제한 없는 4번의 다이빙으로 총 6번을 하며, 다이빙은 각기 다른 6개 그룹에서 선택합니다. 남녀 선수가 각각 3번의 다이빙을 수행하며, 3번은 3m스프링보드에서 나머지 3번은 10m 플랫폼에서 실시합니다.",
+    "METHOD_ENG": "․ 1m springboard: There will be a preliminary and final competition, with the final comprising the top 12 ranked divers from the preliminary competition. \u003cbr\u003e\r\n․ 3m springboard and 10m platform: There will be a preliminary, a semi-final, and a final competition. The semi-final comprises the top 18 ranked divers from the preliminary competition and the final comprises the top 12 ranked divers from the semi-final. \u003cbr\u003e\r\n․ Synchronised 3m springboard and 10m platform: There will be a preliminary and a final competition, with the final comprising the top 12 teams from the preliminary round.\u003cbr\u003e\r\n․ Team diving (3m springboard and 10 meter platform combined): There will be a direct final. \u003cbr\u003e\r\n․ Mixed synchronised diving (3m springboard and 10m platform): There will be a direct final.",
+    "METHOD_FRN": ". Tremplin 1 m: Il y aura une compétition préliminaire et finale, la finale comprenant les 12 meilleurs plongeurs de la compétition préliminaire \u003cbr\u003e\r\n. Tremplin de 3m et plateforme de 10m: Il y aura une compétition préliminaire, une demi-finale et une finale. La demi-finale comprend les 18 meilleurs plongeurs de la compétition préliminaire et la finale comprend les 12 meilleurs plongeurs de la demi-finale. \u003cbr\u003e\r\n. Tremplin synchronisé de 3 m et plateforme de 10 m: Il y aura une compétition préliminaire et une finale, la finale comprenant les 12 meilleures équipes de la ronde préliminaire. \u003cbr\u003e\r\n. Plongeon en équipe (tremplin de 3 m et plateforme de 10 m combinés): il y aura seulement une finale directe \u003cbr\u003e\r\n. Plongeon synchronisé mixte (tremplin de 3m et plateforme de 10m): Il y aura seulement une finale directe.",
+    "END_PERIOD": "2019-07-20",
+    "EVENT_MAN_CHN": "跳板 : 1米、3米|\r\n双人同步跳板: 3米|\r\n跳台 : 10米|\r\n双人同步跳台: 10米",
+    "HISTORY_JP": "飛込の由来はドイツやスウェーデンの体操選手たちが海辺で行なっていた訓練から始まったものと知られています。高い所から海に飛び込みながら機械体操の演技を練習することは安全性が確保されるため、体操の訓練に持ってこいの環境でした。その後、自然と飛込競技が体制を整え、スポーツ競技として発展しました。1886年ドイツで初めて選手権大会が開かれて以来、米国とイギリスなどに普及し一般の人気を集め、1904年に開かれた第3回オリンピックでは正式競技に採択されました。\u003cbr\u003e\r\n世界水泳選手権大会は、1973年ユーゴスラビアのベオグラードで始まって以来、4年ごとに開催されてきましたが、2001年福岡大会から２年ごとに開催するようになった世界最高の水泳大会です。大会合計76競技のうち、飛込種目には13個の金メダルがかかっています。",
+    "STADIUM_ENG": "Nambu University Municipal Aquatics Center^/contentsView.do?pageId\u003deng22\u0026sn\u003d1",
+    "HISTORY_ENG": "Diving is known to have developed from gymnastics. German and Swedish gymnasts practiced with landings in water. They dived from high ground safely into water, practising their acrobatics during the fall. Later, diving naturally developed into a sport with set systems and regulations. Germany hosted the first diving contest in 1886 while it became a popular sport in the UK and USA. Diving has been an official part of the Olympic Games since 1904.\u003cbr\u003e\r\nSince its inception in 1973 in Belgrade, Yugoslavia, the FINA World Championships includes diving in its programme. The FINA World Championships has become the largest and the most influential aquatics competition in the world. It was held every four years until the Fukuoka Championships in 2001, and has been held every two years since then. There are 13 medal events in diving out of a total of 76 events.",
+    "HISTORY_FRN": "La première apparition de la plongée est connue depuis que des gymnastes d’Allemagne et de Suède se sont entraînés sur la plage. Des gymnastes allemands et suédois se sont exercés avec des atterrissages dans l\u0027eau. Ils ont plongé en toute sécurité dans l\u0027eau, pratiquant leurs acrobaties. Pus tard, la plongée devient naturellement un sport avec des systèmes d’ensembles et des règlements. L\u0027Allemagne a accueilli le premier concours de plongée en 1886, alors que ce sport est devenu populaire au Royaume-Uni et aux États-Unis. La plongée fait officiellement partie des Jeux olympiques depuis 1904. Depuis sa création en 1973 à Belgrade, en Yougoslavie, les championnats du monde de FINA incluent la plongée dans son programme. Les championnats du monde de FINA sont devenus la compétition aquatique la plus importante et la plus influente au monde. Il a eu lieu tous les quatre ans jusqu\u0027aux championnats de Fukuoka en 2001 et a lieu tous les deux ans depuis lors. Il y a 13 médailles en plongée sur un total de 76.",
+    "EVENT_GIRL_ENG": "Springboard: 1m, 3m |\r\nSynchronised springboard: 3m |\r\nPlatform: 10m |\r\nSynchronised platform: 10m",
+    "TEAM_KOR": "스프링보드 3m 및 플랫폼 10m 결합",
+    "REG_DT": "May 17, 2018 5:29:58 PM",
+    "EVENT_CTGRY_NM": "다이빙",
+    "HISTORY_KOR": "다이빙이 처음 등장한 것은 독일이나 스웨덴의 체조 선수들이 해변에서 훈련하면서부터라 알려져 있습니다. 높은 곳에서 뛰어들면서 기계체조 연기를 연습했는데, 물 위에 뛰어들기 때문에 안전이 확보되어 체조 연습에는 안성맞춤이었습니다. 그 후로 자연스럽게 다이빙 경기가 체계를 갖춘 스포츠 종목으로 발전하게 되었는데, 독일에서 1886년에 처음으로 선수권 대회가 열린 후 미국과 영국 등에 보급이 확대되면서 인기 스포츠로 자리를 잡게 되었습니다. 1904년 제3회 대회부터 올림픽 경기 정식종목으로 채택되었습니다. \u003cbr\u003e\r\n세계수영선수권대회는 1973년 유고슬라비아 베오그라드에서 첫 회가 열린 후 4년마다 개최해 오다가 2001년 후쿠오카 대회부터 2년 간격으로 열리는 세계 최고의 수영 대회입니다. 총 76개 세부 종목 중 다이빙은 모두 13개의 금메달이 걸려 있습니다.",
+    "TEAM_ENG": "3m springboard and 10m platform combined",
+    "EVENT_GIRL_JP": "飛板 : 1m, 3m|\r\nシンクロ飛板: 3m|\r\n高飛込 : 10m|\r\nシンクロ高飛込: 10m",
+    "STADIUM_KOR": "남부대학교 시립국제수영장^/contentsView.do?pageId\u003dwww18\u0026sn\u003d1",
+    "EVENT_GIRL_FRN": "tremplins : 1m, 3m|\r\nsynchronisé au tremplin : 3m|\r\nplate-forme : 10m|\r\nsynchronisé à la plate-forme : 10m",
+    "START_PERIOD": "2019-07-12",
+    "USE_YN": "Y",
+    "TRAINING_FRN": "Piscine municipale internationale de l’université de Nambu^/frn/contentsView.do?pageId\u003dfrn61\u0026sn\u003d1",
+    "EVENT_MAN_FRN": "tremplins : 1m, 3m|\r\nsynchronisé au tremplin : 3m|\r\nplate-forme : 10m|\r\nsynchronisé à la plate-forme: 10m",
+    "EVENT_GIRL_KOR": "스프링보드 : 1m, 3m|싱크로나이즈드 스프링보드 : 3m|플랫폼 : 10m|싱크로나이즈드 플랫폼 : 10m",
+    "MEDAL_CHN": "1^83^中国|2^13^俄罗斯|3^13^美国",
+    "METHOD_KOR": "․ 스프링보드 1m : 예선과 결승으로 이루어지며, 예선전 상위 12명의 선수가 결승에 진출합니다.\u003cbr\u003e\r\n․ 스프링보드 3m 및 플랫폼 10m : 예선, 준결승, 결승으로 이루어지며, 예선전 상위 18명이 준결승에 치루며, 준결승 상위 12명이 결승에 진출합니다.\u003cbr\u003e\r\n․ 싱크로나이즈드 스프링보드 3m 및 플랫폼 10m : 예선과 결승으로 이루어지며, 예선 상위 12팀이 결승에 진출합니다.\u003cbr\u003e\r\n․ 팀 다이빙(스프링보드 3m 및 플랫폼 10m 결합) : 결승전만 진행합니다.\u003cbr\u003e\r\n․ 혼성(싱크로나이즈드 스프링보드 3m 및 플랫폼 10m : 결승전만 진행합니다.",
+    "COED_TEAM_KOR": "싱크로나이즈드 스프링보드 : 3m|싱크로나이즈드 플랫폼 : 10m",
+    "TEAM_FRN": "Combinaison des tremplins et de la plate-forme"
+  },
+  "iofile": {
+    "fileHref": "/fileDownload.do?action\u003dfileDown\u0026mode\u003dcms\u0026fileSe\u003dSE\u0026fileKey\u003d5%257C0\u0026fileSn\u003d1",
+    "fileType": "image",
+    "filePreviewHref": "#",
+    "fileAlt": "",
+    "fileTp": "image/jpeg",
+    "list": [
+      {
+        "fileHref": "/fileDownload.do?action\u003dfileDown\u0026mode\u003dcms\u0026fileSe\u003dSE\u0026fileKey\u003d5%257C0\u0026fileSn\u003d2",
+        "fileType": "image",
+        "filePreviewHref": "#",
+        "fileAlt": "",
+        "fileTp": "image/jpeg",
+        "fileSize": "211.63 KB",
+        "rdCnt": 0,
+        "dwldCnt": 0,
+        "fileSn": 2,
+        "rlFileCryptNm": "lN6habCkZvLHib1OmISvxEzyaEmWqIG2OUJtY1lIb9Y\u003d",
+        "filePreview": "N",
+        "fileNm": "다이빙_상세.jpg",
+        "reprsntAt": "N",
+        "rlFileNm": "474306560338.jpg"
+      }
+    ],
+    "fileSize": "136.79 KB",
+    "rdCnt": 0,
+    "dwldCnt": 0,
+    "fileSn": 1,
+    "rlFileCryptNm": "lN6habCkZvLHib1OmISvxKgpkvOPNFJjF46eQf+JgXg\u003d",
+    "filePreview": "N",
+    "fileNm": "다이빙_상세_1.jpg",
+    "reprsntAt": "N",
+    "rlFileNm": "474306551952.jpg"
+  },
+  "errChk": "N",
+  "galleryData": [
+    {
+      "BOARD_SJ": "부다페스트대회",
+      "USER_NM": "관리자",
+      "FILE_ALT": "다이빙",
+      "RL_FILE_NM": "2908501597643.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "다이빙2.jpg",
+      "SN": 10,
+      "FILE_SIZE": 352353
+    },
+    {
+      "BOARD_SJ": "부다페스트대회",
+      "USER_NM": "관리자",
+      "RL_FILE_NM": "2908827555308.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "다이빙9.jpg",
+      "SN": 13,
+      "FILE_SIZE": 421987
+    },
+    {
+      "BOARD_SJ": "다이빙",
+      "USER_NM": "조직위원회",
+      "RL_FILE_NM": "2566556500013.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "다이빙.jpg",
+      "SN": 5,
+      "FILE_SIZE": 285347
+    },
+    {
+      "BOARD_SJ": "부다페스트대회",
+      "USER_NM": "관리자",
+      "FILE_ALT": "다이빙",
+      "RL_FILE_NM": "2908558012424.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "다이빙5.jpg",
+      "SN": 11,
+      "FILE_SIZE": 388367
+    },
+    {
+      "BOARD_SJ": "부다페스트대회",
+      "USER_NM": "관리자",
+      "RL_FILE_NM": "2908680498906.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "다이빙7.jpg",
+      "SN": 12,
+      "FILE_SIZE": 230239
+    },
+    {
+      "BOARD_SJ": "\u0027환상적인 연기\u0027",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "206124627214.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071400135.jpg",
+      "SN": 55,
+      "FILE_SIZE": 319276
+    },
+    {
+      "BOARD_SJ": "둘이 하나되어",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "213626385090.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071500059.JPG",
+      "SN": 62,
+      "FILE_SIZE": 524930
+    },
+    {
+      "BOARD_SJ": "둘이 하나되어",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "217481595722.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071500060.JPG",
+      "SN": 64,
+      "FILE_SIZE": 894135
+    },
+    {
+      "BOARD_SJ": "여자 싱크로나이즈드 3m 결승 수상자들 ",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "227570532076.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071500147.JPG",
+      "SN": 65,
+      "FILE_SIZE": 1108548
+    },
+    {
+      "BOARD_SJ": "도약 준비하는 우하람",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "154766565066.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800285.JPG",
+      "SN": 127,
+      "FILE_SIZE": 924824
+    },
+    {
+      "BOARD_SJ": "우하람 \u0027화려하게\u0027",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "196075276919.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800311.JPG",
+      "SN": 128,
+      "FILE_SIZE": 259003
+    },
+    {
+      "BOARD_SJ": "결승전 연기하는 우하람 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "205955506601.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800262.jpg",
+      "SN": 143,
+      "FILE_SIZE": 191995
+    },
+    {
+      "BOARD_SJ": "14살 선수의 수준급 연기",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "225865881830.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071900189.JPG",
+      "SN": 159,
+      "FILE_SIZE": 2590033
+    },
+    {
+      "BOARD_SJ": "둘이 하나되어",
+      "USER_NM": "노승필",
+      "RL_FILE_NM": "310150366490.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019072000082.JPG",
+      "SN": 164,
+      "FILE_SIZE": 1977030
+    },
+    {
+      "BOARD_SJ": "하나된 연기 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "206659290814.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071500008.jpg",
+      "SN": 61,
+      "FILE_SIZE": 300800
+    },
+    {
+      "BOARD_SJ": "우리는 원팀 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "206514020718.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071400202.jpg",
+      "SN": 58,
+      "FILE_SIZE": 242817
+    },
+    {
+      "BOARD_SJ": "중력을 거슬러 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "138763438828.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071700025.jpg",
+      "SN": 100,
+      "FILE_SIZE": 284604
+    },
+    {
+      "BOARD_SJ": "다이빙의 매력 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "139289565210.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071700260.jpg",
+      "SN": 105,
+      "FILE_SIZE": 240803
+    },
+    {
+      "BOARD_SJ": "멋진 연기 펼치는 천위시 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "139643767834.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071700351.jpg",
+      "SN": 110,
+      "FILE_SIZE": 277707
+    },
+    {
+      "BOARD_SJ": "다이빙 남자 3m 스프링보드 메달리스트 ",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "196157961710.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800322.JPG",
+      "SN": 129,
+      "FILE_SIZE": 419528
+    },
+    {
+      "BOARD_SJ": "모든 근육을 써서 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "206574938593.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071900040.jpg",
+      "SN": 153,
+      "FILE_SIZE": 295558
+    },
+    {
+      "BOARD_SJ": "회전하는 왕한 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "205224512576.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800187.jpg",
+      "SN": 135,
+      "FILE_SIZE": 279776
+    },
+    {
+      "BOARD_SJ": "우하람 도약 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "206263890284.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800301.jpg",
+      "SN": 147,
+      "FILE_SIZE": 282867
+    },
+    {
+      "BOARD_SJ": "화려한 연기 선보이는 우하람 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "206309066964.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800312.jpg",
+      "SN": 148,
+      "FILE_SIZE": 260579
+    },
+    {
+      "BOARD_SJ": "결승전 연기하는 우하람 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "206031521911.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071800269.jpg",
+      "SN": 144,
+      "FILE_SIZE": 238862
+    },
+    {
+      "BOARD_SJ": "한마음으로 도약 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "482564040254.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019072000088.jpg",
+      "SN": 187,
+      "FILE_SIZE": 281178
+    },
+    {
+      "BOARD_SJ": "중력을 이겨라 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "482335990097.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071900310.jpg",
+      "SN": 184,
+      "FILE_SIZE": 258913
+    },
+    {
+      "BOARD_SJ": "세계 정상의 다이빙 ",
+      "USER_NM": "admin",
+      "FILE_ALT": "세계 정상의 다이빙 ",
+      "RL_FILE_NM": "287849646873.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "222222222.jpg",
+      "SN": 75,
+      "FILE_SIZE": 118338
+    },
+    {
+      "BOARD_SJ": "10m 싱크로나이즈드 플랫폼 금메달 차지한 중국 차오위안",
+      "USER_NM": "admin",
+      "FILE_ALT": "10m 싱크로나이즈드 플랫폼 금메달 차지한 중국 차오위안",
+      "RL_FILE_NM": "287918180921.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "aaaaaaaaaaaaaaaaaaaaaaa.jpg",
+      "SN": 76,
+      "FILE_SIZE": 159737
+    },
+    {
+      "BOARD_SJ": "다이빙 남자 10ｍ 싱크로나이즈드 플랫폼 금은동 ",
+      "USER_NM": "admin",
+      "FILE_ALT": "다이빙 남자 10ｍ 싱크로나이즈드 플랫폼 금은동 ",
+      "RL_FILE_NM": "287951792616.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "bbbbbbbbbbbbb.jpg",
+      "SN": 77,
+      "FILE_SIZE": 166040
+    },
+    {
+      "BOARD_SJ": "마술같은 다이빙",
+      "USER_NM": "김문영",
+      "RL_FILE_NM": "371171394203.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "PKSKO2019071600247.JPG",
+      "SN": 90,
+      "FILE_SIZE": 3282778
+    },
+    {
+      "BOARD_SJ": "조은비, 꿈을 향해 ",
+      "USER_NM": "admin",
+      "FILE_ALT": "조은비, 꿈을 향해 ",
+      "RL_FILE_NM": "291694916402.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "3.jpg",
+      "SN": 85,
+      "FILE_SIZE": 113541
+    },
+    {
+      "BOARD_SJ": "연기하는 우하람-김영남 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "287393944166.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "222.jpg",
+      "SN": 68,
+      "FILE_SIZE": 131577
+    },
+    {
+      "BOARD_SJ": "하나 된 마음으로 ",
+      "USER_NM": "admin",
+      "FILE_ALT": "하나 된 마음으로 ",
+      "RL_FILE_NM": "287766501219.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "101010.jpg",
+      "SN": 74,
+      "FILE_SIZE": 135851
+    },
+    {
+      "BOARD_SJ": "다이빙 남자 10ｍ 싱크로나이즈드 플랫폼 금은동 ",
+      "USER_NM": "admin",
+      "FILE_ALT": "다이빙 남자 10ｍ 싱크로나이즈드 플랫폼 금은동 ",
+      "RL_FILE_NM": "288015697060.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "aaaa.jpg",
+      "SN": 78,
+      "FILE_SIZE": 163360
+    },
+    {
+      "BOARD_SJ": "연기하는 멕시코 팀 ",
+      "USER_NM": "admin",
+      "RL_FILE_NM": "287260179996.jpg",
+      "BOARD_ID": "GALLERY",
+      "FILE_NM": "1111.jpg",
+      "SN": 66,
+      "FILE_SIZE": 125614
+    }
+  ]
+}

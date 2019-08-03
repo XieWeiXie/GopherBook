@@ -25,6 +25,11 @@ var SyncCMD = &cobra.Command{
 
 func tables() []interface{} {
 	return []interface{}{
-		new(models.Sports),
+		new(models.Symbol),
+		new(models.Blue),
+		new(models.FiFaChampionships),
+		new(models.Kinds),
+		new(models.FiFaHistory),
+		new(models.FiFa),
 	}
 }

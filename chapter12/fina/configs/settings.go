@@ -11,4 +11,18 @@ var (
 	MatchSymbol      = fmt.Sprintf("%s%s", RootURL, "contentsView.do?pageId=chn4")
 	MatchProjects    = fmt.Sprintf("%s%s", RootURL, "contentsView.do?pageId=chn29")
 	MatchMessage     = fmt.Sprintf("%s%s", RootURL, "contentsView.do?pageId=chn91")
+	MatchHistory     = fmt.Sprintf("%s%s", RootURL, "contentsView.do?pageId=chn15")
+	MatchBrief       = fmt.Sprintf("%s%s", RootURL, "contentsView.do?pageId=chn14")
 )
+
+var (
+	MatchSports    = "https://www.fina-gwangju2019.com/chn/contentsView.do?pageId=chn%d&sn=%d"
+	MatchSportsMap = map[int]int{}
+)
+
+func init() {
+	MatchSportsMap = make(map[int]int)
+	for i := 0; i < 7; i++ {
+		MatchSportsMap[36-i] = i
+	}
+}
