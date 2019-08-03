@@ -21,7 +21,7 @@ func TestParseSportsByQuery(t *testing.T) {
 func TestParseSportsByQuery2(t *testing.T) {
 	for key, i := range configs.MatchSportsMap {
 		url := fmt.Sprintf(configs.MatchSports, key, i)
-
+		fmt.Println(url)
 	}
 
 }
