@@ -18,6 +18,7 @@ var (
 var (
 	MatchSports    = "https://www.fina-gwangju2019.com/chn/contentsView.do?pageId=chn%d&sn=%d"
 	MatchSportsMap = map[int]int{}
+	MatchPostDo    = "https://www.fina-gwangju2019.com/pg/sportEntriesData.do"
 )
 
 func init() {

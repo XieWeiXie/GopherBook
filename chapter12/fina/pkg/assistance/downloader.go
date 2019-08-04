@@ -59,18 +59,23 @@ func DownloaderReturnIOReader(url string) (io.Reader, error) {
 	return charset.NewReader(response.Body, response.Header.Get("Content-type"))
 }
 
-func PostReturnIOReader(router string, body io.Reader) (io.Reader, error) {
+func PostReturnIOReader(router string, body io.Reader) ([]byte, error) {
 	<-rateTime
 	request, err := http.NewRequest(http.MethodPost, router, body)
 	if err != nil {
 		return nil, err
 	}
+	request.Header.Add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
 	client := http.DefaultClient
 	response, err := client.Do(request)
 	if err != nil {
 		return nil, err
 	}
 	defer response.Body.Close()
-	return charset.NewReader(response.Body, response.Header.Get("Content-type"))
+	content, err := charset.NewReader(response.Body, response.Header.Get("Content-type"))
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(content)
 
 }
