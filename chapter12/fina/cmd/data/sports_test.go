@@ -9,8 +9,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tidwall/gjson"
-
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -43,8 +41,7 @@ func TestParseSportsByQuery3(t *testing.T) {
 			log.Println(err)
 			return
 		}
-		data := gjson.ParseBytes(content)
-		fmt.Println(data.Get("dataArr"))
+		fmt.Println(ParseSportsByGjson(content, i))
 
 	}
 }

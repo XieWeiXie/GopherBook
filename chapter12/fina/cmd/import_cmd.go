@@ -33,6 +33,24 @@ var ImportCMD = &cobra.Command{
 		if args[0] == "brief" || args[0] == "brf" {
 			fmt.Println(data.RunFiFaBrief(configs.MatchBrief))
 		}
+		if args[0] == "sports" || args[0] == "sp" {
+			fmt.Println(data.RunSports(configs.MatchSportsMap))
+		}
+		if args[0] == "events" {
+			fmt.Println(data.RunPostEvent(configs.MatchHistoryYear))
+		}
+		if args[0] == "records" {
+			fmt.Println(data.RunRecords(configs.MatchRecords))
+		}
+		if args[0] == "all" {
+			data.RunForSymbol(configs.MatchSymbol)
+			data.RunChampionship(configs.MatchDescription)
+			data.RunFiFaHistory(configs.MatchHistory)
+			data.RunFiFaBrief(configs.MatchBrief)
+			data.RunSports(configs.MatchSportsMap)
+			data.RunPostEvent(configs.MatchHistoryYear)
+			data.RunRecords(configs.MatchRecords)
+		}
 	},
 	PostRun: func(cmd *cobra.Command, args []string) {
 		defer database.MySQL.Close()

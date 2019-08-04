@@ -1,24 +1,60 @@
 package data
 
 import (
+	"GopherBook/chapter12/fina/configs"
 	"GopherBook/chapter12/fina/models"
 	"GopherBook/chapter12/fina/pkg/assistance"
+	"GopherBook/chapter12/fina/pkg/database"
 	"fmt"
 	"io"
 	"log"
 	"strconv"
 	"strings"
 
+	"github.com/tidwall/gjson"
+
 	"github.com/PuerkitoBio/goquery"
 )
 
-func RunSports() {}
+func RunSports(m map[int]int) (bool, error) {
+	tx := database.MySQL.NewSession()
+	tx.Begin()
+	for _, i := range m {
+		payload := strings.NewReader(fmt.Sprintf("sn=%d", i))
+		content, err := assistance.PostReturnIOReader(configs.MatchPostDo, payload)
+		if err != nil {
+			log.Println(err, "sn=", i)
+			return false, err
+		}
+		result, err := ParseSportsByGjson(content, i)
+		if err != nil {
+			log.Println(err)
+			return false, err
+		}
+
+		for _, i := range result.Competitions {
+			if _, dbError := tx.InsertOne(&i); dbError != nil {
+				tx.Rollback()
+				return false, dbError
+			}
+			result.Sports.CompetitionIds = append(result.Sports.CompetitionIds, i.Id)
+		}
+		if _, dbError := tx.InsertOne(&result.Sports); dbError != nil {
+			tx.Rollback()
+			return false, dbError
+		}
+
+	}
+	tx.Commit()
+	return true, nil
+}
 
 type ResultForSports struct {
 	Sports       models.Sports
 	Competitions []models.Competitions
 }
 
+// Deprecated
 func ParseSportsByQuery(reader io.Reader) (ResultForSports, error) {
 	var result ResultForSports
 	doc, err := goquery.NewDocumentFromReader(reader)
@@ -61,9 +97,53 @@ var getCompetitionClass = func(value string) int {
 		return models.MAN
 	} else if strings.HasSuffix(value, "女子") {
 		return models.WOMAN
-	} else if strings.HasSuffix(value, "男女混合") {
-		return models.MIX
 	} else {
 		return models.TEAM
 	}
+}
+
+func ParseSportsByGjson(content []byte, sn int) (ResultForSports, error) {
+	data := gjson.ParseBytes(content)
+	var result ResultForSports
+	dataArr := data.Get("dataArr")
+	result.Sports.Total = int(dataArr.Get("MEDAL_TOTAL").Int())
+	result.Sports.Description = dataArr.Get("INTRO_CHN").String()
+	result.Sports.Rule = dataArr.Get("METHOD_CHN").String()
+	if dataArr.Get("EVENT_GIRL_CHN").Exists() {
+		woman := assistance.SplitBySep(dataArr.Get("EVENT_GIRL_CHN").String(), "|")
+		for _, i := range woman {
+			var one models.Competitions
+			one = models.Competitions{
+				CompetitionClass: models.WOMAN,
+				Detail:           i,
+			}
+			result.Competitions = append(result.Competitions, one)
+		}
+	}
+	if dataArr.Get("EVENT_MAN_CHN").Exists() {
+		man := assistance.SplitBySep(dataArr.Get("EVENT_MAN_CHN").String(), "|")
+		for _, i := range man {
+			var one models.Competitions
+			one = models.Competitions{
+				CompetitionClass: models.MAN,
+				Detail:           strings.TrimSpace(i),
+			}
+			result.Competitions = append(result.Competitions, one)
+		}
+	}
+	if dataArr.Get("COED_TEAM_CHN").Exists() {
+		team := assistance.SplitBySep(dataArr.Get("COED_TEAM_CHN").String(), "|")
+		for _, i := range team {
+			var one models.Competitions
+			one = models.Competitions{
+				CompetitionClass: models.TEAM,
+				Detail:           i,
+			}
+			result.Competitions = append(result.Competitions, one)
+
+		}
+	}
+	result.Sports.SportClass = 6 - sn
+	result.Sports.SportName = models.SportClass[6-sn]
+	return result, nil
 }

@@ -31,5 +31,10 @@ func tables() []interface{} {
 		new(models.Kinds),
 		new(models.FiFaHistory),
 		new(models.FiFa),
+		new(models.Sports),
+		new(models.Competitions),
+		new(models.CountryMedal),
+		new(models.Country),
+		new(models.RecordMax),
 	}
 }

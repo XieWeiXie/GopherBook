@@ -82,3 +82,10 @@ func SplitBYColon(value string, sep string) string {
 	}
 	return list[1]
 }
+
+/**/
+
+func SplitBySep(value string, sep string) []string {
+	replacer := strings.NewReplacer("\r", "", "\n", "")
+	return strings.Split(replacer.Replace(value), sep)
+}

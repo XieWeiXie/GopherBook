@@ -14,7 +14,7 @@ import (
 	"golang.org/x/text/transform"
 )
 
-var rateTime = time.Tick(200 * time.Millisecond)
+var rateTime = time.Tick(2000 * time.Millisecond)
 
 func requestSet(url string) *http.Request {
 	request, _ := http.NewRequest(http.MethodGet, url, nil)

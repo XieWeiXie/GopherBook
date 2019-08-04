@@ -1,5 +1,11 @@
 package models
 
+import "C"
+import (
+	"GopherBook/chapter12/fina/pkg/database"
+	"time"
+)
+
 var MedalString = "https://www.fina-gwangju2019.com/contentsView.do?pageId=eng107"
 
 const (
@@ -18,24 +24,69 @@ func init() {
 
 }
 
-type Medal struct {
-	Base    `xorm:"extends"`
-	Country string `xorm:"'country'" json:"country"`
-	Gold    int    `xorm:"'gold'" json:"gold"`
-	Silver  int    `xorm:"'silver''" json:"silver"`
-	Bronze  int    `xorm:"'bronze'" json:"bronze"`
+type CountryMedal struct {
+	Base      `xorm:"extends"`
+	Year      int   `json:"year"`
+	CountryId int64 `xorm:"index 'country_id'" json:"country_id"`
+	Gold      int   `xorm:"'gold'" json:"gold"`
+	Silver    int   `xorm:"'silver'" json:"silver"`
+	Bronze    int   `xorm:"'bronze'" json:"bronze"`
 }
 
-func (M Medal) TableName() string { return "medal" }
+func (CC CountryMedal) TableName() string { return "medal" }
 
-type SportMedal struct {
-	Base       `xorm:"extends"`
-	SportClass int    `xorm:"'sport_class'" json:"sport_class"`
-	EventClass int    `xorm:"'event_class'" json:"event_class"`
-	Event      string `xorm:"'event'" json:"event"`
-	Gold       string `json:"gold"`
-	Silver     string `json:"silver"`
-	Bronze     string `json:"bronze"`
+type CountryMedalSerializer struct {
+	Id          int64     `json:"id"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+	Year        int       `json:"year"`
+	CountryId   int64     `json:"country_id"`
+	CountryName string    `json:"country_name"`
+	Gold        int       `json:"gold"`
+	Silver      int       `json:"silver"`
+	Bronze      int       `json:"bronze"`
 }
 
-func (S SportMedal) TableName() string { return "sport_medal" }
+func (CC CountryMedal) Serializer() CountryMedalSerializer {
+	var Country Country
+	database.MySQL.ID(CC.CountryId).Get(&Country)
+	return CountryMedalSerializer{
+		Id:          CC.Id,
+		CreatedAt:   CC.CreatedAt.Truncate(time.Second),
+		UpdatedAt:   CC.UpdatedAt.Truncate(time.Second),
+		Year:        CC.Year,
+		CountryId:   CC.CountryId,
+		CountryName: Country.Name,
+		Gold:        CC.Gold,
+		Silver:      CC.Silver,
+		Bronze:      CC.Bronze,
+	}
+}
+
+type Country struct {
+	Base  `xorm:"extends"`
+	Name  string `xorm:"unique" json:"name"`
+	Short string `xorm:"unique" json:"short"`
+}
+
+func (Cry Country) TableName() string {
+	return "country"
+}
+
+type CountrySerializer struct {
+	Id        int64     `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	Name      string    `json:"name"`
+	Short     string    `json:"short"`
+}
+
+func (Cry Country) Serializer() CountrySerializer {
+	return CountrySerializer{
+		Id:        Cry.Id,
+		CreatedAt: Cry.CreatedAt.Truncate(time.Second),
+		UpdatedAt: Cry.UpdatedAt.Truncate(time.Second),
+		Name:      Cry.Name,
+		Short:     Cry.Short,
+	}
+}

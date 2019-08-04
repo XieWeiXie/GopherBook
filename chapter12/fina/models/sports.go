@@ -15,15 +15,23 @@ const (
 )
 
 var SportClass = map[int]string{}
+var SportClassEn = map[string]int{}
 
 func init() {
 	SportClass = make(map[int]string)
+	SportClassEn = make(map[string]int)
 	SportClass[SWIMMING] = "游泳"
 	SportClass[DIVING] = "跳水"
 	SportClass[HIGHDIVING] = "高空跳水"
 	SportClass[ARTISICSWIMMING] = "花样游泳"
 	SportClass[OPENWATER] = "公开水域游泳"
 	SportClass[WATERPOLO] = "水球"
+
+	SportClassEn["SWIMMING"] = SWIMMING
+	SportClassEn["DIVING"] = DIVING
+	SportClassEn["HIGHDIVING"] = HIGHDIVING
+	SportClassEn["ARTISICSWIMMING"] = ARTISICSWIMMING
+	SportClassEn["WATERPOLO"] = WATERPOLO
 
 }
 
@@ -34,7 +42,7 @@ type Sports struct {
 	SportName      string  `xorm:"'sport_name'" json:"sport_name"`
 	Description    string  `json:"description"`
 	CompetitionIds []int64 `xorm:"'competition_ids'" json:"competition_ids"`
-	Rule           string  `xorm:"'rule'" json:"rule"`
+	Rule           string  `xorm:"varchar(1024) 'rule'" json:"rule"`
 }
 
 func (S Sports) TableName() string { return "sports" }
@@ -80,18 +88,21 @@ func (S Sports) Serializer() SportSerializer {
 const (
 	MAN = iota
 	WOMAN
-	MIX
 	TEAM
 )
 
 var CompetitionClass = map[int]string{}
+var CompetitionClassEn = map[string]int{}
 
 func init() {
 	CompetitionClass = make(map[int]string)
+	CompetitionClassEn = make(map[string]int)
 	CompetitionClass[MAN] = "MAN"
 	CompetitionClass[WOMAN] = "WOMAN"
-	CompetitionClass[MIX] = "MIX"
 	CompetitionClass[TEAM] = "TEAM"
+	CompetitionClassEn["MAN"] = MAN
+	CompetitionClassEn["WOMAN"] = WOMAN
+	CompetitionClassEn["TEAM"] = TEAM
 
 }
 

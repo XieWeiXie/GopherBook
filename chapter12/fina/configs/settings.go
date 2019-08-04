@@ -27,3 +27,16 @@ func init() {
 		MatchSportsMap[36-i] = i
 	}
 }
+
+var (
+	MatchRank = "https://www.fina-gwangju2019.com/pg/getEventRanking.do"
+)
+
+var (
+	MatchHistoryYear = "https://sportapi.widgets.sports.gracenote.com/games_v2/getseasonlist/competitionsetid/10/languagecode/2.json"
+	MatchPostEvent   = "https://sportapi.widgets.sports.gracenote.com/games_v2/getmedaltable_season/competitionsetid/10/season/%d/languagecode/2.json"
+)
+
+var (
+	MatchRecords = "https://sportapi.widgets.sports.gracenote.com/games_v2/getrecordlist/sportid/117/recordtype/world/competitionsetid/10/languagecode/2.json"
+)
