@@ -66,17 +66,3 @@ func (F FiFaHistory) Serializer() FiFaHistorySerializer {
 		Detail:    F.Detail,
 	}
 }
-
-type PastEvents struct {
-	Base           `xorm:"extends"`
-	Number         int       `json:"number"`
-	Year           time.Time `json:"year"`
-	HostCountry    string    `xorm:"varchar(32) 'host_country'"json:"host_country"`
-	City           string    `xorm:"varchar(12) 'city'" json:"city"`
-	AthletesNumber int       `xorm:"integer(11) 'athletes_number'" json:"athletes_number"`
-	CountryNumber  int       `xorm:"integer(11) 'country_number'" json:"country_number"`
-}
-
-func (P PastEvents) TableName() string {
-	return "past_events"
-}

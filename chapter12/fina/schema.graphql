@@ -3,6 +3,12 @@ type Query {
     ping(data:String!): ResponseForPing!
     countries(name:String, short: String, all: Boolean):[Country]
     countryMedal(name: String!, year: Int): [Medal]
+    countryMeadlRank(year: Int!, sortBy: String!):[Medal]
+    history(year: Int): [History]
+    histories(orderBy: String): [History]
+    fifa: FiFa
+    blues: [Blue]
+    symbol: Symbol
 }
 
 
@@ -29,4 +35,40 @@ type Medal {
     gold: Int
     silver:Int
     bronze:Int
+}
+
+type History {
+    id : Int
+    createdAt: String
+    updatedAt: String
+    year: Int
+    detail: String
+}
+
+type FiFa {
+    id: ID
+    createdAt: String
+    updatedAt: String
+    description: String
+    established: String
+    headquarters: String
+    nationalMember: String
+    numberOfDisciplines: String
+}
+
+type Blue {
+    id: Int
+    createdAt: String
+    updatedAt: String
+    short: String
+    enName: String
+    chName: String
+    description: String
+    image: String
+}
+
+type Symbol {
+    id: Int
+    createdAt: String
+    
 }

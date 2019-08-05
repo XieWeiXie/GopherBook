@@ -42,7 +42,7 @@ var ImportCMD = &cobra.Command{
 		if args[0] == "records" {
 			fmt.Println(data.RunRecords(configs.MatchRecords))
 		}
-		if args[0] == "ranks" {
+		if args[0] == "rank" {
 			fmt.Println(data.RunRank(configs.MatchRank))
 		}
 

@@ -10,3 +10,12 @@ type GetCountryMedalParam struct {
 func (G GetCountryMedalParam) Valid() error {
 	return validator.New().Struct(G)
 }
+
+type RankCountryMedalParam struct {
+	Year   int    `json:"year" validator:"min=1973"`
+	SortBy string `json:"sort_by" validator:"eq=gold|eq=silver|eq=bronze|eq=total"`
+}
+
+func (R RankCountryMedalParam) Valid() error {
+	return validator.New().Struct(R)
+}

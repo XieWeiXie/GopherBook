@@ -2,8 +2,11 @@ package query
 
 import (
 	"GopherBook/chapter12/fina/pkg/error"
+	"GopherBook/chapter12/fina/web/blue"
 	"GopherBook/chapter12/fina/web/country"
 	"GopherBook/chapter12/fina/web/country_medal"
+	"GopherBook/chapter12/fina/web/fifa"
+	"GopherBook/chapter12/fina/web/history"
 	"GopherBook/chapter12/fina/web/ping"
 	"net/http"
 
@@ -93,6 +96,86 @@ func init() {
 			}
 			controller := country_medal.Default
 			return controller.GetCountryMedal(param)
+		},
+	})
+	Query.AddFieldConfig("countryMedalRank", &graphql.Field{
+		Name: "countryMedalRank",
+		Type: graphql.NewList(country_medal.CountryMedal),
+		Args: graphql.FieldConfigArgument{
+			"year": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+			"sortBy": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.String),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			var param country_medal.RankCountryMedalParam
+			param.Year = p.Args["year"].(int)
+			param.SortBy = p.Args["sortBy"].(string)
+			controller := country_medal.Default
+			return controller.Rank(param)
+		},
+	})
+}
+
+// history
+
+func init() {
+	Query.AddFieldConfig("history", &graphql.Field{
+		Name: "history",
+		Type: history.History,
+		Args: graphql.FieldConfigArgument{
+			"year": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.Int),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			var param history.GetHistoryParam
+			param.Year = p.Args["year"].(int)
+			controller := history.Default
+			return controller.GetHistory(param)
+		},
+	})
+	Query.AddFieldConfig("histories", &graphql.Field{
+		Name: "histories",
+		Type: graphql.NewList(history.History),
+		Args: graphql.FieldConfigArgument{
+			"orderBy": &graphql.ArgumentConfig{
+				Type: graphql.NewNonNull(graphql.String),
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			var param history.GetAllHistoryParam
+			param.OrderBy = p.Args["orderBy"].(string)
+			controller := history.Default
+			return controller.GetAll(param)
+		},
+	})
+}
+
+// fifa
+
+func init() {
+	Query.AddFieldConfig("fifa", &graphql.Field{
+		Name: "fifa",
+		Type: fifa.FiFa,
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			controller := fifa.Default
+			return controller.GetFiFa()
+		},
+	})
+}
+
+// blue
+
+func init() {
+	Query.AddFieldConfig("blues", &graphql.Field{
+		Name: "blues",
+		Type: graphql.NewList(blue.Blue),
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			controller := blue.Default
+			return controller.GetBlues()
 		},
 	})
 }
