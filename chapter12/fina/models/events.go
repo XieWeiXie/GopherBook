@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-var MedalString = "https://www.fina-gwangju2019.com/contentsView.do?pageId=eng107"
-
 const (
 	GOLD = iota
 	SILVER

@@ -1,0 +1,32 @@
+
+type Query {
+    ping(data:String!): ResponseForPing!
+    countries(name:String, short: String, all: Boolean):[Country]
+    countryMedal(name: String!, year: Int): [Medal]
+}
+
+
+type ResponseForPing {
+    code: Int
+    data: String
+}
+
+type Country {
+    id:ID!
+    createdAt: String
+    updatedAt: String
+    name: String
+    short: String
+}
+
+type Medal {
+    id: ID!
+    createdAt: String
+    updatedAt: String
+    year: Int
+    countryId: ID
+    countryName: String
+    gold: Int
+    silver:Int
+    bronze:Int
+}

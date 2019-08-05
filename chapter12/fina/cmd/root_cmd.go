@@ -3,6 +3,7 @@ package cmd
 import (
 	"GopherBook/chapter12/fina/pkg/database"
 	"GopherBook/chapter12/fina/pkg/log"
+	"GopherBook/chapter12/fina/pkg/router"
 
 	"github.com/spf13/cobra"
 )
@@ -16,6 +17,7 @@ var RootCMD = &cobra.Command{
 			log_for_project.Println(err.Error())
 			return
 		}
+		router.StartWeb()
 
 	},
 	PostRun: func(cmd *cobra.Command, args []string) {

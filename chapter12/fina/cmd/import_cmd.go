@@ -42,15 +42,10 @@ var ImportCMD = &cobra.Command{
 		if args[0] == "records" {
 			fmt.Println(data.RunRecords(configs.MatchRecords))
 		}
-		if args[0] == "all" {
-			data.RunForSymbol(configs.MatchSymbol)
-			data.RunChampionship(configs.MatchDescription)
-			data.RunFiFaHistory(configs.MatchHistory)
-			data.RunFiFaBrief(configs.MatchBrief)
-			data.RunSports(configs.MatchSportsMap)
-			data.RunPostEvent(configs.MatchHistoryYear)
-			data.RunRecords(configs.MatchRecords)
+		if args[0] == "ranks" {
+			fmt.Println(data.RunRank(configs.MatchRank))
 		}
+
 	},
 	PostRun: func(cmd *cobra.Command, args []string) {
 		defer database.MySQL.Close()
