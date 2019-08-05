@@ -9,6 +9,8 @@ type Query {
     fifa: FiFa
     blues: [Blue]
     symbol: Symbol
+    kinds(class: KindClass!): [Kind]
+    competitions(class: CompetitionClass!): [Competition]
 }
 
 
@@ -38,7 +40,7 @@ type Medal {
 }
 
 type History {
-    id : Int
+    id : ID
     createdAt: String
     updatedAt: String
     year: Int
@@ -57,7 +59,7 @@ type FiFa {
 }
 
 type Blue {
-    id: Int
+    id: ID
     createdAt: String
     updatedAt: String
     short: String
@@ -68,7 +70,45 @@ type Blue {
 }
 
 type Symbol {
-    id: Int
+    id: ID
     createdAt: String
     updatedAt: String
+    symbolText: String
+    symbolTextImage: String
+    symbolTextShort: String
+    symbolDescription: String
+    symbolDescriptionImage: String
+    symbolDescriptionShort: String
+    symbolAnimalImage: String
+    symbolAnimalDescription: String
+    symbolAnimalShort: String
+    blueVersions: [Blue]
+}
+
+enum KindClass {
+    DISCIPLINE
+    VENUES
+}
+type Kind {
+    id: ID
+    createdAt: String
+    updatedAt: String
+    name: String
+    class: Int
+    classString: String
+}
+
+enum CompetitionClass {
+    MAN
+    WOMAN
+    TEAM
+}
+
+type Competition {
+    id:ID
+    createdAt: String
+    updatedAt: String
+    competitionClass: Int
+    competitionClassString: String
+    detail: String
 }

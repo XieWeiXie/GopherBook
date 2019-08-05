@@ -4,11 +4,14 @@ import (
 	"GopherBook/chapter12/fina/models"
 	"GopherBook/chapter12/fina/pkg/error"
 	"GopherBook/chapter12/fina/web/blue"
+	"GopherBook/chapter12/fina/web/competition"
 	"GopherBook/chapter12/fina/web/country"
 	"GopherBook/chapter12/fina/web/country_medal"
 	"GopherBook/chapter12/fina/web/fifa"
 	"GopherBook/chapter12/fina/web/history"
+	"GopherBook/chapter12/fina/web/kind"
 	"GopherBook/chapter12/fina/web/ping"
+	"GopherBook/chapter12/fina/web/symbol"
 	"net/http"
 
 	"github.com/graphql-go/graphql"
@@ -185,6 +188,92 @@ func init() {
 				defer close(ch)
 				data, err := controller.GetBlues()
 
+				ch <- result{data: data, error: err}
+			}()
+			r := <-ch
+			return r.data, r.error
+		},
+	})
+}
+
+// symbol
+
+func init() {
+	Query.AddFieldConfig("symbol", &graphql.Field{
+		Name: "symbol",
+		Type: symbol.Symbol,
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			type result struct {
+				data models.SymbolSerializer
+				error
+			}
+			controller := symbol.Default
+			ch := make(chan result, 1)
+			go func() {
+				defer close(ch)
+				data, err := controller.GetSymbol()
+				ch <- result{data: data, error: err}
+			}()
+			r := <-ch
+			return r.data, r.error
+		},
+	})
+}
+
+// kind
+
+func init() {
+	Query.AddFieldConfig("kinds", &graphql.Field{
+		Name: "kinds",
+		Type: graphql.NewList(kind.Kind),
+		Args: graphql.FieldConfigArgument{
+			"class": &graphql.ArgumentConfig{
+				Type: kind.KindEnum,
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			type result struct {
+				data []models.KindSerializer
+				error
+			}
+			var param kind.GetKindParam
+			param.Class = p.Args["class"].(int)
+			controller := kind.Default
+			ch := make(chan result, 1)
+			go func() {
+				defer close(ch)
+				data, err := controller.GetKinds(param)
+				ch <- result{data: data, error: err}
+			}()
+			r := <-ch
+			return r.data, r.error
+		},
+	})
+}
+
+// competition
+
+func init() {
+	Query.AddFieldConfig("competitions", &graphql.Field{
+		Name: "competitions",
+		Type: competition.Competition,
+		Args: graphql.FieldConfigArgument{
+			"class": &graphql.ArgumentConfig{
+				Type: competition.CompetitionEnum,
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			type result struct {
+				data []models.CompetitionSerializer
+				error
+			}
+			controller := competition.Default
+			var param competition.GetCompetitionParam
+			param.Class = p.Args["class"].(int)
+			ch := make(chan result, 1)
+			go func() {
+				defer close(ch)
+				data, err := controller.GetCompetitions(param)
 				ch <- result{data: data, error: err}
 			}()
 			r := <-ch
