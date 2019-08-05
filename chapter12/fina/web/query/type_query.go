@@ -1,6 +1,7 @@
 package query
 
 import (
+	"GopherBook/chapter12/fina/models"
 	"GopherBook/chapter12/fina/pkg/error"
 	"GopherBook/chapter12/fina/web/blue"
 	"GopherBook/chapter12/fina/web/country"
@@ -175,7 +176,19 @@ func init() {
 		Type: graphql.NewList(blue.Blue),
 		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
 			controller := blue.Default
-			return controller.GetBlues()
+			type result struct {
+				data []models.BlueSerializer
+				error
+			}
+			ch := make(chan result, 1)
+			go func() {
+				defer close(ch)
+				data, err := controller.GetBlues()
+
+				ch <- result{data: data, error: err}
+			}()
+			r := <-ch
+			return r.data, r.error
 		},
 	})
 }
