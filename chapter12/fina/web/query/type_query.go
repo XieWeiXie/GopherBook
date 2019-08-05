@@ -11,6 +11,8 @@ import (
 	"GopherBook/chapter12/fina/web/history"
 	"GopherBook/chapter12/fina/web/kind"
 	"GopherBook/chapter12/fina/web/ping"
+	"GopherBook/chapter12/fina/web/records"
+	"GopherBook/chapter12/fina/web/sports"
 	"GopherBook/chapter12/fina/web/symbol"
 	"net/http"
 
@@ -256,7 +258,7 @@ func init() {
 func init() {
 	Query.AddFieldConfig("competitions", &graphql.Field{
 		Name: "competitions",
-		Type: competition.Competition,
+		Type: graphql.NewList(competition.Competition),
 		Args: graphql.FieldConfigArgument{
 			"class": &graphql.ArgumentConfig{
 				Type: competition.CompetitionEnum,
@@ -274,6 +276,88 @@ func init() {
 			go func() {
 				defer close(ch)
 				data, err := controller.GetCompetitions(param)
+				ch <- result{data: data, error: err}
+			}()
+			r := <-ch
+			return r.data, r.error
+		},
+	})
+}
+
+// sports
+
+func init() {
+	Query.AddFieldConfig("sports", &graphql.Field{
+		Name: "sports",
+		Type: graphql.NewList(sports.Sports),
+		Args: graphql.FieldConfigArgument{
+			"class": &graphql.ArgumentConfig{
+				Type: sports.SportEnum,
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			type result struct {
+				data []models.SportSerializer
+				error
+			}
+			var param sports.GetSportParam
+			param.Class = p.Args["class"].(int)
+			controller := sports.Default
+			ch := make(chan result, 1)
+			go func() {
+				defer close(ch)
+				data, err := controller.GetSports(param)
+				ch <- result{data: data, error: err}
+			}()
+			r := <-ch
+			return r.data, r.error
+
+		},
+	})
+}
+
+func init() {
+	Query.AddFieldConfig("records", &graphql.Field{
+		Name: "records",
+		Type: graphql.NewList(records.Records),
+		Args: graphql.FieldConfigArgument{
+			"name": &graphql.ArgumentConfig{
+				Type: graphql.String,
+			},
+			"sportClass": &graphql.ArgumentConfig{
+				Type: sports.SportEnum,
+			},
+			"competitionClass": &graphql.ArgumentConfig{
+				Type: competition.CompetitionEnum,
+			},
+			"all": &graphql.ArgumentConfig{
+				Type: graphql.Boolean,
+			},
+		},
+		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			controller := records.Default
+			type result struct {
+				data []models.RecordsMaxSerializer
+				error
+			}
+			var param records.GetRecordParam
+			ch := make(chan result, 1)
+			if p.Args["all"] != nil {
+				param.All = p.Args["all"].(bool)
+			} else {
+				param = records.GetRecordParam{
+					Name: p.Args["name"].(string),
+				}
+				if p.Args["sportClass"] != nil {
+					param.SportClass = p.Args["sportClass"].(int)
+				}
+				if p.Args["competitionClass"] != nil {
+					param.CompetitionClass = p.Args["competitionClass"].(int)
+				}
+			}
+			go func() {
+				defer close(ch)
+				data, err := controller.GetRecords(param)
 				ch <- result{data: data, error: err}
 			}()
 			r := <-ch

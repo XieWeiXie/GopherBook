@@ -55,5 +55,14 @@ var Competition = graphql.NewObject(graphql.ObjectConfig{
 				return nil, error_for_project.NotFound
 			},
 		},
+		"detail": &graphql.Field{
+			Type: graphql.String,
+			Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+				if competition, ok := p.Source.(models.CompetitionSerializer); ok {
+					return competition.Detail, nil
+				}
+				return nil, error_for_project.NotFound
+			},
+		},
 	},
 })

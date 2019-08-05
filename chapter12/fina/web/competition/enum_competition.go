@@ -7,6 +7,7 @@ import (
 )
 
 var CompetitionEnum = graphql.NewEnum(graphql.EnumConfig{
+	Name: "competitionEnum",
 	Values: graphql.EnumValueConfigMap{
 		"man": &graphql.EnumValueConfig{
 			Value: models.MAN,

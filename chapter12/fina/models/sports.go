@@ -9,7 +9,7 @@ const (
 	SWIMMING = iota
 	DIVING
 	HIGHDIVING
-	ARTISICSWIMMING
+	ARTISTICSWIMMING
 	OPENWATER
 	WATERPOLO
 )
@@ -23,14 +23,14 @@ func init() {
 	SportClass[SWIMMING] = "游泳"
 	SportClass[DIVING] = "跳水"
 	SportClass[HIGHDIVING] = "高空跳水"
-	SportClass[ARTISICSWIMMING] = "花样游泳"
+	SportClass[ARTISTICSWIMMING] = "花样游泳"
 	SportClass[OPENWATER] = "公开水域游泳"
 	SportClass[WATERPOLO] = "水球"
 
 	SportClassEn["SWIMMING"] = SWIMMING
 	SportClassEn["DIVING"] = DIVING
 	SportClassEn["HIGHDIVING"] = HIGHDIVING
-	SportClassEn["ARTISICSWIMMING"] = ARTISICSWIMMING
+	SportClassEn["ARTISTICSWIMMING"] = ARTISTICSWIMMING
 	SportClassEn["WATERPOLO"] = WATERPOLO
 
 }

@@ -11,6 +11,8 @@ type Query {
     symbol: Symbol
     kinds(class: KindClass!): [Kind]
     competitions(class: CompetitionClass!): [Competition]
+    sports(class: SportClass!):[Sport]
+    records(name: String, all: Boolean): [Record]
 }
 
 
@@ -111,4 +113,44 @@ type Competition {
     competitionClass: Int
     competitionClassString: String
     detail: String
+}
+
+
+enum SportClass {
+    SWIMMING
+    DIVING
+    HIGHDIVING
+    ARTISICSWIMMING
+    OPENWATER
+    WATERPOLO
+}
+type Sport {
+    id: ID
+    createdAt: String
+    updatedAt: String
+    total: Int
+    sportClass: Int
+    sportClassString: String
+    sportName: String
+    description: String
+    rule: String
+    competitions: [Competition]
+
+}
+
+type Record {
+    id: ID
+    createdAt: String
+    updatedAt: String
+    eventName: String
+    record: String
+    countryId: ID
+    countryName: String
+    date: String
+    location: String
+    competitionClass: Int
+    competitionClassString: String
+    sportClass: Int
+    sportClassString: String
+    name: String
 }
