@@ -36,27 +36,37 @@ func ParseRecordsJson(content []byte) (bool, error) {
 				Name:  countryName,
 				Short: i.Get("c_NOCShort").String(),
 			}
-			//if _, dbError := tx.InsertOne(&country); dbError != nil {
-			//	tx.Rollback()
-			//	return false, dbError
-			//}
+			if _, dbError := tx.InsertOne(&country); dbError != nil {
+				tx.Rollback()
+				return false, dbError
+			}
 		}
 		var records models.RecordMax
-		records = models.RecordMax{
-			CountryId:        country.Id,
-			Date:             getDate(i.Get("c_Date").String()),
-			EventName:        i.Get("c_Event").String(),
-			CompetitionClass: getClass(i.Get("c_Gender").String()),
-			Location:         i.Get("c_Location").String(),
-			Record:           i.Get("c_Result").String(),
-			SportClass:       getSportClass(i.Get("c_Sport").String()),
-			Name:             i.Get("c_Participant").String(),
+		if has, dbError := tx.Where("name = ?", i.Get("c_Participant").String()).Get(&records); dbError != nil || !has {
+			records = models.RecordMax{
+				CountryId:        country.Id,
+				Date:             getDate(i.Get("c_Date").String()),
+				EventName:        i.Get("c_Event").String(),
+				CompetitionClass: getClass(i.Get("c_Gender").String()),
+				Location:         i.Get("c_Location").String(),
+				Record:           i.Get("c_Result").String(),
+				SportClass:       getSportClass(i.Get("c_Sport").String()),
+				Name:             i.Get("c_Participant").String(),
+			}
+			if _, dbError := tx.InsertOne(&records); dbError != nil {
+				tx.Rollback()
+				return false, dbError
+			}
+		} else {
+			records.CompetitionClass = getClass(i.Get("c_Gender").String())
+			records.SportClass = getSportClass(i.Get("c_Sport").String())
+			if _, dbError := tx.ID(records.Id).Cols("competition_class", "sport_class").Update(&records); dbError != nil {
+				tx.Rollback()
+				return false, dbError
+			}
 		}
-		//if _, dbError := tx.InsertOne(&records); dbError != nil {
-		//	tx.Rollback()
-		//	return false, dbError
-		//}
-		fmt.Println(records, i.Get("c_Gender"), i.Get("c_Sport"))
+
+		fmt.Println(records, i.Get("c_Gender"), i.Get("c_Sport"), getClass(i.Get("c_Gender").String()), getSportClass(i.Get("c_Sport").String()))
 
 	}
 	tx.Commit()

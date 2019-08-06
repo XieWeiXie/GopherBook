@@ -12,5 +12,5 @@ COPY chapter12/fina/go.sum chapter12/fina/go.sum
 COPY chapter12/fina chapter12/fina
 COPY chapter12/fina/Makefile chapter12/fina/Makefile
 RUN cd chapter12/fina && make install
-RUN cd chapter12/fina && make run
+RUN cd chapter12/fina && make
 CMD [ "bash", "-c", "/go/src/GopherBook/chapter12/fina/fina sync; /go/src/GopherBook/chapter12/fina/fina;" ]

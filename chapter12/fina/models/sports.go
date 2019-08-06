@@ -98,11 +98,12 @@ func init() {
 	CompetitionClass = make(map[int]string)
 	CompetitionClassEn = make(map[string]int)
 	CompetitionClass[MAN] = "MAN"
-	CompetitionClass[WOMAN] = "WOMAN"
+	CompetitionClass[WOMAN] = "WOMEN"
 	CompetitionClass[TEAM] = "TEAM"
 	CompetitionClassEn["MAN"] = MAN
-	CompetitionClassEn["WOMAN"] = WOMAN
+	CompetitionClassEn["WOMEN"] = WOMAN
 	CompetitionClassEn["TEAM"] = TEAM
+	CompetitionClassEn["MIXED"] = TEAM
 
 }
 

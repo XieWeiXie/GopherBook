@@ -4,7 +4,6 @@ default:
 	go build -o ${PROJECT} main.go
 	@chmod +x ${PROJECT}
 
-
 run: default
 	@./${PROJECT}
 
