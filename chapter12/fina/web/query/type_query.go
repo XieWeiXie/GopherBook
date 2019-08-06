@@ -66,16 +66,33 @@ func init() {
 		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
 			var param country.GetCountryParam
 			controller := country.Default
-			if p.Args["all"].(bool) {
-				return controller.AllList(param)
-			} else {
-				param.Name = p.Args["name"].(string)
-				if p.Args["short"] != nil {
-					param.Short = p.Args["short"].(string)
-				}
-				return controller.GetList(param)
-			}
 
+			type result struct {
+				data []models.CountrySerializer
+				error
+			}
+			ch := make(chan result, 1)
+			if p.Args["all"].(bool) {
+				go func() {
+					defer close(ch)
+					data, err := controller.AllList(param)
+					ch <- result{data: data, error: err}
+				}()
+			} else {
+				go func() {
+					defer close(ch)
+					param.Name = p.Args["name"].(string)
+					if p.Args["short"] != nil {
+						param.Short = p.Args["short"].(string)
+					}
+					data, err := controller.GetList(param)
+					ch <- result{data: data, error: err}
+				}()
+			}
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 		},
 	})
 }
@@ -96,12 +113,26 @@ func init() {
 		},
 		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
 			var param country_medal.GetCountryMedalParam
-			param = country_medal.GetCountryMedalParam{
-				Name: p.Args["name"].(string),
-				Year: p.Args["year"].(int),
+			type result struct {
+				data models.CountryMedalSerializer
+				error
 			}
 			controller := country_medal.Default
-			return controller.GetCountryMedal(param)
+			ch := make(chan result, 1)
+			go func() {
+				defer close(ch)
+				param = country_medal.GetCountryMedalParam{
+					Name: p.Args["name"].(string),
+					Year: p.Args["year"].(int),
+				}
+
+				data, err := controller.GetCountryMedal(param)
+				ch <- result{data: data, error: err}
+			}()
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 		},
 	})
 	Query.AddFieldConfig("countryMedalRank", &graphql.Field{
