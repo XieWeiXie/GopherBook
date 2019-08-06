@@ -12,4 +12,4 @@ COPY chapter11/go.sum .
 COPY chapter11 .
 RUN make install
 RUN make prod
-CMD [ "bash", "-c", /go/src/GopherBook/chapter11/votes;" ]
+CMD [ "bash", "-c", "/go/src/GopherBook/chapter11/votes;" ]

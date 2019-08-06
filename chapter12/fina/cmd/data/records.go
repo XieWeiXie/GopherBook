@@ -36,10 +36,10 @@ func ParseRecordsJson(content []byte) (bool, error) {
 				Name:  countryName,
 				Short: i.Get("c_NOCShort").String(),
 			}
-			if _, dbError := tx.InsertOne(&country); dbError != nil {
-				tx.Rollback()
-				return false, dbError
-			}
+			//if _, dbError := tx.InsertOne(&country); dbError != nil {
+			//	tx.Rollback()
+			//	return false, dbError
+			//}
 		}
 		var records models.RecordMax
 		records = models.RecordMax{
@@ -52,10 +52,11 @@ func ParseRecordsJson(content []byte) (bool, error) {
 			SportClass:       getSportClass(i.Get("c_Sport").String()),
 			Name:             i.Get("c_Participant").String(),
 		}
-		if _, dbError := tx.InsertOne(&records); dbError != nil {
-			tx.Rollback()
-			return false, dbError
-		}
+		//if _, dbError := tx.InsertOne(&records); dbError != nil {
+		//	tx.Rollback()
+		//	return false, dbError
+		//}
+		fmt.Println(records, i.Get("c_Gender"), i.Get("c_Sport"))
 
 	}
 	tx.Commit()
@@ -64,7 +65,7 @@ func ParseRecordsJson(content []byte) (bool, error) {
 
 var getClass = func(value string) int {
 	v := strings.ToUpper(strings.TrimSpace(value))
-	return models.CompetitionClassEn[v]
+	return models.CompetitionClassEn[strings.ToUpper(v)]
 }
 
 var getSportClass = func(value string) int {
