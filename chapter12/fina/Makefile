@@ -1,8 +1,5 @@
 PROJECT="fifa"
 
-
-
-
 default:
 	go build -o ${PROJECT} main.go
 	@chmod +x ${PROJECT}
@@ -17,6 +14,8 @@ sync: default
 import: default
 	@./${PROJECT} import
 
+install:
+	go mod download
 
-.PHONY: default run sync import
+.PHONY: default run sync import install
 	
