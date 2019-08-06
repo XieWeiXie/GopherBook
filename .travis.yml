@@ -25,11 +25,11 @@ script:
   - make
 
 after_success:
-  - docker build . -t wuxiaoshen/beequick:latest -f Chapter5/BeeQuick.v1/deployments/Dockerfile
-  - docker build . -t wuxiaoshen/votes:latest -f chapter11/deployments/Dockerfile
+  #- docker build . -t wuxiaoshen/beequick:latest -f Chapter5/BeeQuick.v1/deployments/Dockerfile
+  #- docker build . -t wuxiaoshen/votes:latest -f chapter11/deployments/Dockerfile
   - docker build . -t wuxiaoshen/fina:latest -f chapter12/fina/deployments/Dockerfile
-  - docker push wuxiaoshen/beequick:latest
-  - docker push wuxiaoshen/votes:latest
+  #- docker push wuxiaoshen/beequick:latest
+  #- docker push wuxiaoshen/votes:latest
   - docker push wuxiaoshen/fina:latest
 
 # travis 是外国的服务商，无需设置 GOPROXY ，下载依赖没问题
