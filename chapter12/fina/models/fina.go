@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-type FiFa struct {
+type FiNa struct {
 	Base                `xorm:"extends"`
 	Description         string `json:"description"`
 	Established         string `xorm:"varchar(32) notnull 'established'" json:"established"`
@@ -11,11 +11,11 @@ type FiFa struct {
 	NumberOfDisciplines string `xorm:"varchar(24) notnull 'number_of_disciplines'" json:"number_of_disciplines"`
 }
 
-func (F FiFa) TableName() string {
-	return "fifa"
+func (F FiNa) TableName() string {
+	return "fina"
 }
 
-type FiFaSerializer struct {
+type FiNaSerializer struct {
 	Id                  int64     `json:"id"`
 	CreatedAt           time.Time `json:"created_at"`
 	UpdatedAt           time.Time `json:"updated_at"`
@@ -26,8 +26,8 @@ type FiFaSerializer struct {
 	NumberOfDisciplines string    `json:"number_of_disciplines"`
 }
 
-func (F FiFa) Serializer() FiFaSerializer {
-	return FiFaSerializer{
+func (F FiNa) Serializer() FiNaSerializer {
+	return FiNaSerializer{
 		Id:                  F.Id,
 		CreatedAt:           F.CreatedAt.Truncate(time.Second),
 		UpdatedAt:           F.UpdatedAt.Truncate(time.Second),
@@ -39,17 +39,17 @@ func (F FiFa) Serializer() FiFaSerializer {
 	}
 }
 
-type FiFaHistory struct {
+type FiNaHistory struct {
 	Base   `xorm:"extends"`
 	Year   int    `json:"year"`
 	Detail string `json:"detail"`
 }
 
-func (F FiFaHistory) TableName() string {
+func (F FiNaHistory) TableName() string {
 	return "history"
 }
 
-type FiFaHistorySerializer struct {
+type FiNaHistorySerializer struct {
 	Id        int64     `json:"id"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
@@ -57,8 +57,8 @@ type FiFaHistorySerializer struct {
 	Detail    string    `json:"detail"`
 }
 
-func (F FiFaHistory) Serializer() FiFaHistorySerializer {
-	return FiFaHistorySerializer{
+func (F FiNaHistory) Serializer() FiNaHistorySerializer {
+	return FiNaHistorySerializer{
 		Id:        F.Id,
 		CreatedAt: F.CreatedAt.Truncate(time.Second),
 		UpdatedAt: F.UpdatedAt.Truncate(time.Second),

@@ -11,7 +11,7 @@ import (
 var MySQL *xorm.Engine
 
 var (
-	dbMySQL    = "fifa"
+	dbMySQL    = "fina"
 	dbUser     = "root"
 	dbPassword = "admin123"
 )
@@ -31,7 +31,7 @@ func MySQLInit() *xorm.Engine {
 
 var POSTGRES *xorm.Engine
 var (
-	dbPGSQL      = "fifa"
+	dbPGSQL      = "fina"
 	dbPGUser     = "postgres"
 	dbPGPassword = "admin123"
 )

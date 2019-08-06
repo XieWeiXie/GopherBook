@@ -13,5 +13,5 @@ func TestParseFiFaBriefByjQuery(t *testing.T) {
 		log.Println(err)
 		return
 	}
-	fmt.Println(ParseFiFaBriefByjQuery(f))
+	fmt.Println(ParseFiNaBriefByjQuery(f))
 }

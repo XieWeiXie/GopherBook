@@ -1,4 +1,4 @@
-PROJECT="fifa"
+PROJECT="fina"
 
 default:
 	go build -o ${PROJECT} main.go

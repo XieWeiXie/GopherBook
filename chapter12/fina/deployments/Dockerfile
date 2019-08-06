@@ -7,9 +7,9 @@ VOLUME [ "/go/src/GopherBook/chapter12/logs" ]
 
 RUN apt-get update && apt-get install -q -y vim git openssh-client cron bash && apt-get clean;
 
-COPY chapter12/fifa/go.mod .
-COPY chapter12/fifa/go.sum .
-COPY chapter12/fifa .
+COPY chapter12/fina/go.mod .
+COPY chapter12/fina/go.sum .
+COPY chapter12/fina .
 RUN make install
 RUN make run
-CMD [ "bash", "-c", "/go/src/GopherBook/chapter12/fifa/fifa sync; /go/src/GopherBook/chapter12/fifa/fifa;" ]
+CMD [ "bash", "-c", "/go/src/GopherBook/chapter12/fina/fina sync; /go/src/GopherBook/chapter12/fina/fina;" ]

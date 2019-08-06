@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.15, for Linux (x86_64)
 --
--- Host: localhost    Database: fifa
+-- Host: localhost    Database: fina
 -- ------------------------------------------------------
 -- Server version	8.0.15
 
@@ -16,12 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `fifa`
+-- Current Database: `fina`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `fifa` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `fina` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 
-USE `fifa`;
+USE `fina`;
 
 --
 -- Table structure for table `blue`
@@ -145,13 +145,13 @@ INSERT INTO `country` VALUES (1,'2019-08-04 19:48:10','2019-08-04 19:48:10',NULL
 UNLOCK TABLES;
 
 --
--- Table structure for table `fifa`
+-- Table structure for table `fina`
 --
 
-DROP TABLE IF EXISTS `fifa`;
+DROP TABLE IF EXISTS `fina`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `fifa` (
+CREATE TABLE `fina` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -166,13 +166,13 @@ CREATE TABLE `fifa` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `fifa`
+-- Dumping data for table `fina`
 --
 
-LOCK TABLES `fifa` WRITE;
-/*!40000 ALTER TABLE `fifa` DISABLE KEYS */;
-INSERT INTO `fifa` VALUES (1,'2019-08-04 19:37:40','2019-08-04 19:37:40',NULL,'FINA(FédérationInternationaledeNatation,FINA)은创立于1908年，是游泳项目比赛的国际管理机构。FINA正式游泳项目分别是游泳、水球、跳水、花样游泳、公开水域游泳与高空跳水。高空跳水在2013年FINA世界游泳锦标赛上首次被列入FINA正式项目。目前FINA会员国拥有五大洲209个国家联盟。FINA的总部设在瑞士洛桑。',' 1908年7月19日(伦敦)',' 瑞士洛桑',' 209个国家',' 6个项目');
-/*!40000 ALTER TABLE `fifa` ENABLE KEYS */;
+LOCK TABLES `fina` WRITE;
+/*!40000 ALTER TABLE `fina` DISABLE KEYS */;
+INSERT INTO `fina` VALUES (1,'2019-08-04 19:37:40','2019-08-04 19:37:40',NULL,'FINA(FédérationInternationaledeNatation,FINA)은创立于1908年，是游泳项目比赛的国际管理机构。FINA正式游泳项目分别是游泳、水球、跳水、花样游泳、公开水域游泳与高空跳水。高空跳水在2013年FINA世界游泳锦标赛上首次被列入FINA正式项目。目前FINA会员国拥有五大洲209个国家联盟。FINA的总部设在瑞士洛桑。',' 1908年7月19日(伦敦)',' 瑞士洛桑',' 209个国家',' 6个项目');
+/*!40000 ALTER TABLE `fina` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

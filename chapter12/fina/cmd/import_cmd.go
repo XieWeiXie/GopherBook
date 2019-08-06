@@ -28,10 +28,10 @@ var ImportCMD = &cobra.Command{
 			fmt.Println(data.RunChampionship(configs.MatchDescription))
 		}
 		if args[0] == "history" || args[0] == "his" {
-			fmt.Println(data.RunFiFaHistory(configs.MatchHistory))
+			fmt.Println(data.RunFiNaHistory(configs.MatchHistory))
 		}
 		if args[0] == "brief" || args[0] == "brf" {
-			fmt.Println(data.RunFiFaBrief(configs.MatchBrief))
+			fmt.Println(data.RunFiNaBrief(configs.MatchBrief))
 		}
 		if args[0] == "sports" || args[0] == "sp" {
 			fmt.Println(data.RunSports(configs.MatchSportsMap))

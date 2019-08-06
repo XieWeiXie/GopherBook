@@ -7,7 +7,7 @@ import (
 	"GopherBook/chapter12/fina/web/competition"
 	"GopherBook/chapter12/fina/web/country"
 	"GopherBook/chapter12/fina/web/country_medal"
-	"GopherBook/chapter12/fina/web/fifa"
+	"GopherBook/chapter12/fina/web/fina"
 	"GopherBook/chapter12/fina/web/history"
 	"GopherBook/chapter12/fina/web/kind"
 	"GopherBook/chapter12/fina/web/ping"
@@ -191,15 +191,15 @@ func init() {
 	})
 }
 
-// fifa
+// fina
 
 func init() {
-	Query.AddFieldConfig("fifa", &graphql.Field{
-		Name: "fifa",
-		Type: fifa.FiFa,
+	Query.AddFieldConfig("fina", &graphql.Field{
+		Name: "fina",
+		Type: fina.FiNa,
 		Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
-			controller := fifa.Default
-			return controller.GetFiFa()
+			controller := fina.Default
+			return controller.GetFiNa()
 		},
 	})
 }

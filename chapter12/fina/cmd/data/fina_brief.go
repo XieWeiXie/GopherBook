@@ -12,13 +12,13 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-func RunFiFaBrief(url string) (bool, error) {
+func RunFiNaBrief(url string) (bool, error) {
 	reader, err := assistance.DownloaderReturnIOReader(url)
 	if err != nil {
 		log.Println(err)
 		return false, err
 	}
-	result, err := ParseFiFaBriefByjQuery(reader)
+	result, err := ParseFiNaBriefByjQuery(reader)
 	if err != nil {
 		log.Println(err)
 		return false, err
@@ -33,8 +33,8 @@ func RunFiFaBrief(url string) (bool, error) {
 	return true, nil
 }
 
-func ParseFiFaBriefByjQuery(reader io.Reader) (models.FiFa, error) {
-	var result models.FiFa
+func ParseFiNaBriefByjQuery(reader io.Reader) (models.FiNa, error) {
+	var result models.FiNa
 	doc, err := goquery.NewDocumentFromReader(reader)
 	if err != nil {
 		log.Println(err)

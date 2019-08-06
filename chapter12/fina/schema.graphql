@@ -6,7 +6,7 @@ type Query {
     countryMeadlRank(year: Int!, sortBy: String!):[Medal]
     history(year: Int): [History]
     histories(orderBy: String): [History]
-    fifa: FiFa
+    fina: FiNa
     blues: [Blue]
     symbol: Symbol
     kinds(class: KindClass!): [Kind]
@@ -49,7 +49,7 @@ type History {
     detail: String
 }
 
-type FiFa {
+type FiNa {
     id: ID
     createdAt: String
     updatedAt: String

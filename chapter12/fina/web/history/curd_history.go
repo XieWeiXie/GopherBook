@@ -10,12 +10,12 @@ type ControllerHistory struct {
 
 var Default = ControllerHistory{}
 
-func (C ControllerHistory) GetHistory(param GetHistoryParam) (models.FiFaHistorySerializer, error) {
-	var result models.FiFaHistorySerializer
+func (C ControllerHistory) GetHistory(param GetHistoryParam) (models.FiNaHistorySerializer, error) {
+	var result models.FiNaHistorySerializer
 	if err := param.Valid(); err != nil {
 		return result, nil
 	}
-	var history models.FiFaHistory
+	var history models.FiNaHistory
 	if has, dbError := database.MySQL.Where("year = ?", param.Year).Get(&history); !has || dbError != nil {
 		return result, dbError
 	}
@@ -23,9 +23,9 @@ func (C ControllerHistory) GetHistory(param GetHistoryParam) (models.FiFaHistory
 	return result, nil
 }
 
-func (C ControllerHistory) GetAll(param GetAllHistoryParam) ([]models.FiFaHistorySerializer, error) {
-	var result []models.FiFaHistorySerializer
-	var histories []models.FiFaHistory
+func (C ControllerHistory) GetAll(param GetAllHistoryParam) ([]models.FiNaHistorySerializer, error) {
+	var result []models.FiNaHistorySerializer
+	var histories []models.FiNaHistory
 	if dbError := database.MySQL.OrderBy(param.OrderBy + " desc").Find(&histories); dbError != nil {
 		return nil, dbError
 	}

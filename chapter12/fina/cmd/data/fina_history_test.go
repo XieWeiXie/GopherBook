@@ -12,5 +12,5 @@ func TestParseFiFaHistoryByXpath(t *testing.T) {
 		fmt.Println(err)
 		return
 	}
-	ParseFiFaHistoryByXpath(f)
+	ParseFiNaHistoryByXpath(f)
 }
