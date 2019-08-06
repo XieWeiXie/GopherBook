@@ -3,8 +3,7 @@ go:
   - "1.12"
   - "1.12.x"
 env:
-  - GO111MODULE=${GM}
-  - GOPROXY=https://goproxy.io
+  - GO111MODULE=on
 notifications:
   email:
     recipients:
