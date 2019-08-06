@@ -26,4 +26,35 @@
     - 奖项
     - 项目
 
+## 使用
 
+pwd=GopherBook/chapter12/fina
+
+- 启动容器
+```
+cd deployments && docker-compose up -d
+```
+
+- 导入数据
+
+```text
+
+cd data
+docker cp fina-2019-08-06.sql ${imageID}:/
+
+mysqldump -uroot -p < fina-2019-08-06.sql
+
+```
+
+- 启动服务
+
+```text
+make install
+
+make run
+
+```
+
+- 调用接口
+
+接口文档：schema.graphql
