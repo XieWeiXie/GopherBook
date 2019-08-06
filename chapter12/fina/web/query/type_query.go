@@ -192,8 +192,10 @@ func init() {
 
 				ch <- result{data: data, error: err}
 			}()
-			r := <-ch
-			return r.data, r.error
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 		},
 	})
 }
@@ -216,8 +218,10 @@ func init() {
 				data, err := controller.GetSymbol()
 				ch <- result{data: data, error: err}
 			}()
-			r := <-ch
-			return r.data, r.error
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 		},
 	})
 }
@@ -247,8 +251,10 @@ func init() {
 				data, err := controller.GetKinds(param)
 				ch <- result{data: data, error: err}
 			}()
-			r := <-ch
-			return r.data, r.error
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 		},
 	})
 }
@@ -278,8 +284,10 @@ func init() {
 				data, err := controller.GetCompetitions(param)
 				ch <- result{data: data, error: err}
 			}()
-			r := <-ch
-			return r.data, r.error
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 		},
 	})
 }
@@ -309,13 +317,16 @@ func init() {
 				data, err := controller.GetSports(param)
 				ch <- result{data: data, error: err}
 			}()
-			r := <-ch
-			return r.data, r.error
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 
 		},
 	})
 }
 
+// records
 func init() {
 	Query.AddFieldConfig("records", &graphql.Field{
 		Name: "records",
@@ -360,8 +371,10 @@ func init() {
 				data, err := controller.GetRecords(param)
 				ch <- result{data: data, error: err}
 			}()
-			r := <-ch
-			return r.data, r.error
+			return func() (interface{}, error) {
+				r := <-ch
+				return r.data, r.error
+			}, nil
 		},
 	})
 }
