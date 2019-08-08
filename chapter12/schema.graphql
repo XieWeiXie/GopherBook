@@ -1,0 +1,43 @@
+
+
+type Query {
+    # 通过 id  获取抽票信息
+    getLottery(id: ID): LotterySerializer
+    # 通过 adminId  获取抽奖信息
+    getLotteries(adminId: ID): [LotterySerializer]
+}
+
+type Mutation {
+    # 创建 抽奖信息
+    createLottery(name: String, date: String): LotterySerializer
+    # 删除 抽奖信息
+    deleteLottery(id:ID): LotterySerializer
+
+
+}
+
+type LotterySerializer {
+    # 抽奖信息响应的字段
+    id: ID
+    adminId: ID
+    name: String
+    date: String
+}
+
+enum LotteryType {
+    NORMAL # 普通抽奖
+    LUCKY # 现场抽奖
+    QUOTA # 定额抽奖
+}
+
+input LotteryData {
+    name: String
+    date: String
+    number: Int
+    class: LotteryClass
+}
+
+interface LotteryIn {
+    name: String
+    date: String
+}

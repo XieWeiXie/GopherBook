@@ -1,0 +1,11 @@
+
+
+type Query {
+    ping(data: String): ResponsePing
+}
+
+
+type ResponsePing {
+    data: String
+    code: Int
+}
