@@ -62,7 +62,6 @@ func ParseSportsByQuery(reader io.Reader) (ResultForSports, error) {
 		log.Println(err)
 		return result, err
 	}
-	fmt.Println(doc.Html())
 	result.Sports.Description = assistance.ReplaceSpace(doc.Find("#intro_S p").Text())
 	doc.Find(".content div.games_wrap ul li").Each(func(i int, selection *goquery.Selection) {
 		if val, ok := selection.Attr("class"); ok && val == "active" {
@@ -70,13 +69,11 @@ func ParseSportsByQuery(reader io.Reader) (ResultForSports, error) {
 			result.Sports.SportClass = i
 		}
 	})
-	fmt.Println(doc.Find("#games_S span").Text())
 	total := strings.TrimSpace(assistance.SplitBYColon(doc.Find("#games_S span").Text(), ":"))
 	result.Sports.Total, _ = strconv.Atoi(total)
 	doc.Find("#games_S div div").Each(func(i int, selection *goquery.Selection) {
 		class := selection.Find("span").Text()
 		classInt := getCompetitionClass(class)
-		fmt.Println(classInt, class)
 		selection.Find("ul li").Each(func(i int, selection *goquery.Selection) {
 			var one models.Competitions
 			one.CompetitionClass = classInt
