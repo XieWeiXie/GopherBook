@@ -12,7 +12,7 @@ type Query {
     kinds(class: KindClass!): [Kind]
     competitions(class: CompetitionClass!): [Competition]
     sports(class: SportClass!):[Sport]
-    records(name: String, all: Boolean): [Record]
+    records(name: String, competitionClass:CompetitionClass, sportClass: SportClass, all: Boolean): [Record]
 }
 
 

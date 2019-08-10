@@ -18,6 +18,7 @@ func (C ControllerRecord) GetRecords(param GetRecordParam) ([]models.RecordsMaxS
 		return result, err
 	}
 	query := database.MySQL.NewSession()
+	fmt.Println("data")
 	if param.All {
 		if dbError := query.Find(&sports); dbError != nil {
 			return result, dbError
