@@ -135,7 +135,6 @@ type Sport {
     description: String
     rule: String
     competitions: [Competition]
-
 }
 
 type Record {

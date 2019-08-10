@@ -8,6 +8,15 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
+var id = &graphql.Field{
+	Type: graphql.ID,
+	Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+		if sport, ok := p.Source.(models.SportSerializer); ok {
+			return sport.Id, nil
+		}
+		return nil, error_for_project.NotFound
+	},
+}
 var Sports = graphql.NewObject(graphql.ObjectConfig{
 	Name: "Sports",
 	Fields: graphql.Fields{
