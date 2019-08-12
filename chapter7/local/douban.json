@@ -1,0 +1,410 @@
+{
+  "data": [
+    {
+      "directors": [
+        "奉俊昊"
+      ],
+      "rate": "8.9",
+      "cover_x": 1500,
+      "star": "45",
+      "title": "寄生虫",
+      "url": "https://movie.douban.com/subject/27010768/",
+      "casts": [
+        "宋康昊",
+        "李善均",
+        "赵汝贞",
+        "崔宇植",
+        "朴素丹"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561439800.jpg",
+      "id": "27010768",
+      "cover_y": 2138
+    },
+    {
+      "directors": [
+        "郑伟文",
+        "陈家霖"
+      ],
+      "rate": "7.7",
+      "cover_x": 3000,
+      "star": "40",
+      "title": "陈情令",
+      "url": "https://movie.douban.com/subject/27195020/",
+      "casts": [
+        "肖战",
+        "王一博",
+        "孟子义",
+        "宣璐",
+        "于斌"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2563766934.jpg",
+      "id": "27195020",
+      "cover_y": 4280
+    },
+    {
+      "directors": [
+        "陈国辉"
+      ],
+      "rate": "6.6",
+      "cover_x": 1429,
+      "star": "35",
+      "title": "烈火英雄",
+      "url": "https://movie.douban.com/subject/30221757/",
+      "casts": [
+        "黄晓明",
+        "杜江",
+        "谭卓",
+        "杨紫",
+        "欧豪"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2563630521.jpg",
+      "id": "30221757",
+      "cover_y": 2000
+    },
+    {
+      "directors": [
+        "李青蓉",
+        "项旭晶"
+      ],
+      "rate": "6.5",
+      "cover_x": 5906,
+      "star": "35",
+      "title": "亲爱的，热爱的",
+      "url": "https://movie.douban.com/subject/26794191/",
+      "casts": [
+        "杨紫",
+        "李现",
+        "胡一天",
+        "李鸿其",
+        "李泽锋"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2562817113.jpg",
+      "id": "26794191",
+      "cover_y": 8268
+    },
+    {
+      "directors": [
+        "十一月"
+      ],
+      "rate": "6.9",
+      "cover_x": 500,
+      "star": "35",
+      "title": "全职高手",
+      "url": "https://movie.douban.com/subject/26660368/",
+      "casts": [
+        "杨洋",
+        "江疏影",
+        "赖雨濛",
+        "梁森",
+        "李沐宸"
+      ],
+      "cover": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2563437048.jpg",
+      "id": "26660368",
+      "cover_y": 700
+    },
+    {
+      "directors": [
+        "文牧野"
+      ],
+      "rate": "9.0",
+      "cover_x": 2810,
+      "star": "45",
+      "title": "我不是药神",
+      "url": "https://movie.douban.com/subject/26752088/",
+      "casts": [
+        "徐峥",
+        "王传君",
+        "周一围",
+        "谭卓",
+        "章宇"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.jpg",
+      "id": "26752088",
+      "cover_y": 3937
+    },
+    {
+      "directors": [
+        "拜伦·霍华德",
+        "瑞奇·摩尔",
+        "杰拉德·布什"
+      ],
+      "rate": "9.2",
+      "cover_x": 1418,
+      "star": "45",
+      "title": "疯狂动物城",
+      "url": "https://movie.douban.com/subject/25662329/",
+      "casts": [
+        "金妮弗·古德温",
+        "杰森·贝特曼",
+        "伊德里斯·艾尔巴",
+        "珍妮·斯蕾特",
+        "内特·托伦斯"
+      ],
+      "cover": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2315672647.jpg",
+      "id": "25662329",
+      "cover_y": 2005
+    },
+    {
+      "directors": [
+        "涅提·蒂瓦里"
+      ],
+      "rate": "9.0",
+      "cover_x": 4500,
+      "star": "45",
+      "title": "摔跤吧！爸爸",
+      "url": "https://movie.douban.com/subject/26387939/",
+      "casts": [
+        "阿米尔·汗",
+        "法缇玛·萨那·纱卡",
+        "桑亚·玛荷塔",
+        "阿帕尔夏克提·库拉那",
+        "沙克希·坦沃"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2457983084.jpg",
+      "id": "26387939",
+      "cover_y": 6300
+    },
+    {
+      "directors": [
+        "安东尼·罗素",
+        "乔·罗素"
+      ],
+      "rate": "8.6",
+      "cover_x": 3000,
+      "star": "45",
+      "title": "复仇者联盟4：终局之战",
+      "url": "https://movie.douban.com/subject/26100958/",
+      "casts": [
+        "小罗伯特·唐尼",
+        "克里斯·埃文斯",
+        "马克·鲁弗洛",
+        "克里斯·海姆斯沃斯",
+        "斯嘉丽·约翰逊"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.jpg",
+      "id": "26100958",
+      "cover_y": 4440
+    },
+    {
+      "directors": [
+        "宫崎骏"
+      ],
+      "rate": "9.3",
+      "cover_x": 1080,
+      "star": "45",
+      "title": "千与千寻",
+      "url": "https://movie.douban.com/subject/1291561/",
+      "casts": [
+        "柊瑠美",
+        "入野自由",
+        "夏木真理",
+        "菅原文太",
+        "中村彰男"
+      ],
+      "cover": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.jpg",
+      "id": "1291561",
+      "cover_y": 1560
+    },
+    {
+      "directors": [
+        "弗兰克·德拉邦特"
+      ],
+      "rate": "9.7",
+      "cover_x": 2000,
+      "star": "50",
+      "title": "肖申克的救赎",
+      "url": "https://movie.douban.com/subject/1292052/",
+      "casts": [
+        "蒂姆·罗宾斯",
+        "摩根·弗里曼",
+        "鲍勃·冈顿",
+        "威廉姆·赛德勒",
+        "克兰西·布朗"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg",
+      "id": "1292052",
+      "cover_y": 2963
+    },
+    {
+      "directors": [
+        "詹姆斯·卡梅隆"
+      ],
+      "rate": "9.4",
+      "cover_x": 2015,
+      "star": "45",
+      "title": "泰坦尼克号",
+      "url": "https://movie.douban.com/subject/1292722/",
+      "casts": [
+        "莱昂纳多·迪卡普里奥",
+        "凯特·温丝莱特",
+        "比利·赞恩",
+        "凯西·贝茨",
+        "弗兰西丝·费舍"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p457760035.jpg",
+      "id": "1292722",
+      "cover_y": 3000
+    },
+    {
+      "directors": [
+        "吕克·贝松"
+      ],
+      "rate": "9.4",
+      "cover_x": 658,
+      "star": "45",
+      "title": "这个杀手不太冷",
+      "url": "https://movie.douban.com/subject/1295644/",
+      "casts": [
+        "让·雷诺",
+        "娜塔莉·波特曼",
+        "加里·奥德曼",
+        "丹尼·爱罗",
+        "彼得·阿佩尔"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p511118051.jpg",
+      "id": "1295644",
+      "cover_y": 980
+    },
+    {
+      "directors": [
+        "郭帆"
+      ],
+      "rate": "7.9",
+      "cover_x": 1786,
+      "star": "40",
+      "title": "流浪地球",
+      "url": "https://movie.douban.com/subject/26266893/",
+      "casts": [
+        "屈楚萧",
+        "吴京",
+        "李光洁",
+        "吴孟达",
+        "赵今麦"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2545472803.jpg",
+      "id": "26266893",
+      "cover_y": 2500
+    },
+    {
+      "directors": [
+        "史蒂文·斯皮尔伯格"
+      ],
+      "rate": "8.7",
+      "cover_x": 2000,
+      "star": "45",
+      "title": "头号玩家",
+      "url": "https://movie.douban.com/subject/4920389/",
+      "casts": [
+        "泰伊·谢里丹",
+        "奥利维亚·库克",
+        "本·门德尔森",
+        "马克·里朗斯",
+        "丽娜·维特"
+      ],
+      "cover": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2516578307.jpg",
+      "id": "4920389",
+      "cover_y": 3000
+    },
+    {
+      "directors": [
+        "彼得·法雷里"
+      ],
+      "rate": "8.9",
+      "cover_x": 2000,
+      "star": "45",
+      "title": "绿皮书",
+      "url": "https://movie.douban.com/subject/27060077/",
+      "casts": [
+        "维果·莫腾森",
+        "马赫沙拉·阿里",
+        "琳达·卡德里尼",
+        "塞巴斯蒂安·马尼斯科",
+        "迪米特·D·马里诺夫"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549177902.jpg",
+      "id": "27060077",
+      "cover_y": 3167
+    },
+    {
+      "directors": [
+        "李·昂克里奇",
+        "阿德里安·莫利纳"
+      ],
+      "rate": "9.0",
+      "cover_x": 1432,
+      "star": "45",
+      "title": "寻梦环游记",
+      "url": "https://movie.douban.com/subject/20495023/",
+      "casts": [
+        "安东尼·冈萨雷斯",
+        "盖尔·加西亚·贝纳尔",
+        "本杰明·布拉特",
+        "阿兰娜·乌巴赫",
+        "芮妮·维克托"
+      ],
+      "cover": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2503997609.jpg",
+      "id": "20495023",
+      "cover_y": 2048
+    },
+    {
+      "directors": [
+        "新海诚"
+      ],
+      "rate": "8.4",
+      "cover_x": 1428,
+      "star": "40",
+      "title": "你的名字。",
+      "url": "https://movie.douban.com/subject/26683290/",
+      "casts": [
+        "神木隆之介",
+        "上白石萌音",
+        "长泽雅美",
+        "市原悦子",
+        "成田凌"
+      ],
+      "cover": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2395733377.jpg",
+      "id": "26683290",
+      "cover_y": 2000
+    },
+    {
+      "directors": [
+        "曹盾"
+      ],
+      "rate": "8.5",
+      "cover_x": 3500,
+      "star": "45",
+      "title": "长安十二时辰",
+      "url": "https://movie.douban.com/subject/26849758/",
+      "casts": [
+        "雷佳音",
+        "易烊千玺",
+        "周一围",
+        "芦芳生",
+        "热依扎"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2562953341.jpg",
+      "id": "26849758",
+      "cover_y": 4899
+    },
+    {
+      "directors": [
+        "韩寒"
+      ],
+      "rate": "6.9",
+      "cover_x": 7142,
+      "star": "35",
+      "title": "飞驰人生",
+      "url": "https://movie.douban.com/subject/30163509/",
+      "casts": [
+        "沈腾",
+        "黄景瑜",
+        "尹正",
+        "张本煜",
+        "尹昉"
+      ],
+      "cover": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2542973862.jpg",
+      "id": "30163509",
+      "cover_y": 10000
+    }
+  ]
+}
