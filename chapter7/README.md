@@ -76,3 +76,14 @@
 
 
 
+### chromedp api
+
+- chromedp.Navigate
+- chromedp.CaptureScreenshot
+- chromedp.Emulate
+- chromedp.Click
+
+- chromedp.Value
+- chromedp.Text
+- chromedp.OutHtml
+- chromedp.Node
