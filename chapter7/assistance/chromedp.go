@@ -1,0 +1,3 @@
+package assistance
+
+func GetChromedp() {}
