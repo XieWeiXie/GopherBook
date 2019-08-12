@@ -18,22 +18,24 @@ var jsonS string
 func GetZhiHu(url string) {
 	ctx, cancel := chromedp.NewContext(context.Background(), chromedp.WithLogf(log.Fatalf))
 	defer cancel()
-
-	err := chromedp.Run(ctx, Tasks())
+	var response string
+	err := chromedp.Run(ctx, Tasks(&response))
 	if err != nil {
 		log.Println(err)
 		return
 	}
+	fmt.Println(res)
+	fmt.Println(response)
 	Parse(jsonS)
 
 }
 
-func Tasks() chromedp.Tasks {
+func Tasks(response *string) chromedp.Tasks {
 	return chromedp.Tasks{
 		chromedp.Navigate(`https://www.zhihu.com/billboard`),
 		chromedp.WaitVisible(`main`, chromedp.ByQuery),
-		chromedp.OuterHTML(`main`, &res),
-		chromedp.OuterHTML(`js-initialData`, &jsonS),
+		chromedp.Text(`main`, &res, chromedp.NodeVisible),
+		chromedp.OuterHTML(`js-initialData`, response),
 	}
 }
 
