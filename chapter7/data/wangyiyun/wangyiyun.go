@@ -2,10 +2,14 @@ package wangyiyun
 
 import (
 	"GopherBook/chapter7/assistance"
+	"context"
 	"fmt"
 	"log"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/chromedp/chromedp"
 
 	"github.com/antchfx/htmlquery"
 )
@@ -100,4 +104,32 @@ func RankDetail(result *ResultForWangYiYun, ok chan *ResultForWangYiYun) {
 		result.Comment, _ = strconv.Atoi(htmlquery.InnerText(comment))
 	}
 	ok <- result
+}
+
+func WangYiYunByChromedp(url string) {
+	var a = func(a *chromedp.ExecAllocator) {
+		chromedp.Flag("disable-web-security", true)(a)
+	}
+	opts := append(chromedp.DefaultExecAllocatorOptions[:],
+		a,
+	)
+	allocCtx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
+	defer cancel()
+
+	// also set up a custom logger
+	taskCtx, cancel := chromedp.NewContext(allocCtx, chromedp.WithLogf(log.Printf))
+	defer cancel()
+	var response string
+	var title string
+	chromedp.Run(taskCtx, Tasks(url, &title, &response))
+	fmt.Println(title, response)
+}
+func Tasks(url string, title *string, response *string) chromedp.Tasks {
+	return chromedp.Tasks{
+		chromedp.Navigate(url),
+		chromedp.Title(title),
+		chromedp.WaitVisible(`#g_iframe`, chromedp.ByID),
+		chromedp.Sleep(2 * time.Second),
+		chromedp.Evaluate(`document.getElementById('g_iframe').contentWindow.document.body.outerHTML;`, &response),
+	}
 }
