@@ -89,3 +89,25 @@
 - chromedp.Text
 - chromedp.OutHtml
 - chromedp.Node
+
+
+### 核心
+
+> 提供高级 API 来通过 DevTools(是内嵌在 Chrome 浏览器里的一组用于网页制作和调试的工具) 协议来控制 Chromium 或 Chrome
+
+Headless Chrome 是 Chrome 浏览器的无界面形态，可以在不打开浏览器的前提下，使用所有 Chrome 支持的特性运行你的程序。相比于现代浏览器，Headless Chrome 更加方便测试 web 应用，获得网站的截图，做爬虫抓取信息等。相比于出道较早的 PhantomJS，SlimerJS 等，Headless Chrome 则更加贴近浏览器环境。
+
+Headless 方案：
+
+- Selenium
+- Chromedp: golang 版
+- Puppeteer: Nodejs 版 （https://zhaoqize.github.io/puppeteer-api-zh_CN/）
+
+Selenium和 Puppeteer的比较：
+
+- Selenium加上不同的WebDriver，可以支援不同的浏览器(例如:chrome、firefox、IE)， 但是Puppeteer只用于Chromium或Chrome。
+
+## chrome 开发者工具
+
+- https://developers.google.com/web/tools/chrome-devtools/?hl=zh-cn
+- chrome 版本号 http://omahaproxy.appspot.com/
