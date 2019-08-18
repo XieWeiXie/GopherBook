@@ -17,7 +17,6 @@ func Selenium(url string) (string, error) {
 	caps := selenium.Capabilities{
 		"browserName": "chrome",
 	}
-
 	imagCaps := map[string]interface{}{
 		"profile.managed_default_content_settings.images": 2,
 	}
@@ -57,4 +56,18 @@ func Selenium(url string) (string, error) {
 	}
 	return content, nil
 
+}
+
+func SeleniumGetContent(url string) (string, error) {
+	caps := selenium.Capabilities{
+		"browserName": "chrome",
+	}
+	webDriver, err := selenium.NewRemote(caps, fmt.Sprintf("http://localhost:%d/wd/hub", PORT))
+	if err != nil {
+		panic(err)
+	}
+	if err := webDriver.Get(url); err != nil {
+		panic(fmt.Sprintf("Failed to load page: %s\n", err))
+	}
+	return webDriver.PageSource()
 }

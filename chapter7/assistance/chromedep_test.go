@@ -1,11 +1,12 @@
 package assistance
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 )
 
-func TestGetChrome(t *testing.T) {
-	//ctxt, cancel := context.WithCancel(context.Background())
-	//defer cancel()
-
+func TestChromedpGetContent(t *testing.T) {
+	content := ChromedpGetContent("http://quotes.toscrape.com/js/")
+	fmt.Println(strings.Contains(content, `<div class="quote">`))
 }

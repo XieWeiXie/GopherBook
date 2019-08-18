@@ -21,3 +21,20 @@ func GetContent(url string) ([]byte, error) {
 	defer response.Body.Close()
 	return ioutil.ReadAll(response.Body)
 }
+
+func GetResponse(url string) ([]byte, error) {
+	response, err := http.Get(url)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	defer response.Body.Close()
+	content, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	//fmt.Println(string(content))
+	return content, nil
+
+}
