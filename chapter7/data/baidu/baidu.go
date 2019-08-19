@@ -13,6 +13,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gomodule/redigo/redis"
+
 	"github.com/jinzhu/gorm"
 
 	"github.com/PuerkitoBio/goquery"
@@ -45,13 +47,14 @@ func GetBaiDu(url string) {
 	}
 
 	fmt.Println(time.Since(now))
+	//SaveTxt(results)
+	//SaveJSON(results)
+	//SaveCSV(results)
+	//SaveDB(results)
+	SaveRedis(results)
 
 }
 
-//SaveTxt(results)
-//SaveJSON(results)
-//SaveCSV(results)
-//SaveDB(results)
 func Tasks(url string, response *string) chromedp.Tasks {
 	return chromedp.Tasks{
 		chromedp.Navigate(url),
@@ -212,6 +215,26 @@ func SaveDB(results []ResultBaiDu) {
 	}
 }
 
-func init() {}
+var REDIS redis.Conn
 
-func SaveRedis(resules []ResultBaiDu) {}
+func init() {
+	connect, err := redis.Dial("tcp", "localhost:6379")
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	REDIS = connect
+}
+
+func SaveRedis(results []ResultBaiDu) {
+	for index, i := range results {
+		reply, err := REDIS.Do("HMSET", fmt.Sprintf(BAIDUKEY+":%d", index),
+			"key", i.Keyword, "href", i.Href, "number", i.Number)
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		fmt.Println(reply)
+
+	}
+}
