@@ -8,12 +8,11 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-func MaoYan(url string) {
+var getContent = func(url string) ([]byte, error) {
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(url)
 	req.Header.Set("Origin", "http://piaofang.maoyan.com")
 	req.Header.Set("Referer", "http://piaofang.maoyan.com/dashboard")
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36")
@@ -21,8 +20,11 @@ func MaoYan(url string) {
 	if err != nil {
 		panic(err)
 	}
-	c, err := ioutil.ReadAll(content.Body)
-	fmt.Println(string(c))
+	return ioutil.ReadAll(content.Body)
+}
+
+func MaoYan(url string) {
+	c, _ := getContent(url)
 	doc := gjson.ParseBytes(c).Get("data.list").Array()
 	for _, i := range doc {
 		var r ResultForMaoYan
