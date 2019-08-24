@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Charts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+</head>
+<body>
+<div id="chart-wrapper">
+    <canvas id="myChart" style="display: block; height: 235px;width: 470px" ></canvas>
+</div>
+<script>
+    let ctx = document.getElementById("myChart").getContext("2d");
+    let myChart =new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Scatter Dataset',
+                backgroundColor: "rgb(255,0,174)",
+                borderColor:"rgb(255,0,174)",
+                borderWidth:5,
+                pointRadius: [3,40,15,10,20,12,8,20],
+                data: [
+                    {x: -10, y: 0},
+                    {x: -3, y: 2},
+                    {x: -4, y: 5},
+                    {x: 0, y: 9},
+                    {x: 10, y: 5},
+                    {x: 4, y: 5},
+                    {x: 5, y: 3},
+                    {x: 8, y: 5},
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'linear',
+                    position: 'bottom'
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>
