@@ -16,7 +16,7 @@
     const { Chart, Geom, Axis, Tooltip, Legend, Coord } = window.BizCharts;
     // 数据源
     let series =null;
-    series = {{.Data }};
+    series = {{ .Data }};
     const data = series;
 
     // 定义度量
@@ -31,6 +31,7 @@
             <Axis name={{.Axis }} title/>
             <Axis name={{.Yxis}} title/>
             <Tooltip />
+            <Legend position={{ .Location }}/>
             <Geom
                 type={{ .Type }}
                 position={{ .Position }}

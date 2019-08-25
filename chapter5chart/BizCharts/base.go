@@ -2,29 +2,33 @@ package BizCharts
 
 import (
 	"fmt"
-	"net/http"
 )
 
-type BizChartInterface interface {
-	Plot(w http.ResponseWriter, r *http.Request)
-	Save(string) bool
-	Name() string
-	Type() string
+type BaseTheme struct {
+	Theme string `json:"theme"`
+}
+
+const (
+	DEFAULT_THEME = "default"
+	DARK_THEME    = "dark"
+)
+
+func (B *BaseTheme) SetTheme(theme string) {
+	B.Theme = theme
 }
 
 type BaseData struct {
 	Data interface{} `json:"data"`
 }
 
-type OneData map[string]interface{}
-
-type BaseCols map[string]OneCol
+type BaseCols struct {
+	X OneCol
+	Y OneCol
+}
 
 func (B BaseCols) Keys() []string {
 	var keys []string
-	for k, _ := range B {
-		keys = append(keys, k)
-	}
+	keys = append(keys, B.X.Alias, B.Y.Alias)
 	return keys
 }
 
@@ -38,4 +42,8 @@ func (B BaseCols) Position() string {
 
 type OneCol struct {
 	Alias string `json:"alias"`
+}
+
+type BaseLegend struct {
+	Location string `json:"location"`
 }
