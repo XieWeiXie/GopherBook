@@ -15,29 +15,29 @@
 <script type="text/babel">
     const { Chart, Geom, Axis, Tooltip, Legend, Coord } = window.BizCharts;
     // 数据源
-    const data = [
-        { genre: 'Sports', sold: 275, income: 2300 },
-        { genre: 'Strategy', sold: 115, income: 667 },
-        { genre: 'Action', sold: 120, income: 982 },
-        { genre: 'Shooter', sold: 350, income: 5271 },
-        { genre: 'Other', sold: 150, income: 3710 }
-    ];
+    let series =null;
+    series = {{.Data }};
+    const data = series;
 
     // 定义度量
-    const cols = {
-        sold: { alias: '销售量' },
-        genre: { alias: '游戏种类' }
-    };
+    let xyAixs =null;
+    xyAixs = {{.XYAxis}};
+    const cols = xyAixs;
+
+    BizCharts.setTheme({{ .Theme }});
+
     ReactDOM.render(
         <Chart width={1200} height={500} data={data} scale={cols}>
-            <Axis name="genre" title/>
-            <Axis name="sold" title/>
-            <Legend position="top" dy={-20} />
+            <Axis name={{.Axis }} title/>
+            <Axis name={{.Yxis}} title/>
             <Tooltip />
-            <Geom type="interval" position="genre*sold" color="genre" />
-        </Chart>,
-        document.getElementById('root')
-    );
+            <Geom
+                type={{ .Type }}
+                position={{ .Position }}
+                color={{.Color }}
+                size={{.Size}}
+            />
+        </Chart>, document.getElementById('root'));
 </script>
 </body>
 </html>
