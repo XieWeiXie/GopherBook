@@ -10,8 +10,12 @@ type ColumnHighCharts struct {
 	PlotOptions
 	Series
 	typeName string `json:"type"`
+	value    map[string]interface{}
 }
 
+func (C ColumnHighCharts) AddProperty(key string, v interface{}) {
+	C.value[key] = v
+}
 func (C ColumnHighCharts) Plot(w http.ResponseWriter, r *http.Request) {
 	toHandler(w, r, C)
 }
@@ -41,5 +45,6 @@ func NewColumn(title string) *ColumnHighCharts {
 		Title: Title{
 			Text: title,
 		},
+		value: make(map[string]interface{}),
 	}
 }

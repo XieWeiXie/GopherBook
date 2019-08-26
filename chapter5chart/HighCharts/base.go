@@ -37,7 +37,7 @@ type YAixs struct {
 	Title         Title `json:"title"`
 }
 
-func (Y *YAixs) AddTitle(title string) {
+func (Y *YAixs) AddYAxisTitle(title string) {
 	Y.Title = Title{
 		Text: title,
 	}
