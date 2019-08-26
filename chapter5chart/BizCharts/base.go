@@ -2,6 +2,9 @@ package BizCharts
 
 import (
 	"fmt"
+	"reflect"
+	"regexp"
+	"strings"
 )
 
 type BaseTheme struct {
@@ -21,29 +24,54 @@ type BaseData struct {
 	Data interface{} `json:"data"`
 }
 
-type BaseCols struct {
-	X OneCol
-	Y OneCol
-}
+func NewBaseData(data interface{}) *BaseData {
 
-func (B BaseCols) Keys() []string {
-	var keys []string
-	keys = append(keys, B.X.Alias, B.Y.Alias)
-	return keys
-}
-
-func (B BaseCols) Position() string {
-	keys := B.Keys()
-	if len(keys) != 2 {
-		return "-1"
+	return &BaseData{
+		Data: data,
 	}
-	return fmt.Sprintf("%s*%s", keys[0], keys[1])
 }
 
-type OneCol struct {
-	Alias string `json:"alias"`
+func (B BaseData) Format() []interface{} {
+	v := reflect.ValueOf(B.Data)
+	var result []interface{}
+	for i := 0; i < v.NumField(); i++ {
+		//var temp = make(map[string]interface{})
+		fmt.Println(reflect.TypeOf(i).Name(), reflect.ValueOf(i))
+	}
+	return result
 }
 
 type BaseLegend struct {
 	Location string `json:"location"`
+}
+
+func (L *BaseLegend) SetLocation(position string) {
+	L.Location = position
+}
+
+func ToMap(obj interface{}) (data map[string]interface{}, err error) {
+	data = make(map[string]interface{})
+	objT := reflect.TypeOf(obj)
+	objV := reflect.ValueOf(obj)
+	for i := 0; i < objT.NumField(); i++ {
+		tag := objT.Field(i).Tag
+		tagJson := regexpHandle(fmt.Sprintf("%s", tag))
+		data[tagJson] = objV.Field(i).Interface()
+	}
+	err = nil
+	return
+}
+
+func regexpHandle(tag string) string {
+	reg := `json:"(.*?)"`
+	regx := regexp.MustCompile(reg)
+	if strings.Contains(tag, "json") {
+		result := regx.FindStringSubmatch(tag)
+		if len(result) != 2 {
+			return "-1"
+		}
+		return strings.TrimSpace(result[1])
+
+	}
+	return "-1"
 }

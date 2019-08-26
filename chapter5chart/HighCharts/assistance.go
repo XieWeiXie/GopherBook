@@ -1,4 +1,4 @@
-package BizCharts
+package HighCharts
 
 import (
 	"log"
@@ -7,7 +7,7 @@ import (
 	"text/template"
 )
 
-func toHandler(w http.ResponseWriter, _ *http.Request, data interface{}) {
+func toHandler(w http.ResponseWriter, r *http.Request, data interface{}) {
 	t, err := template.New("").Parse(PlotText())
 	if err != nil {
 		log.Println(err)
@@ -18,6 +18,7 @@ func toHandler(w http.ResponseWriter, _ *http.Request, data interface{}) {
 		log.Println(err)
 		return
 	}
+
 }
 
 func toSave(name string, data interface{}) bool {
@@ -26,12 +27,15 @@ func toSave(name string, data interface{}) bool {
 		log.Println(err)
 		return false
 	}
-	t, _ := template.New("").Parse(PlotText())
-	err = t.Execute(f, data)
+	t, err := template.New("").Parse(PlotText())
 	if err != nil {
 		log.Println(err)
 		return false
 	}
-	return true
-
+	err = t.Execute(f, data)
+	if err != nil {
+		log.Println(err)
+		return true
+	}
+	return false
 }

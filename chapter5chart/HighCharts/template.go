@@ -1,4 +1,4 @@
-package BizCharts
+package HighCharts
 
 import (
 	"log"

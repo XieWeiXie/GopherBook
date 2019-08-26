@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello World</title>
+    <title>BizChart</title>
     <!-- 引入React -->
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -13,30 +13,26 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-    const { Chart, Geom, Axis, Tooltip, Legend, Coord } = window.BizCharts;
+    const { Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape } = window.BizCharts;
     // 数据源
     let series =null;
     series = {{ .Data }};
     const data = series;
 
-    // 定义度量
-    let xyAixs =null;
-    xyAixs = {{.XYAxis}};
-    const cols = xyAixs;
-
-    BizCharts.setTheme({{ .Theme }});
-
+    BizCharts.setTheme("{{ .Theme }}");
     ReactDOM.render(
-        <Chart width={1200} height={500} data={data} scale={cols}>
-            <Axis name={{.Axis }} title/>
-            <Axis name={{.Yxis}} title/>
+        <Chart width={1200} height={500} data={data} padding='auto' forceFit>
+
+            <Coord type="{{.TypeCoord}}" />
             <Tooltip />
-            <Legend position={{ .Location }}/>
+            <Legend
+                position= "{{.Location}}"
+                offsetY={-window.innerHeight / 2 + 180}
+                offsetX={-160} />
             <Geom
-                type={{ .Type }}
-                position={{ .Position }}
-                color={{.Color }}
-                size={{.Size}}
+                type="{{ .TypeGeom }}"
+                position="{{ .Position }}"
+                color="{{.Color }}"
             />
         </Chart>, document.getElementById('root'));
 </script>

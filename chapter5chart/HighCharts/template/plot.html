@@ -3,31 +3,61 @@
 <head>
     <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
     <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts-3d.js"></script>
     <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
     <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
 </head>
 <body>
 <div id="container" style="min-width:400px;height:400px"></div>
 <script>
-    Highcharts.chart('container', {
+    var chart = Highcharts.chart('container', {
         chart: {
-            type: 'pie'
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                viewDistance: 25,
+                depth: 40
+            },
+            marginTop: 80,
+            marginRight: 40
         },
         title: {
-            text: '2018年1月浏览器市场份额'
+            text: '以性别划分的水果消费总量'
+        },
+        xAxis: {
+            categories: ['苹果', '橘子', '梨', '葡萄', '香蕉']
+        },
+        yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+                text: '水果数量'
+            }
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                depth: 40
+            }
         },
         series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{name: 'Chrome', y: 61.41, sliced: true, selected: true},
-                {name: 'Internet Explorer', y: 11.84},
-                {name: 'Firefox', y: 10.85},
-                {name: 'Edge', y: 4.67},
-                {name: 'Safari', y: 4.18},
-                {name: 'Sogou Explorer', y: 1.64},
-                {name: 'Opera', y: 1.6},
-                {name: 'QQ', y: 1.2},
-                {name: 'Other', y: 2.61}]
+            name: '小张',
+            data: [5, 3, 4, 7, 2],
+            stack: 'male'
+        }, {
+            name: '小王',
+            data: [3, 4, 4, 2, 5],
+            stack: 'male'
+        }, {
+            name: '小彭',
+            data: [2, 5, 6, 2, 1],
+            stack: 'female'
+        }, {
+            name: '小潘',
+            data: [3, 0, 4, 4, 3],
+            stack: 'female'
         }]
     });
 </script>
