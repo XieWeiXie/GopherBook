@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <title>ApexCharts</title>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+    var options = {{.}}
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
+</script>
+</body>
+</html>
