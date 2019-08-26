@@ -1,23 +1,39 @@
 package HighCharts
 
-import "net/http"
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
 
 type ColumnHighCharts struct {
 	Chart
 	Title
-	XAixs
-	YAixs
-	PlotOptions
+	XAxis       XAxis       `json:"xAxis"`
+	YAxis       YAxis       `json:"yAxis"`
+	PlotOptions PlotOptions `json:"plotOptions"`
 	Series
 	typeName string `json:"type"`
-	value    map[string]interface{}
+	format   map[string]interface{}
 }
 
-func (C ColumnHighCharts) AddProperty(key string, v interface{}) {
-	C.value[key] = v
+func (C *ColumnHighCharts) AddProperty(key string, v interface{}) {
+	C.format[key] = v
+}
+
+func (C *ColumnHighCharts) Format() {
+	C.format["chart"] = C.Chart
+	C.format["title"] = C.Title
+	C.format["xAxis"] = C.XAxis
+	C.format["yAxis"] = C.YAxis
+	C.format["series"] = C.Series.Data
+
 }
 func (C ColumnHighCharts) Plot(w http.ResponseWriter, r *http.Request) {
-	toHandler(w, r, C)
+	C.Format()
+	t, _ := json.Marshal(C.format)
+	fmt.Println(string(t))
+	toHandler(w, r, string(t))
 }
 
 func (C ColumnHighCharts) Save(name string) bool {
@@ -30,9 +46,6 @@ func (C ColumnHighCharts) Save(name string) bool {
 func (C ColumnHighCharts) Name() string {
 	return C.typeName
 }
-func (C ColumnHighCharts) String() string {
-	return C.Name()
-}
 
 func NewColumn(title string) *ColumnHighCharts {
 	return &ColumnHighCharts{
@@ -40,11 +53,11 @@ func NewColumn(title string) *ColumnHighCharts {
 			TypeName:    COLUMNTYPE,
 			MarginRight: 40,
 			MarginTop:   80,
-			value:       make(map[string]interface{}),
 		},
 		Title: Title{
 			Text: title,
 		},
-		value: make(map[string]interface{}),
+		format:   make(map[string]interface{}),
+		typeName: COLUMNTYPE,
 	}
 }

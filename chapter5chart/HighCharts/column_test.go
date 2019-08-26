@@ -1,23 +1,29 @@
 package HighCharts
 
 import (
+	"log"
 	"net/http"
 	"testing"
-
-	"github.com/micro/go-log"
 )
 
 func TestColumn(tests *testing.T) {
-	column := NewColumn("3D Example")
-	column.AddField("options3d", Options3d{
+	c := NewColumn("3D Example")
+	c.Options3d = Options3d{
 		Enabled:      true,
 		Alpha:        15,
 		Beta:         15,
 		ViewDistance: 25,
 		Depth:        40,
+	}
+	c.XAxis.AddCategories([]string{"苹果", "橘子", "梨", "葡萄", "香蕉"})
+	c.YAxis.AddYAxisTitle("水果数量")
+	c.YAxis.AllowDecimal()
+	c.AddProperty("plotOptions", PlotOptions{
+		Column: Column{
+			Stacking: "normal",
+			Depth:    40,
+		},
 	})
-	column.AddCategories([]string{"苹果", "橘子", "梨", "葡萄", "香蕉"})
-	column.AddYAxisTitle("水果数量")
 	data := Series{
 		Data: []OneSeries{
 			{
@@ -39,8 +45,8 @@ func TestColumn(tests *testing.T) {
 			},
 		},
 	}
-	column.Series = data
-	http.HandleFunc("/", column.Plot)
+	c.Series = data
+	http.HandleFunc("/", c.Plot)
 	log.Fatal(http.ListenAndServe(":7777", nil))
 
 }

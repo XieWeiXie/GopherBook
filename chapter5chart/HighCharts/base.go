@@ -1,14 +1,10 @@
 package HighCharts
 
 type Chart struct {
-	TypeName    string `json:"type"`
-	MarginTop   int    `json:"marginTop"`
-	MarginRight int    `json:"marginRight"`
-	value       map[string]interface{}
-}
-
-func (C Chart) AddField(key string, v interface{}) {
-	C.value[key] = v
+	TypeName    string    `json:"type"`
+	MarginTop   int       `json:"marginTop"`
+	MarginRight int       `json:"marginRight"`
+	Options3d   Options3d `json:"options3d"`
 }
 
 type Title struct {
@@ -23,22 +19,25 @@ type OneSeries struct {
 	Stack string      `json:"stack"`
 }
 
-type XAixs struct {
+type XAxis struct {
 	Categories []string `json:"categories"`
 }
 
-func (A *XAixs) AddCategories(data []string) {
+func (A *XAxis) AddCategories(data []string) {
 	A.Categories = data
 }
 
-type YAixs struct {
+type YAxis struct {
 	AllowDecimals bool  `json:"allowDecimals"`
 	Min           int   `json:"min"`
 	Title         Title `json:"title"`
 }
 
-func (Y *YAixs) AddYAxisTitle(title string) {
+func (Y *YAxis) AddYAxisTitle(title string) {
 	Y.Title = Title{
 		Text: title,
 	}
+}
+func (Y *YAxis) AllowDecimal() {
+	Y.AllowDecimals = true
 }
