@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/knq/chromedp"
+	"github.com/chromedp/chromedp"
 )
 
 func ChromedpGetContent(url string) string {

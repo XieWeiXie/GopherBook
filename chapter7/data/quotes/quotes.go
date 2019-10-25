@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/knq/chromedp"
 	"golang.org/x/net/context"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/chromedp/chromedp"
 )
 
 func GetQuotesContentAll() {
