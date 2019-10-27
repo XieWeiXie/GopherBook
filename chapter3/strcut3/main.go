@@ -34,7 +34,7 @@ func main() {
 		Age:  20,
 	}
 
-	var InfoTwo = Info{"XieWei", 20}
+	var infoTwo = Info{"XieWei", 20}
 
 	var infoThree = new(Info)
 
@@ -44,7 +44,7 @@ func main() {
 	}
 
 	fmt.Println("One", infoOne)
-	fmt.Println("Two", InfoTwo)
+	fmt.Println("Two", infoTwo)
 	fmt.Println("Three", *infoThree)
 	fmt.Println(unsafe.Sizeof(infoOne), fmt.Sprintf("%x - %d - %x - %d", &infoOne.Name, unsafe.Sizeof(infoOne.Name), &infoOne.Age, unsafe.Sizeof(infoOne.Age)))
 	fmt.Println(unsafe.Sizeof(InfoTwo), fmt.Sprintf("%x - %d - %x - %d", &InfoTwo.Name, unsafe.Sizeof(InfoTwo.Name), &InfoTwo.Age, unsafe.Sizeof(InfoTwo.Age)))
