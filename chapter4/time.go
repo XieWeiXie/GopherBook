@@ -35,7 +35,7 @@ func TimeOperate() {
 	fmt.Println(time.Now().Sub(start))
 
 	// 格式化
-	fmt.Println(start.Format("2006-01-02 15:04:06"))
+	fmt.Println(start.Format("2006-01-02 15:04:05"))
 
 	// 截取
 	fmt.Println(start.Round(time.Second))
