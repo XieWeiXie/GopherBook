@@ -44,7 +44,7 @@ func main() {
 	}
 
 	fmt.Println("One", infoOne)
-	fmt.Println("Twp", InfoTwo)
+	fmt.Println("Two", InfoTwo)
 	fmt.Println("Three", *infoThree)
 	fmt.Println(unsafe.Sizeof(infoOne), fmt.Sprintf("%x - %d - %x - %d", &infoOne.Name, unsafe.Sizeof(infoOne.Name), &infoOne.Age, unsafe.Sizeof(infoOne.Age)))
 	fmt.Println(unsafe.Sizeof(InfoTwo), fmt.Sprintf("%x - %d - %x - %d", &InfoTwo.Name, unsafe.Sizeof(InfoTwo.Name), &InfoTwo.Age, unsafe.Sizeof(InfoTwo.Age)))
