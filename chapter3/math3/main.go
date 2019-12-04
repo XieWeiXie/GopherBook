@@ -54,7 +54,7 @@ var opSlice = func(name []string) []string {
 	return name
 }
 
-var opMap = func(name map[string]int) map[string]int {
+var opMap = func(name map[string]int)  {
 
 	for key, value := range name {
 		fmt.Println(key, value)
@@ -69,8 +69,6 @@ var opMap = func(name map[string]int) map[string]int {
 
 	}
 	delete(name, "java")
-
-	return name
 }
 
 func main() {
@@ -98,6 +96,7 @@ func main() {
 	nameMap["python"] = 180
 	nameMap["js"] = 220
 
-	fmt.Println(opMap(nameMap))
+	opMap(nameMap)
+	fmt.Println(nameMap)
 
 }
