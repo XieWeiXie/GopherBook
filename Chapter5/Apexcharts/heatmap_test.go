@@ -51,6 +51,7 @@ func TestHeatMap(tests *testing.T) {
 	heatMap.SetColors([]string{"#F3B415", "#F27036", "#663F59", "#6A6E94", "#4E88B4", "#00A7C6", "#18D8D8", "#A9D794", "#46AF78", "#A93F55", "#8C5E58", "#2176FF", "#33A1FD", "#7A918D", "#BAFF29"})
 	heatMap.SetCategories([]string{"10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "01:00", "01:30"})
 	http.HandleFunc("/", heatMap.Plot)
+	log.Println("http://127.0.0.1:7878")
 	log.Fatal(http.ListenAndServe(":7878", nil))
 }
 

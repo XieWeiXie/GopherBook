@@ -32,5 +32,6 @@ func TestScatter(test *testing.T) {
 
 	s.BaseTitle.Title.SetPositions(BOTTOM, CENTER)
 	http.HandleFunc("/", s.Plot)
+	log.Println("http://127.0.0.1:9998")
 	log.Fatal(http.ListenAndServe(":9998", nil))
 }

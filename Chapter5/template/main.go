@@ -26,7 +26,7 @@ func init() {
 
 func originMethod() {
 	pwd, _ := os.Getwd()
-	t, err := template.ParseFiles(pwd + "/chapter5/template/index.html")
+	t, err := template.ParseFiles(pwd + "/template/index.html")
 	if err != nil {
 		log.Println(err)
 		return
@@ -55,6 +55,9 @@ func withPackr() {
 }
 
 func main() {
+	log.Println("originMethod:")
 	originMethod()
+	log.Println()
+	log.Println("withPackr:")
 	withPackr()
 }
