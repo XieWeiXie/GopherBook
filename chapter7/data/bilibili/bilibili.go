@@ -1,8 +1,8 @@
 package bilibili
 
 import (
-	"GopherBook/chapter7/assistance"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter7/assistance"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"

@@ -51,7 +51,7 @@ func GetBaiDu(url string) {
 	//SaveJSON(results)
 	//SaveCSV(results)
 	//SaveDB(results)
-	SaveRedis(results)
+	//SaveRedis(results)
 
 }
 

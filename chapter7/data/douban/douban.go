@@ -1,9 +1,9 @@
 package douban
 
 import (
-	"GopherBook/chapter7/assistance"
 	"context"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter7/assistance"
 	"log"
 	"strings"
 

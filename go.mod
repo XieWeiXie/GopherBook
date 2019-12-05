@@ -11,6 +11,7 @@ require (
 	github.com/go-xorm/xorm v0.7.9
 	github.com/gobuffalo/packr v1.30.1
 	github.com/golang/groupcache v0.0.0-20191027212112-611e8accdfc9 // indirect
+	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/graphql-go/graphql v0.7.8
 	github.com/graphql-go/handler v0.2.3
 	github.com/jinzhu/gorm v1.9.11
