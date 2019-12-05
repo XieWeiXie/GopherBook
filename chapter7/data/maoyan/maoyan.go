@@ -3,6 +3,7 @@ package maoyan
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 
 	"github.com/tidwall/gjson"
@@ -24,6 +25,7 @@ var getContent = func(url string) ([]byte, error) {
 }
 
 func MaoYan(url string) {
+	log.Println(url)
 	c, _ := getContent(url)
 	doc := gjson.ParseBytes(c).Get("data.list").Array()
 	for _, i := range doc {
