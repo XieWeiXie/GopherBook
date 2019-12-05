@@ -1,7 +1,7 @@
 package weibo
 
 import (
-	"GopherBook/chapter7/assistance"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter7/assistance"
 	"log"
 	"testing"
 )

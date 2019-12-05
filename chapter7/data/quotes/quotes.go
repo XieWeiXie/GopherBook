@@ -1,8 +1,8 @@
 package quotes
 
 import (
-	"GopherBook/chapter7/assistance"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter7/assistance"
 	"log"
 	"strings"
 	"time"

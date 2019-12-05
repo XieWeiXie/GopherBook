@@ -111,3 +111,17 @@ Selenium和 Puppeteer的比较：
 
 - https://developers.google.com/web/tools/chrome-devtools/?hl=zh-cn
 - chrome 版本号 http://omahaproxy.appspot.com/
+
+
+## 说明
+
+- assistance: 获取网页源代码
+
+```text
+chromedep: 使用无界面的浏览器获取网页源代码
+content: 使用原生的 net/http 方式获取网页源代码
+selenium: 使用 slenium 获取网页源代码
+```
+
+- data: 爬虫示例
+
