@@ -125,3 +125,15 @@ selenium: 使用 slenium 获取网页源代码
 
 - data: 爬虫示例
 
+```text
+baidu: 百度热点搜索数据，需要使用 docker 本地开启数据库 mysql，redis 等
+bilibili: B 站 热门排行
+danjuan: 蛋卷基金
+douban: 豆瓣电影
+maoyan: 猫眼票房
+quotes: js 异步加载网站示例
+v2ex: v2ex 热门帖子
+wangyiyun: 音乐排行版
+weibo: 微博热搜
+zhihu: 知乎热搜
+```
