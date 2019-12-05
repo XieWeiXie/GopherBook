@@ -126,7 +126,7 @@ selenium: 使用 slenium 获取网页源代码
 - data: 爬虫示例
 
 ```text
-baidu: 百度热点搜索数据，需要使用 docker 本地开启数据库 mysql，redis 等
+baidu: 百度热点搜索数据，需要使用 docker 本地需要开启数据库 mysql，redis 等
 bilibili: B 站 热门排行
 danjuan: 蛋卷基金
 douban: 豆瓣电影
