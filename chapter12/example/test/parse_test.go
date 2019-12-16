@@ -1,7 +1,7 @@
 package test
 
 import (
-	"GopherBook/chapter12/example/fina"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/example/fina"
 	"log"
 	"os"
 	"testing"

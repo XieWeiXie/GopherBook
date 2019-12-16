@@ -1,6 +1,6 @@
 package main
 
-import "GopherBook/chapter4"
+import "github.com/wuxiaoxiaoshen/GopherBook/chapter4"
 
 func main() {
 	//chapter4.FlagUsage()
