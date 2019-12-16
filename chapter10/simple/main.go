@@ -135,7 +135,9 @@ func getProfile(writer http.ResponseWriter, req *http.Request) {
 	a["createdAt"] = createdAtHandle
 	tmp := template.New("index.html")
 	tmp.Funcs(a)
-	tmp, _ = tmp.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/table.html"))
+	tmp, _ = tmp.ParseFiles(
+		path.Join(currentPath, "/chapter10/simple/template/index.html"),
+		path.Join(currentPath, "/chapter10/simple/template/table.html"))
 	tmp.Funcs(a).Execute(writer, NewPersonRecords())
 }
 
@@ -147,7 +149,7 @@ type loginInfo struct {
 
 func login(writer http.ResponseWriter, req *http.Request) {
 	currentPath, _ := os.Getwd()
-	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/login.html"))
+	temp, _ := template.ParseFiles(path.Join(currentPath, "/chapter10/simple/template/index.html"), path.Join(currentPath, "/chapter10/simple/template/login.html"))
 	var lgInfo loginInfo
 	if req.Method == http.MethodGet {
 		temp.Execute(writer, lgInfo)
@@ -318,7 +320,9 @@ func song(writer http.ResponseWriter, req *http.Request) {
 		APis:  aps,
 	}
 	currentPath, _ := os.Getwd()
-	temp, err := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/song.html"))
+	temp, err := template.ParseFiles(
+		path.Join(currentPath, "/chapter10/simple/template/index.html"),
+		path.Join(currentPath, "/chapter10/simple/template/song.html"))
 	if err != nil {
 		log.Println(err)
 		return
@@ -351,7 +355,7 @@ func progress(writer http.ResponseWriter, req *http.Request) {
 	proStatus.Now, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", float64(sum)/float64(365)*100), 64)
 	proStatus.Year = y
 	currentPath, _ := os.Getwd()
-	temp, _ := template.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/progress.html"))
+	temp, _ := template.ParseFiles(path.Join(currentPath, "/chapter10/simple/template/index.html"), path.Join(currentPath, "/chapter10/simple/template/progress.html"))
 	temp.Execute(writer, proStatus)
 }
 
@@ -414,7 +418,9 @@ func home(writer http.ResponseWriter, req *http.Request) {
 	currentPath, _ := os.Getwd()
 	temp := template.New("index.html")
 	t := temp.Funcs(template.FuncMap{"timeHandle": timeHandle})
-	t, err := t.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/home.html"))
+	t, err := t.ParseFiles(
+		path.Join(currentPath, "/chapter10/simple/template/index.html"),
+		path.Join(currentPath, "/chapter10/simple/template/home.html"))
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -468,7 +474,9 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
 	currentPath, _ := os.Getwd()
 	temp := template.New("index.html")
 	t := temp.Funcs(template.FuncMap{"time": timeFormat})
-	t, err := t.ParseFiles(path.Join(currentPath, "GopherBook/Chapter5/simple/template/index.html"), path.Join(currentPath, "GopherBook/Chapter5/simple/template/passage.html"))
+	t, err := t.ParseFiles(
+		path.Join(currentPath, "/chapter10/simple/template/index.html"),
+		path.Join(currentPath, "/chapter10/simple/template/passage.html"))
 	if err != nil {
 		fmt.Println(err)
 		return
