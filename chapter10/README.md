@@ -64,4 +64,13 @@
 - 启动 MySQL： cd deployments && docker-compose -f docker-compose.yml up -d
 - go build -o BeeQuick -v -ldflags "-X main.Env=dev" -tags=jsoniter 
 - ./BeeQuick
+- 调用相应的接口
 ```
+
+- 如何联系模型设计的能力
+
+```text
+- 研究 APP / 小程序
+- 自己建立模型，看是否能够满足要求
+```
+
