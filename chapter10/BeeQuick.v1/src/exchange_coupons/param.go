@@ -3,7 +3,7 @@ package exchange_coupons
 import (
 	"fmt"
 
-	model_v1 "GopherBook/Chapter5/BeeQuick.v1/model/v1"
+	model_v1 "github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/model/v1"
 
 	"gopkg.in/go-playground/validator.v9"
 )

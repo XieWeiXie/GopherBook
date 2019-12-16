@@ -1,10 +1,10 @@
 package main
 
 import (
-	"GopherBook/Chapter5/Orm/origin_example/model"
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/Orm/origin_example/model"
 	"log"
 	"math/rand"
 	"net/http"

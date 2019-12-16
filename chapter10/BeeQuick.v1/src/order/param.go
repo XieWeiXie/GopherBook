@@ -1,7 +1,7 @@
 package order
 
 import (
-	"GopherBook/Chapter5/BeeQuick.v1/src/make_param"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/make_param"
 	"gopkg.in/go-playground/validator.v9"
 )
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GopherBook/Chapter5/Orm/gorm_example/model"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/Orm/gorm_example/model"
 	"log"
 
 	"github.com/jinzhu/gorm"

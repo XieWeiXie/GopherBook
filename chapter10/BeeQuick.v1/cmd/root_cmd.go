@@ -3,11 +3,11 @@ package cmd
 import (
 	"os"
 
-	"GopherBook/Chapter5/BeeQuick.v1/pkg/router.v1"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/pkg/router.v1"
 
 	"log"
 
-	"GopherBook/Chapter5/BeeQuick.v1/pkg/database.v1"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/pkg/database.v1"
 
 	"github.com/kataras/iris"
 	"github.com/spf13/cobra"

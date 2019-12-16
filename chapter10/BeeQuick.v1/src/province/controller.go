@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"GopherBook/Chapter5/BeeQuick.v1/pkg/error.v1"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/pkg/error.v1"
 
-	"GopherBook/Chapter5/BeeQuick.v1/model/v1"
-	"GopherBook/Chapter5/BeeQuick.v1/pkg/database.v1"
 	"github.com/kataras/iris"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/model/v1"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/pkg/database.v1"
 )
 
 func getProvinceHandler(ctx iris.Context) {

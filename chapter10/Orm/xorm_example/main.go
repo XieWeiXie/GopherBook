@@ -1,8 +1,8 @@
 package main
 
 import (
-	"GopherBook/Chapter5/Orm/xorm_example/model"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/Orm/xorm_example/model"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"

@@ -3,10 +3,9 @@ package cmd
 import (
 	"fmt"
 
-	"GopherBook/Chapter5/BeeQuick.v1/model/v1"
-	"GopherBook/Chapter5/BeeQuick.v1/pkg/database.v1"
-	"github.com/labstack/gommon/log"
 	"github.com/spf13/cobra"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/model/v1"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/pkg/database.v1"
 )
 
 var syncCMD = &cobra.Command{

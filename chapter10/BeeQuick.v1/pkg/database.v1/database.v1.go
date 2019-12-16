@@ -3,7 +3,7 @@ package database_v1
 import (
 	"fmt"
 
-	"github.com/go-xorm/core"
+	"xorm.io/core"
 
 	"github.com/go-sql-driver/mysql"
 

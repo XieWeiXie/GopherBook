@@ -1,7 +1,7 @@
 package vip_member
 
 import (
-	"GopherBook/Chapter5/BeeQuick.v1/model/v1"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/model/v1"
 	"gopkg.in/go-playground/validator.v9"
 )
 

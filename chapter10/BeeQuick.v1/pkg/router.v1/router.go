@@ -4,31 +4,31 @@ import (
 	"net/http"
 	"time"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/order"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/order"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/product"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/product"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/tags"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/tags"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/brand"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/brand"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/unit"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/unit"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/activity"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/activity"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/shop"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/shop"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/province"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/province"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/rule"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/rule"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/exchange_coupons"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/exchange_coupons"
 
-	"GopherBook/Chapter5/BeeQuick.v1/src/vip_member"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/vip_member"
 
-	"GopherBook/Chapter5/BeeQuick.v1/pkg/middleware"
-	"GopherBook/Chapter5/BeeQuick.v1/src/account"
 	"github.com/kataras/iris"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/pkg/middleware"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter10/BeeQuick.v1/src/account"
 )
 
 var (
