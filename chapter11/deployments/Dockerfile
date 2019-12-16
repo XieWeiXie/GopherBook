@@ -1,4 +1,4 @@
-FROM golang:1.12.7
+FROM golang:1.13.4
 LABEL maintainer="XieWei"
 
 WORKDIR /go/GopherBook/chapter11
