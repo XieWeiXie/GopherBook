@@ -54,7 +54,7 @@ var opSlice = func(name []string) []string {
 	return name
 }
 
-var opMap = func(name map[string]int)  {
+var opMap = func(name map[string]int) {
 
 	for key, value := range name {
 		fmt.Println(key, value)
