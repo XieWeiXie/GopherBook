@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GopherBook/chapter11/cmd"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter11/cmd"
 )
 
 var ENV string

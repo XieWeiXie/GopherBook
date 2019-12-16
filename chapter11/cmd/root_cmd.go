@@ -1,13 +1,13 @@
 package cmd
 
 import (
-	"GopherBook/chapter11/pkg/database"
-	"GopherBook/chapter11/pkg/middleware"
-	"GopherBook/chapter11/web/model"
-	"GopherBook/chapter11/web/vote"
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter11/pkg/database"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter11/pkg/middleware"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter11/web/model"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter11/web/vote"
 	"log"
 	"net/http"
 	"os"

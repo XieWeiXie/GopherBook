@@ -1,7 +1,7 @@
 package vote
 
 import (
-	"GopherBook/chapter11/web/make_request"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter11/web/make_request"
 	"log"
 	"net/http"
 )
