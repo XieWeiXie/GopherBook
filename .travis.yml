@@ -25,7 +25,7 @@ script:
   - make
 
 after_success:
-  - docker build . -t wuxiaoshen/beequick:latest -f Chapter5/BeeQuick.v1/deployments/Dockerfile
+  - docker build . -t wuxiaoshen/beequick:latest -f chapter10/BeeQuick.v1/deployments/Dockerfile
   - docker build . -t wuxiaoshen/votes:latest -f chapter11/deployments/Dockerfile
   - docker build . -t wuxiaoshen/fina:latest -f chapter12/fina/deployments/Dockerfile
   - docker push wuxiaoshen/beequick:latest

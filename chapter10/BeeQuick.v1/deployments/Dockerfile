@@ -8,9 +8,10 @@ ENV GO111MODULE on
 
 EXPOSE 8080
 
-RUN apk --no-cache --update add vim git curl make gcc libc-dev bash
+RUN apt-get update && apt-get install -q -y vim git curl make gcc libc-dev bash && apt-get clean;
 
-COPY chapter10/BeeQuick.v1/* .
+COPY chapter10/BeeQuick.v1/ .
+
 
 RUN go mod download
 
