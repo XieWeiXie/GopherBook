@@ -52,3 +52,16 @@
     - postman/vscode
     - 接口测试
 - 总结
+
+
+### 说明
+
+- 如何启动 BeeQuick.v1 服务
+
+```text
+- 本地安装 Docker
+- 本地安装 docker-compose
+- 启动 MySQL： cd deployments && docker-compose -f docker-compose.yml up -d
+- go build -o BeeQuick -v -ldflags "-X main.Env=dev" -tags=jsoniter 
+- ./BeeQuick
+```
