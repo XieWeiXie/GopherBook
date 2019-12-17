@@ -1,9 +1,9 @@
 package records
 
 import (
-	"GopherBook/chapter12/fina/models"
-	"GopherBook/chapter12/fina/pkg/database"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/models"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/database"
 )
 
 type ControllerRecord struct {

@@ -1,8 +1,8 @@
 package assistance
 
 import (
-	"GopherBook/chapter12/fina/configs"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/configs"
 )
 
 func FullURL(val string) string {

@@ -1,8 +1,8 @@
 package sports
 
 import (
-	"GopherBook/chapter12/fina/models"
-	"GopherBook/chapter12/fina/pkg/database"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/models"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/database"
 )
 
 type ControllerSports struct {

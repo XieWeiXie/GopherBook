@@ -1,11 +1,11 @@
 package middleware
 
 import (
-	"GopherBook/chapter12/fina/pkg/log"
 	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/log"
 	"io/ioutil"
 	"net/http"
 	"time"

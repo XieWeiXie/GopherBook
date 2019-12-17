@@ -1,11 +1,11 @@
 package data
 
 import (
-	"GopherBook/chapter12/fina/models"
-	"GopherBook/chapter12/fina/pkg/assistance"
-	"GopherBook/chapter12/fina/pkg/database"
 	"bytes"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/models"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/assistance"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/database"
 	"io"
 	"log"
 

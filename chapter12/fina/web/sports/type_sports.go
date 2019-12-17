@@ -1,9 +1,9 @@
 package sports
 
 import (
-	"GopherBook/chapter12/fina/models"
-	"GopherBook/chapter12/fina/pkg/error"
-	"GopherBook/chapter12/fina/web/competition"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/models"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/error"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/web/competition"
 
 	"github.com/graphql-go/graphql"
 )

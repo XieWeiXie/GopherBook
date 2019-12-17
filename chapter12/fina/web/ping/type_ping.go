@@ -1,7 +1,7 @@
 package ping
 
 import (
-	"GopherBook/chapter12/fina/pkg/error"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/error"
 
 	"github.com/graphql-go/graphql"
 )

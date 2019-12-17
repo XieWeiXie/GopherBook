@@ -1,7 +1,7 @@
 package models
 
 import (
-	"GopherBook/chapter12/fina/pkg/database"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/database"
 	"time"
 )
 

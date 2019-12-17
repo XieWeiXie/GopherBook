@@ -1,9 +1,9 @@
 package data
 
 import (
-	"GopherBook/chapter12/fina/configs"
-	"GopherBook/chapter12/fina/pkg/assistance"
 	"fmt"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/configs"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/assistance"
 	"testing"
 )
 

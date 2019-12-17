@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GopherBook/chapter12/fina/cmd"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/cmd"
 	"log"
 )
 

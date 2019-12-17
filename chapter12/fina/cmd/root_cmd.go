@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"GopherBook/chapter12/fina/pkg/database"
-	"GopherBook/chapter12/fina/pkg/log"
-	"GopherBook/chapter12/fina/pkg/router"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/database"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/log"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/router"
 
 	"github.com/spf13/cobra"
 )

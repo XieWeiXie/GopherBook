@@ -13,11 +13,11 @@ var MySQL *xorm.Engine
 var (
 	dbMySQL    = "fina"
 	dbUser     = "root"
-	dbPassword = "admin123"
+	dbPassword = "adminMysql"
 )
 
 func MySQLInit() *xorm.Engine {
-	engine, err := xorm.NewEngine("mysql", fmt.Sprintf("%s:%s@/%s?charset=utf8", dbUser, dbPassword, dbMySQL))
+	engine, err := xorm.NewEngine("mysql", fmt.Sprintf("%s:%s@(127.0.0.1:3307)/%s?charset=utf8", dbUser, dbPassword, dbMySQL))
 	if err != nil {
 		panic(fmt.Sprintf("CONNECT ENGINE BY XORM FAIL %s", err.Error()))
 	}

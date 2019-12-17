@@ -1,9 +1,9 @@
 package symbol
 
 import (
-	"GopherBook/chapter12/fina/models"
-	"GopherBook/chapter12/fina/pkg/error"
-	"GopherBook/chapter12/fina/web/blue"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/models"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/error"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/web/blue"
 
 	"github.com/graphql-go/graphql"
 )

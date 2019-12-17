@@ -1,9 +1,9 @@
 package router
 
 import (
-	"GopherBook/chapter12/fina/pkg/middleware"
-	"GopherBook/chapter12/fina/web/query"
 	"context"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/pkg/middleware"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/web/query"
 	"log"
 	"net/http"
 

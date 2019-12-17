@@ -1,7 +1,7 @@
 package competition
 
 import (
-	"GopherBook/chapter12/fina/models"
+	"github.com/wuxiaoxiaoshen/GopherBook/chapter12/fina/models"
 
 	"github.com/graphql-go/graphql"
 )
