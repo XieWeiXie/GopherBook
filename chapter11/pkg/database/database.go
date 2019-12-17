@@ -11,7 +11,7 @@ import (
 var EngineMySQLGORM *gorm.DB
 
 func EngineGORMInit() {
-	db, err := gorm.Open("mysql", "root:admin123@/votes?charset=utf8&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", "root:adminMysql@(127.0.0.1:3307)/votes?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		log.Fatal("CONNECT DB FAIL: ", err.Error())
 		return
@@ -23,7 +23,7 @@ func EngineGORMInit() {
 var EngineMySQLXORM *xorm.Engine
 
 func EngineXORMInit() {
-	db, err := xorm.NewEngine("mysql", "root:admin123@/votes?charset=utf8&parseTime=True&loc=Local")
+	db, err := xorm.NewEngine("mysql", "root:adminMysql@(127.0.0.1:3307)/votes?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		log.Fatal("CONNECT DB FAIL :", err.Error())
 		return

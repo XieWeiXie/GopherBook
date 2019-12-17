@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_01
+    networks:
+      - go-anything-network
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: adminMysql
+      MYSQL_DATABASE: votes
+      MYSQL_USER: root
+    ports:
+      - 3307:3306
