@@ -1,4 +1,4 @@
-FROM golang:1.13.4
+FROM golang:1.13.5
 
 LABEL maintainer="XieWei"
 

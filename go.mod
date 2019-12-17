@@ -1,8 +1,9 @@
-module github.com/wuxiaoxiaoshen/GopherBook
+irmodule github.com/wuxiaoxiaoshen/GopherBook
 
 go 1.13
 
 require (
+	github.com/CloudyKit/fastprinter v0.0.0-20170127035650-74b38d55f37a // indirect
 	github.com/PuerkitoBio/goquery v1.5.0
 	github.com/antchfx/htmlquery v1.2.0
 	github.com/antchfx/xpath v1.1.2 // indirect
@@ -15,6 +16,10 @@ require (
 	github.com/graphql-go/graphql v0.7.8
 	github.com/graphql-go/handler v0.2.3
 	github.com/jinzhu/gorm v1.9.11
+	github.com/kataras/iris/v12 v12.1.1 // indirect
+	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/spf13/cobra v0.0.5
 	github.com/tebeka/selenium v0.9.9
 	github.com/tidwall/gjson v1.3.5
