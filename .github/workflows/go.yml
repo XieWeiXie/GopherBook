@@ -23,9 +23,6 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
-
-    - name: Go Vet
-      run: go vet $(go list ./... | grep -v vendor | grep -v chapter5)
     - name: Go fmt
       run: go fmt $(go list ./... | grep -v vendor)
     - name: Make
