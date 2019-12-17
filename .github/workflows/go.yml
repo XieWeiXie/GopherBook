@@ -25,8 +25,14 @@ jobs:
         fi
 
     - name: Go Vet
-      run: go vet $(go list ./... | grep -v vendor)
+      run: go vet $(go list ./... | grep -v vendor | grep -v chapter5)
     - name: Go fmt
       run: go fmt $(go list ./... | grep -v vendor)
     - name: Make
       run: make
+    - name: Docker Login
+      run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build the Docker image
+      run: docker build . --file chapter10/BeeQuick.v1/deployments/Dockerfile --tag wuxiaoshen/beequick:v$(date +"%Y%m%d")
+    - name: Build In Local
+      run: cd chapter10/BeeQuick.v1 && docker build . --file Dockerfile --tag wuxiaoshen/beequick_local:v$(date +"%Y%m%d")

@@ -188,7 +188,6 @@ func init() {
 	if err != nil {
 		log.Println(err)
 		panic(err)
-		return
 	}
 	DB = db
 	DB.LogMode(true)
