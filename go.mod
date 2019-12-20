@@ -7,6 +7,7 @@ require (
 	github.com/antchfx/htmlquery v1.2.0
 	github.com/antchfx/xpath v1.1.2 // indirect
 	github.com/chromedp/chromedp v0.5.2
+	github.com/elastic/go-elasticsearch/v7 v7.5.0
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-xorm/xorm v0.7.9
 	github.com/gobuffalo/packr v1.30.1
