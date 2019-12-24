@@ -1,4 +1,4 @@
-# 写书计划
+# GopherBook
 
 
 [![Build Status](https://travis-ci.com/wuxiaoxiaoshen/GopherBook.svg?token=NJwtDqGPUSoHiysBfFqE&branch=master)](https://travis-ci.com/wuxiaoxiaoshen/GopherBook)
@@ -25,9 +25,15 @@
 第九章|自己动手实现一个库|100&permil;|
 第十章|web服务|100&permil;|
 第十一章| GoWeb 开发手册|100&permil;|
-第十二章| GoGraphQl 开发手册|50&permil;|
+第十二章| GoGraphQl 开发手册|100&permil;|
+第十三章| 面向接口编程|100&permil;|
+附录| 学习路径 |100&permil;|
 
 
 ---
 
 &copy;XieWei&trade;
+
+
+
+
