@@ -1,3 +1,5 @@
 vendor/*
 BookTest/*
 Book/*
+BookGopher/*
+.DS_Store
