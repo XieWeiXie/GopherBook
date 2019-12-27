@@ -10,7 +10,7 @@
 > 定位： 以示例式的编程指南书。
 
 ---
-:fire: :fire:  :fire:
+:fire:  :fire:  :fire:  :fire:  :fire:  :fire:
 
 章节|内容|进度
 :---|:---|:---|
@@ -28,6 +28,24 @@
 第十二章| GoGraphQl 开发手册|100&permil;|
 第十三章| 面向接口编程|100&permil;|
 附录| 学习路径 |100&permil;|
+
+
+:fire:  :fire:  :fire:  :fire:  :fire:  :fire:
+
+**编程清单**
+1. 明确需求
+2. 合理组织项目结构
+3. 全部使用 Go Module 进行代码管理
+3. 优先使用内置库
+4. 其次选择优先第三方库
+5. Git 分布式代码管理：其一分支、其二Commit Message 需规范
+5. 单元测试保障代码质量，尤其注意关键核心代码
+6. 项目必须有构建文件: Makefile
+7. 项目容器化：Dockerfile 
+8. 项目必须有 CI/CD 工具，比如：GithubActions, Travis
+9. 简单项目：docker 容器启动，稍复杂 docker-compose 多容器部署，多节点一律使用 k8s，且部署脚本（yaml) 需托管
+10. 项目必须有监控：prometheus 配合 grafana
+
 
 
 ---
